@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ألو معلم | الحرفي مباشرة مع الزبون</title>
+    <title>ألو معلم | لقي المعلم اللي كتقلب عليه</title>
 
-    <meta name="description"
-          content="ألو معلم منصة تربط الزبائن بالحرفيين مباشرة. ابحث عن سباك، كهربائي، نجار، صباغ وغيرهم بالقرب منك.">
+    <meta name="description" content="ألو معلم منصة مغربية لربط الزبائن بالحرفيين والخدمات المهنية بسهولة.">
 
     <style>
         * {
@@ -17,172 +16,168 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #f8f5ef;
-            color: #2d241d;
+            font-family: Arial, Tahoma, sans-serif;
+            background: #f7f9fc;
+            color: #222;
+            line-height: 1.7;
         }
 
         header {
-            background: white;
-            padding: 18px 7%;
+            background: #ffffff;
+            padding: 18px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .logo {
             font-size: 28px;
             font-weight: bold;
-            color: #d66a24;
+            color: #d62828;
+        }
+
+        .logo span {
+            color: #16803c;
         }
 
         nav a {
             text-decoration: none;
             color: #333;
-            margin-right: 25px;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #d62828;
         }
 
         .hero {
-            min-height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: linear-gradient(135deg, #d62828, #16803c);
+            color: white;
             text-align: center;
-            padding: 70px 20px;
-            background: linear-gradient(135deg, #fff8ed, #f4e4d0);
-        }
-
-        .hero-content {
-            max-width: 800px;
+            padding: 80px 20px;
         }
 
         .hero h1 {
-            font-size: 52px;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: #d66a24;
+            font-size: 48px;
+            margin-bottom: 15px;
         }
 
         .hero p {
-            font-size: 21px;
-            color: #666;
-            margin-bottom: 35px;
-            line-height: 1.8;
+            font-size: 22px;
+            margin-bottom: 30px;
         }
 
-        .search-box {
-            background: white;
-            padding: 15px;
-            border-radius: 15px;
+        .buttons {
             display: flex;
-            gap: 10px;
-            max-width: 700px;
-            margin: auto;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .search-box input,
-        .search-box select {
-            flex: 1;
-            padding: 16px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            font-size: 16px;
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 17px;
         }
 
-        button {
-            border: none;
-            background: #d66a24;
+        .btn-primary {
+            background: white;
+            color: #d62828;
+        }
+
+        .btn-secondary {
+            background: #222;
             color: white;
-            padding: 16px 28px;
-            border-radius: 10px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #b95418;
         }
 
         .section {
-            padding: 70px 7%;
+            padding: 60px 6%;
             text-align: center;
         }
 
         .section h2 {
-            font-size: 34px;
-            margin-bottom: 40px;
+            font-size: 32px;
+            margin-bottom: 35px;
         }
 
-        .categories {
+        .services {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 20px;
+            max-width: 1100px;
+            margin: auto;
         }
 
-        .category {
+        .service {
             background: white;
-            padding: 30px 15px;
+            padding: 30px 20px;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             transition: 0.3s;
         }
 
-        .category:hover {
+        .service:hover {
             transform: translateY(-5px);
         }
 
-        .category .icon {
-            font-size: 40px;
+        .service .icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .service h3 {
+            font-size: 20px;
+        }
+
+        .cta {
+            background: #16803c;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .cta h2 {
+            font-size: 32px;
             margin-bottom: 15px;
         }
 
-        .category h3 {
-            font-size: 19px;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-        }
-
-        .feature {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-        }
-
-        .feature h3 {
-            margin: 15px 0;
-        }
-
         footer {
-            background: #2d241d;
+            background: #222;
             color: white;
             text-align: center;
-            padding: 30px;
+            padding: 25px;
         }
 
         @media (max-width: 700px) {
+
             header {
                 flex-direction: column;
-                gap: 15px;
+                gap: 10px;
             }
 
             nav a {
-                margin: 0 8px;
+                margin: 0 7px;
+                font-size: 14px;
+            }
+
+            .hero {
+                padding: 60px 15px;
             }
 
             .hero h1 {
-                font-size: 38px;
+                font-size: 36px;
             }
 
-            .search-box {
-                flex-direction: column;
+            .hero p {
+                font-size: 18px;
             }
         }
     </style>
@@ -193,106 +188,85 @@
 <header>
 
     <div class="logo">
-        ألو معلم
+        ألو <span>معلم</span>
     </div>
 
     <nav>
-        <a href="#">الرئيسية</a>
-        <a href="#">الحرفيون</a>
-        <a href="#">الخدمات</a>
-        <a href="#">كيف تعمل؟</a>
+        <a href="#home">الرئيسية</a>
+        <a href="#services">الخدمات</a>
+        <a href="#craftsman">سجّل كحرفي</a>
     </nav>
 
 </header>
 
 
-<section class="hero">
+<section class="hero" id="home">
 
-    <div class="hero-content">
+    <h1>ألو معلم 👷</h1>
 
-        <h1>
-            تحتاج معلم؟
-            <span>ألو معلم!</span>
-        </h1>
+    <p>
+        لقي المعلم اللي كتقلب عليه بسهولة
+    </p>
 
-        <p>
-            اعثر على الحرفي المناسب بالقرب منك
-            وتواصل معه مباشرة وبسهولة.
-        </p>
+    <div class="buttons">
 
-        <div class="search-box">
+        <a href="#services" class="btn btn-primary">
+            🔎 أبحث عن حرفي
+        </a>
 
-            <input
-                type="text"
-                placeholder="ماذا تحتاج؟ مثال: سباك">
-
-            <select>
-                <option>اختر المدينة</option>
-                <option>الرباط</option>
-                <option>سلا</option>
-                <option>تمارة</option>
-                <option>الدار البيضاء</option>
-                <option>مراكش</option>
-                <option>طنجة</option>
-            </select>
-
-            <button>
-                بحث
-            </button>
-
-        </div>
+        <a href="#craftsman" class="btn btn-secondary">
+            👷 سجّل كحرفي
+        </a>
 
     </div>
 
 </section>
 
 
-<section class="section">
+<section class="section" id="services">
 
-    <h2>
-        اختر الخدمة التي تحتاجها
-    </h2>
+    <h2>شنو الخدمة اللي كتقلب عليها؟</h2>
 
-    <div class="categories">
+    <div class="services">
 
-        <div class="category">
+        <div class="service">
             <div class="icon">🔧</div>
-            <h3>السباكة</h3>
+            <h3>سباك</h3>
         </div>
 
-        <div class="category">
+        <div class="service">
             <div class="icon">⚡</div>
-            <h3>الكهرباء</h3>
+            <h3>كهربائي</h3>
         </div>
 
-        <div class="category">
+        <div class="service">
             <div class="icon">🎨</div>
-            <h3>الصباغة</h3>
+            <h3>صباغ</h3>
         </div>
 
-        <div class="category">
+        <div class="service">
             <div class="icon">🪚</div>
-            <h3>النجارة</h3>
+            <h3>نجار</h3>
         </div>
 
-        <div class="category">
+        <div class="service">
             <div class="icon">🧱</div>
-            <h3>البناء</h3>
+            <h3>بناء</h3>
         </div>
 
-        <div class="category">
+        <div class="service">
+            <div class="icon">🔩</div>
+            <h3>حداد</h3>
+        </div>
+
+        <div class="service">
             <div class="icon">❄️</div>
-            <h3>التكييف والتبريد</h3>
+            <h3>تكييف</h3>
         </div>
 
-        <div class="category">
-            <div class="icon">🔨</div>
-            <h3>الحدادة</h3>
-        </div>
-
-        <div class="category">
-            <div class="icon">🧹</div>
-            <h3>التنظيف</h3>
+        <div class="service">
+            <div class="icon">🏠</div>
+            <h3>إصلاحات منزلية</h3>
         </div>
 
     </div>
@@ -300,47 +274,19 @@
 </section>
 
 
-<section class="section">
+<section class="cta" id="craftsman">
 
-    <h2>
-        لماذا ألو معلم؟
-    </h2>
+    <h2>واش أنت حرفي؟ 👷</h2>
 
-    <div class="features">
+    <p>
+        سجّل خدمتك وخلي الزبائن يلقاوك بسهولة
+    </p>
 
-        <div class="feature">
-            <div class="icon">👨‍🔧</div>
-            <h3>حرفيون بالقرب منك</h3>
-            <p>
-                ابحث عن الحرفي المناسب في مدينتك ومنطقتك.
-            </p>
-        </div>
+    <br>
 
-        <div class="feature">
-            <div class="icon">📞</div>
-            <h3>تواصل مباشرة</h3>
-            <p>
-                تواصل مباشرة مع الحرفي بدون وسطاء.
-            </p>
-        </div>
-
-        <div class="feature">
-            <div class="icon">⭐</div>
-            <h3>التقييمات</h3>
-            <p>
-                شاهد تقييمات الزبائن قبل اختيار الحرفي.
-            </p>
-        </div>
-
-        <div class="feature">
-            <div class="icon">🛡️</div>
-            <h3>حرفيون موثوقون</h3>
-            <p>
-                سنعمل على توفير نظام لتوثيق الحرفيين.
-            </p>
-        </div>
-
-    </div>
+    <a href="mailto:contact@alomaalem.ma" class="btn btn-primary">
+        📩 سجّل كحرفي
+    </a>
 
 </section>
 
@@ -348,7 +294,11 @@
 <footer>
 
     <p>
-        © 2026 ألو معلم - الحرفي مباشرة مع الزبون
+        © 2026 ألو معلم - جميع الحقوق محفوظة
+    </p>
+
+    <p>
+        منصة مغربية لربط الحرفيين بالزبائن
     </p>
 
 </footer>
