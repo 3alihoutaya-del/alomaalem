@@ -127,7 +127,64 @@
         }
     </style>
 </head>
+<script>
 
+const SUPABASE_URL = "https://kjmvewppokrzcbegxmwg.supabase.co";
+
+const SUPABASE_KEY = "sb_publishable_As8JEhEsIfOta6cyi6e_AA_tp-T9k0W";
+
+const client = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+
+document.getElementById("registerForm").addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const profession = document.getElementById("profession").value;
+    const city = document.getElementById("city").value;
+    const phone = document.getElementById("phone").value.trim();
+    const description = document.getElementById("description").value.trim();
+
+
+    const { error } = await client
+        .from("craftsmen")
+        .insert([{
+            name: name,
+            profession: profession,
+            city: city,
+            phone: phone,
+            description: description
+        }]);
+
+
+    if (error) {
+
+        console.error(error);
+
+        alert(
+            "❌ حدث خطأ أثناء التسجيل.\n\n" +
+            "حاول مرة أخرى."
+        );
+
+        return;
+    }
+
+
+    alert(
+        "✅ تم إرسال طلب التسجيل بنجاح!\n\n" +
+        "سيتم مراجعة معلوماتك قبل ظهورها للزبائن."
+    );
+
+
+    document.getElementById("registerForm").reset();
+
+});
+
+</script>
 <body>
 
 <header>
