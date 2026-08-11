@@ -1,0 +1,289 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>سجّل كحرفي | ألو معلم</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Tahoma, sans-serif;
+            background: #f5f7fa;
+            color: #222;
+        }
+
+        header {
+            background: white;
+            padding: 18px 6%;
+            box-shadow: 0 2px 10px rgba(0,0,0,.08);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #d62828;
+        }
+
+        .logo span {
+            color: #16803c;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .form-box {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.08);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 7px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 9px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #16803c;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #116631;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #d62828;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .note {
+            background: #fff8e6;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                margin: 20px auto;
+            }
+
+            .form-box {
+                padding: 25px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        ألو <span>معلم</span>
+    </div>
+
+</header>
+
+
+<div class="container">
+
+    <div class="form-box">
+
+        <h1>👷 سجّل كحرفي</h1>
+
+        <p class="intro">
+            عرّف الزبائن بخدماتك وخليهم يلقاوك بسهولة.
+        </p>
+
+
+        <form id="registerForm">
+
+            <label for="name">
+                الاسم الكامل
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="مثال: محمد العلوي"
+                required
+            >
+
+
+            <label for="profession">
+                المهنة
+            </label>
+
+            <select id="profession" required>
+
+                <option value="">
+                    اختر المهنة
+                </option>
+
+                <option>سباك</option>
+                <option>كهربائي</option>
+                <option>صباغ</option>
+                <option>نجار</option>
+                <option>بناء</option>
+                <option>حداد</option>
+                <option>تكييف</option>
+                <option>أخرى</option>
+
+            </select>
+
+
+            <label for="city">
+                المدينة
+            </label>
+
+            <select id="city" required>
+
+                <option value="">
+                    اختر المدينة
+                </option>
+
+                <option>الرباط</option>
+                <option>سلا</option>
+                <option>تمارة</option>
+                <option>الدار البيضاء</option>
+                <option>مراكش</option>
+                <option>فاس</option>
+                <option>طنجة</option>
+                <option>مكناس</option>
+                <option>أكادير</option>
+                <option>القنيطرة</option>
+
+            </select>
+
+
+            <label for="phone">
+                رقم الهاتف
+            </label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="مثال: 0612345678"
+                required
+            >
+
+
+            <label for="description">
+                وصف الخدمات
+            </label>
+
+            <textarea
+                id="description"
+                placeholder="مثال: إصلاح تسربات المياه، تركيب الحنفيات..."
+            ></textarea>
+
+
+            <button type="submit">
+                📩 إرسال طلب التسجيل
+            </button>
+
+        </form>
+
+
+        <div class="note">
+            ℹ️ في هذه المرحلة، النموذج تجريبي. سنربطه لاحقًا بنظام مجاني لحفظ بيانات الحرفيين.
+        </div>
+
+
+        <a class="back" href="index.html">
+            ← العودة إلى الصفحة الرئيسية
+        </a>
+
+    </div>
+
+</div>
+
+
+<script>
+
+document.getElementById("registerForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("name").value;
+
+    const profession =
+        document.getElementById("profession").value;
+
+    const city =
+        document.getElementById("city").value;
+
+    const phone =
+        document.getElementById("phone").value;
+
+    alert(
+        "شكراً " + name +
+        " 👋\n\n" +
+        "تم استلام طلب التسجيل التجريبي.\n\n" +
+        "المهنة: " + profession +
+        "\nالمدينة: " + city +
+        "\nالهاتف: " + phone
+    );
+
+});
+
+</script>
+
+</body>
+</html>
+```
