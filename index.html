@@ -1,12 +1,13 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ألو معلم | لقي المعلم اللي كتقلب عليه</title>
+    <title>ألو معلم | الحرفيين والخدمات في المغرب</title>
 
-    <meta name="description" content="ألو معلم منصة مغربية لربط الزبائن بالحرفيين والخدمات المهنية بسهولة.">
+    <meta name="description" content="ألو معلم منصة مغربية للعثور على الحرفيين والخدمات المهنية حسب المهنة والمدينة.">
 
     <style>
         * {
@@ -17,18 +18,18 @@
 
         body {
             font-family: Arial, Tahoma, sans-serif;
-            background: #f7f9fc;
+            background: #f5f7fa;
             color: #222;
             line-height: 1.7;
         }
 
         header {
-            background: #ffffff;
-            padding: 18px 6%;
+            background: #fff;
+            padding: 16px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 10px rgba(0,0,0,.08);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -59,69 +60,85 @@
             background: linear-gradient(135deg, #d62828, #16803c);
             color: white;
             text-align: center;
-            padding: 80px 20px;
+            padding: 70px 20px;
         }
 
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 15px;
+            font-size: 46px;
+            margin-bottom: 10px;
         }
 
         .hero p {
-            font-size: 22px;
+            font-size: 21px;
             margin-bottom: 30px;
         }
 
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 17px;
-        }
-
-        .btn-primary {
+        .search-box {
             background: white;
-            color: #d62828;
+            max-width: 950px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,.18);
         }
 
-        .btn-secondary {
-            background: #222;
+        .search-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 12px;
+        }
+
+        select,
+        .search-btn {
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        select {
+            border: 1px solid #ddd;
+            background: white;
+        }
+
+        .search-btn {
+            border: none;
+            background: #d62828;
             color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .search-btn:hover {
+            background: #b51f1f;
         }
 
         .section {
-            padding: 60px 6%;
-            text-align: center;
+            padding: 55px 6%;
         }
 
         .section h2 {
-            font-size: 32px;
-            margin-bottom: 35px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 30px;
         }
 
         .services {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 18px;
             max-width: 1100px;
             margin: auto;
         }
 
         .service {
             background: white;
-            padding: 30px 20px;
+            padding: 25px;
+            text-align: center;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: 0.3s;
+            box-shadow: 0 3px 12px rgba(0,0,0,.07);
+            cursor: pointer;
+            transition: .3s;
         }
 
         .service:hover {
@@ -129,24 +146,97 @@
         }
 
         .service .icon {
-            font-size: 45px;
-            margin-bottom: 10px;
+            font-size: 42px;
         }
 
-        .service h3 {
-            font-size: 20px;
+        .results {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .results-title {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 25px;
+        }
+
+        .craftsmen {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .craftsman {
+            background: white;
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.08);
+        }
+
+        .craftsman h3 {
+            margin-bottom: 5px;
+            font-size: 21px;
+        }
+
+        .profession {
+            color: #d62828;
+            font-weight: bold;
+        }
+
+        .city {
+            color: #555;
+            margin: 8px 0;
+        }
+
+        .rating {
+            color: #f4a900;
+            margin-bottom: 15px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .contact-buttons a {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .call {
+            background: #16803c;
+        }
+
+        .whatsapp {
+            background: #25d366;
         }
 
         .cta {
             background: #16803c;
             color: white;
             text-align: center;
-            padding: 60px 20px;
+            padding: 55px 20px;
         }
 
         .cta h2 {
-            font-size: 32px;
-            margin-bottom: 15px;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .cta a {
+            display: inline-block;
+            margin-top: 20px;
+            background: white;
+            color: #16803c;
+            padding: 13px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
         }
 
         footer {
@@ -168,16 +258,12 @@
                 font-size: 14px;
             }
 
-            .hero {
-                padding: 60px 15px;
-            }
-
             .hero h1 {
                 font-size: 36px;
             }
 
-            .hero p {
-                font-size: 18px;
+            .search-fields {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -194,7 +280,8 @@
     <nav>
         <a href="#home">الرئيسية</a>
         <a href="#services">الخدمات</a>
-        <a href="#craftsman">سجّل كحرفي</a>
+        <a href="#results">الحرفيين</a>
+        <a href="#join">سجّل كحرفي</a>
     </nav>
 
 </header>
@@ -204,19 +291,42 @@
 
     <h1>ألو معلم 👷</h1>
 
-    <p>
-        لقي المعلم اللي كتقلب عليه بسهولة
-    </p>
+    <p>لقي المعلم اللي كتقلب عليه بسهولة</p>
 
-    <div class="buttons">
+    <div class="search-box">
 
-        <a href="#services" class="btn btn-primary">
-            🔎 أبحث عن حرفي
-        </a>
+        <div class="search-fields">
 
-        <a href="#craftsman" class="btn btn-secondary">
-            👷 سجّل كحرفي
-        </a>
+            <select id="profession">
+                <option value="">اختر المهنة</option>
+                <option value="سباك">🔧 سباك</option>
+                <option value="كهربائي">⚡ كهربائي</option>
+                <option value="صباغ">🎨 صباغ</option>
+                <option value="نجار">🪚 نجار</option>
+                <option value="بناء">🧱 بناء</option>
+                <option value="حداد">🔩 حداد</option>
+                <option value="تكييف">❄️ تكييف</option>
+            </select>
+
+            <select id="city">
+                <option value="">اختر المدينة</option>
+                <option value="الرباط">الرباط</option>
+                <option value="سلا">سلا</option>
+                <option value="تمارة">تمارة</option>
+                <option value="الدار البيضاء">الدار البيضاء</option>
+                <option value="مراكش">مراكش</option>
+                <option value="فاس">فاس</option>
+                <option value="طنجة">طنجة</option>
+                <option value="مكناس">مكناس</option>
+                <option value="أكادير">أكادير</option>
+                <option value="القنيطرة">القنيطرة</option>
+            </select>
+
+            <button class="search-btn" onclick="searchCraftsmen()">
+                🔎 ابحث
+            </button>
+
+        </div>
 
     </div>
 
@@ -225,48 +335,43 @@
 
 <section class="section" id="services">
 
-    <h2>شنو الخدمة اللي كتقلب عليها؟</h2>
+    <h2>الخدمات</h2>
 
     <div class="services">
 
-        <div class="service">
+        <div class="service" onclick="chooseProfession('سباك')">
             <div class="icon">🔧</div>
             <h3>سباك</h3>
         </div>
 
-        <div class="service">
+        <div class="service" onclick="chooseProfession('كهربائي')">
             <div class="icon">⚡</div>
             <h3>كهربائي</h3>
         </div>
 
-        <div class="service">
+        <div class="service" onclick="chooseProfession('صباغ')">
             <div class="icon">🎨</div>
             <h3>صباغ</h3>
         </div>
 
-        <div class="service">
+        <div class="service" onclick="chooseProfession('نجار')">
             <div class="icon">🪚</div>
             <h3>نجار</h3>
         </div>
 
-        <div class="service">
+        <div class="service" onclick="chooseProfession('بناء')">
             <div class="icon">🧱</div>
             <h3>بناء</h3>
         </div>
 
-        <div class="service">
+        <div class="service" onclick="chooseProfession('حداد')">
             <div class="icon">🔩</div>
             <h3>حداد</h3>
         </div>
 
-        <div class="service">
+        <div class="service" onclick="chooseProfession('تكييف')">
             <div class="icon">❄️</div>
             <h3>تكييف</h3>
-        </div>
-
-        <div class="service">
-            <div class="icon">🏠</div>
-            <h3>إصلاحات منزلية</h3>
         </div>
 
     </div>
@@ -274,17 +379,26 @@
 </section>
 
 
-<section class="cta" id="craftsman">
+<section class="section" id="results">
+
+    <div class="results">
+
+        <h2 class="results-title">👷 الحرفيون</h2>
+
+        <div id="craftsmen" class="craftsmen"></div>
+
+    </div>
+
+</section>
+
+
+<section class="cta" id="join">
 
     <h2>واش أنت حرفي؟ 👷</h2>
 
-    <p>
-        سجّل خدمتك وخلي الزبائن يلقاوك بسهولة
-    </p>
+    <p>خلي الزبائن يلقاو خدمتك بسهولة</p>
 
-    <br>
-
-    <a href="mailto:contact@alomaalem.ma" class="btn btn-primary">
+    <a href="mailto:contact@alomaalem.ma">
         📩 سجّل كحرفي
     </a>
 
@@ -293,15 +407,186 @@
 
 <footer>
 
-    <p>
-        © 2026 ألو معلم - جميع الحقوق محفوظة
-    </p>
+    <p>© 2026 ألو معلم - جميع الحقوق محفوظة</p>
 
-    <p>
-        منصة مغربية لربط الحرفيين بالزبائن
-    </p>
+    <p>منصة مغربية لربط الحرفيين بالزبائن</p>
 
 </footer>
 
+
+<script>
+
+const craftsmenData = [
+
+    {
+        name: "محمد",
+        profession: "سباك",
+        city: "الرباط",
+        phone: "0600000001",
+        rating: "★★★★★"
+    },
+
+    {
+        name: "أحمد",
+        profession: "كهربائي",
+        city: "سلا",
+        phone: "0600000002",
+        rating: "★★★★★"
+    },
+
+    {
+        name: "يوسف",
+        profession: "صباغ",
+        city: "تمارة",
+        phone: "0600000003",
+        rating: "★★★★☆"
+    },
+
+    {
+        name: "عمر",
+        profession: "نجار",
+        city: "الدار البيضاء",
+        phone: "0600000004",
+        rating: "★★★★★"
+    },
+
+    {
+        name: "حسن",
+        profession: "بناء",
+        city: "مراكش",
+        phone: "0600000005",
+        rating: "★★★★☆"
+    },
+
+    {
+        name: "عبدالله",
+        profession: "حداد",
+        city: "فاس",
+        phone: "0600000006",
+        rating: "★★★★★"
+    },
+
+    {
+        name: "سعيد",
+        profession: "تكييف",
+        city: "طنجة",
+        phone: "0600000007",
+        rating: "★★★★★"
+    }
+
+];
+
+
+function displayCraftsmen(list) {
+
+    const container = document.getElementById("craftsmen");
+
+    container.innerHTML = "";
+
+    if (list.length === 0) {
+
+        container.innerHTML = `
+            <div style="text-align:center; width:100%; background:white; padding:30px; border-radius:15px;">
+                <h3>😔 ما لقيناش حرفي بهاد المواصفات</h3>
+                <p>جرب مهنة أو مدينة أخرى.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+    list.forEach(craft => {
+
+        const card = document.createElement("div");
+
+        card.className = "craftsman";
+
+        card.innerHTML = `
+
+            <h3>👷 ${craft.name}</h3>
+
+            <div class="profession">
+                ${craft.profession}
+            </div>
+
+            <div class="city">
+                📍 ${craft.city}
+            </div>
+
+            <div class="rating">
+                ${craft.rating}
+            </div>
+
+            <div class="contact-buttons">
+
+                <a class="call" href="tel:${craft.phone}">
+                    📞 اتصال
+                </a>
+
+                <a class="whatsapp"
+                   href="https://wa.me/212${craft.phone.substring(1)}"
+                   target="_blank">
+                    💬 WhatsApp
+                </a>
+
+            </div>
+
+        `;
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+function searchCraftsmen() {
+
+    const profession =
+        document.getElementById("profession").value;
+
+    const city =
+        document.getElementById("city").value;
+
+    const results =
+        craftsmenData.filter(craft => {
+
+            const professionMatch =
+                !profession || craft.profession === profession;
+
+            const cityMatch =
+                !city || craft.city === city;
+
+            return professionMatch && cityMatch;
+
+        });
+
+    displayCraftsmen(results);
+
+    document.getElementById("results")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+function chooseProfession(profession) {
+
+    document.getElementById("profession").value = profession;
+
+    document.getElementById("home")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+displayCraftsmen(craftsmenData);
+
+</script>
+
 </body>
 </html>
+```
