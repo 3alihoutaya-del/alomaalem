@@ -264,6 +264,12 @@
 
             .search-fields {
                 grid-template-columns: 1fr;
+                <input
+    type="text"
+    id="searchText"
+    placeholder="🔎 ابحث باسم الحرفي أو الخدمة..."
+    oninput="searchCraftsmen()"
+>
             }
         }
     </style>
@@ -667,7 +673,6 @@ function searchCraftsmen() {
         .trim()
         .toLowerCase();
 
-
     const results =
         craftsmenData.filter(craft => {
 
@@ -675,11 +680,9 @@ function searchCraftsmen() {
                 !profession ||
                 craft.profession === profession;
 
-
             const cityMatch =
                 !city ||
                 craft.city === city;
-
 
             const text =
                 (
@@ -688,11 +691,9 @@ function searchCraftsmen() {
                     (craft.description || "")
                 ).toLowerCase();
 
-
             const textMatch =
                 !searchText ||
                 text.includes(searchText);
-
 
             return (
                 professionMatch &&
@@ -701,7 +702,6 @@ function searchCraftsmen() {
             );
 
         });
-
 
     displayCraftsmen(results);
 
