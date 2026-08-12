@@ -238,7 +238,17 @@
                 placeholder="مثال: 0612345678"
                 required
             >
+<label for="photo">📷 صورة الحرفي</label>
 
+<input
+    type="file"
+    id="photo"
+    accept="image/jpeg,image/png,image/webp"
+>
+
+<small style="color:#666;display:block;margin-top:6px;">
+    الصورة اختيارية — JPG أو PNG أو WebP، بحد أقصى 2MB.
+</small>
             <label for="description">وصف الخدمات</label>
 
             <textarea
@@ -293,7 +303,8 @@ form.addEventListener("submit", async function (event) {
     const city = document.getElementById("city").value;
     const phone = document.getElementById("phone").value.trim();
     const description = document.getElementById("description").value.trim();
-
+const photoFile =
+    document.getElementById("photo").files[0];
     try {
 
         const response = await client
