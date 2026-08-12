@@ -677,45 +677,51 @@ function searchCraftsmen() {
         document.getElementById("city").value;
 
     const searchText =
-        document.getElementById("searchText")
-        .value
+        document.getElementById("searchText").value
         .trim()
         .toLowerCase();
 
-    const results =
-        craftsmenData.filter(craft => {
 
-            const professionMatch =
-                !profession ||
-                craft.profession === profession;
+    const results = craftsmenData.filter(function(craft) {
 
-            const cityMatch =
-                !city ||
-                craft.city === city;
+        const name =
+            String(craft.name || "").toLowerCase();
 
-            const text =
-                (
-                    (craft.name || "") + " " +
-                    (craft.profession || "") + " " +
-                    (craft.description || "")
-                ).toLowerCase();
+        const professionText =
+            String(craft.profession || "").toLowerCase();
 
-            const textMatch =
-                !searchText ||
-                text.includes(searchText);
+        const description =
+            String(craft.description || "").toLowerCase();
 
-            return (
-                professionMatch &&
-                cityMatch &&
-                textMatch
-            );
 
-        });
+        const professionMatch =
+            !profession ||
+            craft.profession === profession;
+
+
+        const cityMatch =
+            !city ||
+            craft.city === city;
+
+
+        const textMatch =
+            !searchText ||
+            name.includes(searchText) ||
+            professionText.includes(searchText) ||
+            description.includes(searchText);
+
+
+        return (
+            professionMatch &&
+            cityMatch &&
+            textMatch
+        );
+
+    });
+
 
     displayCraftsmen(results);
-
 }
-
     const professionElement =
         document.getElementById("profession");
 
