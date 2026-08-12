@@ -2,8 +2,11 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>ملف الحرفي | ألو معلم</title>
 
@@ -39,7 +42,7 @@ header {
 }
 
 .container {
-    max-width: 650px;
+    max-width: 850px;
     margin: 40px auto;
     padding: 20px;
 }
@@ -121,12 +124,113 @@ h1 {
     background: #25D366;
 }
 
-.back {
-    display: block;
+.section {
+    background: white;
     margin-top: 25px;
-    color: #d62828;
-    text-decoration: none;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
+
+.section h2 {
+    margin-bottom: 20px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.no-photos {
+    color: #777;
+    text-align: center;
+    padding: 20px;
+}
+
+.rating-summary {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.stars {
+    font-size: 30px;
+    letter-spacing: 3px;
+}
+
+.rating-number {
+    font-size: 22px;
     font-weight: bold;
+    margin-top: 8px;
+}
+
+.review {
+    border-top: 1px solid #eee;
+    padding: 18px 0;
+    text-align: right;
+}
+
+.review-stars {
+    color: #f5a623;
+    font-size: 20px;
+}
+
+.review-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.review-comment {
+    color: #555;
+    line-height: 1.7;
+}
+
+.review-form {
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid #eee;
+}
+
+.review-form input,
+.review-form textarea,
+.review-form select {
+    width: 100%;
+    padding: 13px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 9px;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.review-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.review-form button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #16803c;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.review-form button:hover {
+    background: #116631;
 }
 
 .message {
@@ -136,11 +240,43 @@ h1 {
     border-radius: 15px;
 }
 
+.back {
+    display: block;
+    margin-top: 25px;
+    color: #d62828;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+
+    .container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .profile {
+        padding: 22px 16px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
 </style>
 
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -149,6 +285,7 @@ h1 {
 </div>
 
 </header>
+
 
 
 <div class="container">
@@ -161,16 +298,26 @@ h1 {
 
 </div>
 
+
+<div id="gallerySection"></div>
+
+
+<div id="reviewsSection"></div>
+
+
 </div>
+
 
 
 <script>
 
+
 const SUPABASE_URL =
     "https://kjmvewppokrzcbegxmwg.supabase.co";
 
+
 const SUPABASE_KEY =
-    "ضع Publishable Key هنا";
+    "sb_publishable_As8JEhEsIfOta6cyi6e_AA_tp-T9k0W";
 
 
 const client =
@@ -178,6 +325,10 @@ const client =
         SUPABASE_URL,
         SUPABASE_KEY
     );
+
+
+let craftsmanId = null;
+
 
 
 function escapeHtml(value) {
@@ -192,6 +343,19 @@ function escapeHtml(value) {
 }
 
 
+
+function stars(number) {
+
+    const rating =
+        Math.round(Number(number) || 0);
+
+    return "★".repeat(rating) +
+           "☆".repeat(5 - rating);
+
+}
+
+
+
 async function loadCraftsman() {
 
     const params =
@@ -199,7 +363,8 @@ async function loadCraftsman() {
             window.location.search
         );
 
-    const id =
+
+    craftsmanId =
         params.get("id");
 
 
@@ -209,7 +374,7 @@ async function loadCraftsman() {
         );
 
 
-    if (!id) {
+    if (!craftsmanId) {
 
         container.innerHTML = `
             <div class="message">
@@ -226,9 +391,9 @@ async function loadCraftsman() {
         await client
             .from("craftsmen")
             .select(
-                "id,name,profession,city,phone,description,photo_url,status"
+                "id,name,profession,city,phone,description,photo_url,status,address,latitude,longitude,availability"
             )
-            .eq("id", id)
+            .eq("id", craftsmanId)
             .eq("status", "approved")
             .single();
 
@@ -245,7 +410,7 @@ async function loadCraftsman() {
                 class="back"
                 href="index.html"
             >
-                ← العودة للحرفيين
+                ← العودة إلى الحرفيين
             </a>
         `;
 
@@ -257,11 +422,14 @@ async function loadCraftsman() {
     const craft = data;
 
 
+    const phone =
+        String(craft.phone || "");
+
+
     const whatsappNumber =
-        craft.phone.startsWith("0")
-        ? "212" +
-          craft.phone.substring(1)
-        : craft.phone;
+        phone.startsWith("0")
+        ? "212" + phone.substring(1)
+        : phone;
 
 
     const photo =
@@ -310,6 +478,34 @@ async function loadCraftsman() {
                 )}
             </div>
 
+            ${
+                craft.address
+                ? `
+                    <div class="city">
+                        🏠 ${escapeHtml(
+                            craft.address
+                        )}
+                    </div>
+                  `
+                : ""
+            }
+
+            ${
+                craft.availability
+                ? `
+                    <div style="
+                        margin-top:15px;
+                        color:#16803c;
+                        font-weight:bold;
+                    ">
+                        🟢 ${escapeHtml(
+                            craft.availability
+                        )}
+                    </div>
+                  `
+                : ""
+            }
+
             <div class="description">
 
                 <strong>
@@ -331,7 +527,7 @@ async function loadCraftsman() {
                 <a
                     class="call"
                     href="tel:${escapeHtml(
-                        craft.phone
+                        phone
                     )}"
                 >
                     📞 اتصال
@@ -361,12 +557,467 @@ async function loadCraftsman() {
 
     `;
 
+
+    await loadGallery();
+
+    await loadReviews();
+
 }
+
+
+
+async function loadGallery() {
+
+    const container =
+        document.getElementById(
+            "gallerySection"
+        );
+
+
+    const { data, error } =
+        await client
+            .from("craftsman_photos")
+            .select(
+                "id,photo_url,caption,created_at"
+            )
+            .eq(
+                "craftsman_id",
+                craftsmanId
+            )
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
+
+
+    if (error) {
+
+        console.error(
+            "Gallery:",
+            error
+        );
+
+        return;
+
+    }
+
+
+    if (!data || data.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="section">
+
+                <h2>
+                    📷 معرض الأعمال
+                </h2>
+
+                <div class="no-photos">
+                    لم تتم إضافة صور للأعمال بعد.
+                </div>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = `
+
+        <div class="section">
+
+            <h2>
+                📷 معرض الأعمال
+            </h2>
+
+            <div class="gallery">
+
+                ${data.map(function(photo) {
+
+                    return `
+
+                        <div>
+
+                            <img
+                                src="${escapeHtml(
+                                    photo.photo_url
+                                )}"
+                                alt="عمل الحرفي"
+                            >
+
+                            ${
+                                photo.caption
+                                ? `
+                                    <p style="
+                                        margin-top:6px;
+                                        color:#666;
+                                    ">
+                                        ${escapeHtml(
+                                            photo.caption
+                                        )}
+                                    </p>
+                                  `
+                                : ""
+                            }
+
+                        </div>
+
+                    `;
+
+                }).join("")}
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+
+async function loadReviews() {
+
+    const container =
+        document.getElementById(
+            "reviewsSection"
+        );
+
+
+    const { data, error } =
+        await client
+            .from("craftsman_reviews")
+            .select(
+                "id,rating,reviewer_name,comment,created_at"
+            )
+            .eq(
+                "craftsman_id",
+                craftsmanId
+            )
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
+
+
+    if (error) {
+
+        console.error(
+            "Reviews:",
+            error
+        );
+
+        return;
+
+    }
+
+
+    const reviews =
+        data || [];
+
+
+    let average = 0;
+
+
+    if (reviews.length > 0) {
+
+        const total =
+            reviews.reduce(
+                function(sum, review) {
+
+                    return sum +
+                        Number(
+                            review.rating
+                        );
+
+                },
+                0
+            );
+
+        average =
+            total / reviews.length;
+
+    }
+
+
+    container.innerHTML = `
+
+        <div class="section">
+
+            <h2>
+                ⭐ تقييمات الزبائن
+            </h2>
+
+
+            <div class="rating-summary">
+
+                <div class="stars">
+                    ${stars(average)}
+                </div>
+
+                <div class="rating-number">
+                    ${
+                        reviews.length
+                        ? average.toFixed(1)
+                        : "لا توجد تقييمات بعد"
+                    }
+                </div>
+
+                ${
+                    reviews.length
+                    ? `
+                        <div>
+                            ${reviews.length}
+                            تقييم
+                        </div>
+                      `
+                    : ""
+                }
+
+            </div>
+
+
+            <div>
+
+                ${
+                    reviews.length
+                    ? reviews.map(
+                        function(review) {
+
+                            return `
+
+                                <div class="review">
+
+                                    <div class="review-name">
+                                        ${escapeHtml(
+                                            review.reviewer_name ||
+                                            "زبون"
+                                        )}
+                                    </div>
+
+                                    <div class="review-stars">
+                                        ${stars(
+                                            review.rating
+                                        )}
+                                    </div>
+
+                                    ${
+                                        review.comment
+                                        ? `
+                                            <div class="review-comment">
+                                                ${escapeHtml(
+                                                    review.comment
+                                                )}
+                                            </div>
+                                          `
+                                        : ""
+                                    }
+
+                                </div>
+
+                            `;
+
+                        }
+                    ).join("")
+                    : `
+                        <div class="no-photos">
+                            كن أول من يقيّم هذا الحرفي ⭐
+                        </div>
+                    `
+                }
+
+            </div>
+
+
+            <div class="review-form">
+
+                <h3>
+                    ✍️ أضف تقييمك
+                </h3>
+
+
+                <label>
+                    اسمك
+                </label>
+
+                <input
+                    type="text"
+                    id="reviewerName"
+                    placeholder="مثال: محمد"
+                >
+
+
+                <label>
+                    التقييم
+                </label>
+
+                <select id="rating">
+
+                    <option value="5">
+                        ⭐⭐⭐⭐⭐ ممتاز
+                    </option>
+
+                    <option value="4">
+                        ⭐⭐⭐⭐ جيد جدًا
+                    </option>
+
+                    <option value="3">
+                        ⭐⭐⭐ جيد
+                    </option>
+
+                    <option value="2">
+                        ⭐⭐ متوسط
+                    </option>
+
+                    <option value="1">
+                        ⭐ ضعيف
+                    </option>
+
+                </select>
+
+
+                <label>
+                    تعليقك
+                </label>
+
+                <textarea
+                    id="reviewComment"
+                    placeholder="اكتب رأيك عن الخدمة..."
+                ></textarea>
+
+
+                <button
+                    type="button"
+                    onclick="submitReview()"
+                >
+                    ⭐ إرسال التقييم
+                </button>
+
+
+                <div
+                    id="reviewMessage"
+                    style="margin-top:15px;text-align:center;"
+                ></div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+
+async function submitReview() {
+
+    const name =
+        document.getElementById(
+            "reviewerName"
+        ).value.trim();
+
+
+    const rating =
+        Number(
+            document.getElementById(
+                "rating"
+            ).value
+        );
+
+
+    const comment =
+        document.getElementById(
+            "reviewComment"
+        ).value.trim();
+
+
+    const message =
+        document.getElementById(
+            "reviewMessage"
+        );
+
+
+    if (!name) {
+
+        message.innerHTML =
+            "⚠️ اكتب اسمك أولًا.";
+
+        return;
+
+    }
+
+
+    message.innerHTML =
+        "⏳ جاري إرسال التقييم...";
+
+
+    const { error } =
+        await client
+            .from("craftsman_reviews")
+            .insert([{
+
+                craftsman_id:
+                    craftsmanId,
+
+                rating:
+                    rating,
+
+                reviewer_name:
+                    name,
+
+                comment:
+                    comment
+
+            }]);
+
+
+    if (error) {
+
+        console.error(
+            "Review error:",
+            error
+        );
+
+
+        message.innerHTML =
+            "❌ تعذر إرسال التقييم.";
+
+        return;
+
+    }
+
+
+    message.innerHTML =
+        "✅ تم إرسال التقييم بنجاح.";
+
+
+    document.getElementById(
+        "reviewerName"
+    ).value = "";
+
+
+    document.getElementById(
+        "reviewComment"
+    ).value = "";
+
+
+    await loadReviews();
+
+}
+
 
 
 loadCraftsman();
 
 </script>
+
 
 </body>
 
