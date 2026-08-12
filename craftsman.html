@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ملف الحرفي | ألو معلم</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Tahoma, sans-serif;
+            background: #f5f7fa;
+            color: #222;
+        }
+
+        header {
+            background: white;
+            padding: 18px 6%;
+            box-shadow: 0 2px 10px rgba(0,0,0,.08);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #d62828;
+        }
+
+        .logo span {
+            color: #16803c;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .profile {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.08);
+            text-align: center;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            margin: auto;
+            border-radius: 50%;
+            background: #16803c;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        .profession {
+            color: #d62828;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        .city {
+            color: #555;
+            margin-top: 8px;
+        }
+
+        .description {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f7f9fc;
+            border-radius: 12px;
+            text-align: right;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .buttons a {
+            padding: 14px;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .call {
+            background: #16803c;
+        }
+
+        .whatsapp {
+            background: #25d366;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 25px;
+            text-decoration: none;
+            color: #d62828;
+            font-weight: bold;
+        }
+
+        .message {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+
+            .container {
+                margin: 20px auto;
+            }
+
+            .profile {
+                padding: 25px 18px;
+            }
+
+            .buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        ألو <span>معلم</span>
+    </div>
+
+</header>
+
+
+<div class="container">
+
+    <div id="content">
+
+        <div class="message">
+            ⏳ جاري تحميل الملف...
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const SUPABASE_URL =
+    "https://kjmvewppokrzcbegxmwg.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_As8JEhEsIfOta6cyi6e_AA_tp-T9k0W";
+
+const client =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+function escapeHtml(value) {
+
+    return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
+
+
+function getCraftsmanId() {
+
+    const params =
+        new URLSearchParams(window.location.search);
+
+    return params.get("id");
+
+}
+
+
+async function loadCraftsman() {
+
+    const id = getCraftsmanId();
+
+    const content =
+        document.getElementById("content");
+
+
+    if (!id) {
+
+        content.innerHTML = `
+            <div class="message">
+                ❌ لم يتم تحديد الحرفي.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    const { data, error } =
+        await client
+            .from("craftsmen")
+            .select(
+                "id,name,profession,city,phone,description,status"
+            )
+            .eq("id", id)
+            .eq("status", "approved")
+            .single();
+
+
+    if (error || !data) {
+
+        content.innerHTML = `
+            <div class="message">
+                ❌ هذا الحرفي غير موجود أو لم تتم الموافقة عليه.
+                <br><br>
+                <a href="index.html">
+                    العودة إلى ألو معلم
+                </a>
+            </div>
+        `;
+
+        return;
+    }
+
+
+    let whatsappNumber =
+        data.phone || "";
+
+    whatsappNumber =
+        whatsappNumber.replace(/\D/g, "");
+
+
+    if (whatsappNumber.startsWith("0")) {
+
+        whatsappNumber =
+            "212" +
+            whatsappNumber.substring(1);
+
+    }
+
+
+    content.innerHTML = `
+
+        <div class="profile">
+
+            <div class="avatar">
+                👷
+            </div>
+
+            <h1>
+                ${escapeHtml(data.name)}
+            </h1>
+
+            <div class="profession">
+                ${escapeHtml(data.profession)}
+            </div>
+
+            <div class="city">
+                📍 ${escapeHtml(data.city)}
+            </div>
+
+            <div class="description">
+
+                <strong>
+                    نبذة عن الخدمات
+                </strong>
+
+                <br><br>
+
+                ${escapeHtml(
+                    data.description ||
+                    "لم يضف الحرفي وصفًا للخدمات."
+                )}
+
+            </div>
+
+
+            <div class="buttons">
+
+                <a
+                    class="call"
+                    href="tel:${escapeHtml(data.phone)}"
+                >
+                    📞 اتصال
+                </a>
+
+                <a
+                    class="whatsapp"
+                    href="https://wa.me/${whatsappNumber}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    💬 WhatsApp
+                </a>
+
+            </div>
+
+
+            <a
+                class="back"
+                href="index.html"
+            >
+                ← العودة إلى نتائج البحث
+            </a>
+
+        </div>
+
+    `;
+
+}
+
+
+loadCraftsman();
+
+</script>
+
+</body>
+
+</html>
