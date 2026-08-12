@@ -279,7 +279,7 @@ const form = document.getElementById("registerForm");
 const submitButton = document.getElementById("submitButton");
 const resultBox = document.getElementById("result");
 
-form.addEventListener("submit", async function(event) {
+form.addEventListener("submit", async function (event) {
 
     event.preventDefault();
 
@@ -296,30 +296,29 @@ form.addEventListener("submit", async function(event) {
 
     try {
 
-        const { error } = await client
-    .from("craftsmen")
-    .insert({
-        name: name,
-        profession: profession,
-        city: city,
-        phone: phone,
-        description: description,
-        status: "pending"
-    });
+        const response = await client
+            .from("craftsmen")
+            .insert({
+                name: name,
+                profession: profession,
+                city: city,
+                phone: phone,
+                description: description,
+                status: "pending"
+            });
 
-        if (error) {
+        if (response.error) {
 
-            console.error("Supabase error:", error);
+            console.error("Supabase error:", response.error);
 
             resultBox.innerHTML =
                 "<div class='error'>" +
-                "❌ فشل الحفظ\n\n" +
-                JSON.stringify(error, null, 2) +
+                "❌ فشل الحفظ<br><br>" +
+                response.error.message +
                 "</div>";
 
             return;
         }
-        
 
         resultBox.innerHTML =
             "<div class='success'>" +
@@ -335,7 +334,7 @@ form.addEventListener("submit", async function(event) {
 
         resultBox.innerHTML =
             "<div class='error'>" +
-            "❌ حدث خطأ غير متوقع\n\n" +
+            "❌ حدث خطأ غير متوقع<br><br>" +
             error.message +
             "</div>";
 
@@ -347,7 +346,7 @@ form.addEventListener("submit", async function(event) {
     }
 
 });
-</script>
+</script>>
 
 </body>
 </html>
