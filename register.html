@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -6,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>سجّل كحرفي | ألو معلم</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
         * {
@@ -99,6 +100,11 @@
             background: #116631;
         }
 
+        button:disabled {
+            opacity: .7;
+            cursor: not-allowed;
+        }
+
         .back {
             display: block;
             text-align: center;
@@ -127,70 +133,14 @@
         }
     </style>
 </head>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script>
-const SUPABASE_URL = "https://kjmvewppokrzcbegxmwg.supabase.co";
-const SUPABASE_KEY = "sb_publishable_As8JEhEsIfOta6cyi6e_AA_tp-T9k0W";
-
-const client = supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
-
-document.getElementById("registerForm").addEventListener("submit", async function(event) {
-
-    event.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const profession = document.getElementById("profession").value;
-    const city = document.getElementById("city").value;
-    const phone = document.getElementById("phone").value.trim();
-    const description = document.getElementById("description").value.trim();
-
-    const { data, error } = await client
-        .from("craftsmen")
-        .insert([{
-            name: name,
-            profession: profession,
-            city: city,
-            phone: phone,
-            description: description
-        }])
-        .select();
-
-    if (error) {
-
-        console.error("Supabase error:", error);
-
-        alert(
-            "❌ خطأ Supabase:\n\n" +
-            error.message
-        );
-
-        return;
-    }
-
-    console.log("تم الحفظ:", data);
-
-    alert("✅ تم إرسال طلب التسجيل بنجاح!");
-
-    document.getElementById("registerForm").reset();
-
-});
-</script>
-
-</script>
 <body>
 
 <header>
-
     <div class="logo">
         ألو <span>معلم</span>
     </div>
-
 </header>
-
 
 <div class="container">
 
@@ -202,12 +152,9 @@ document.getElementById("registerForm").addEventListener("submit", async functio
             عرّف الزبائن بخدماتك وخليهم يلقاوك بسهولة.
         </p>
 
-
         <form id="registerForm">
 
-            <label for="name">
-                الاسم الكامل
-            </label>
+            <label for="name">الاسم الكامل</label>
 
             <input
                 type="text"
@@ -216,56 +163,51 @@ document.getElementById("registerForm").addEventListener("submit", async functio
                 required
             >
 
-
-            <label for="profession">
-                المهنة
-            </label>
+            <label for="profession">المهنة</label>
 
             <select id="profession" required>
-
-                <option value="">
-                    اختر المهنة
-                </option>
-
-                <option>سباك</option>
-                <option>كهربائي</option>
-                <option>صباغ</option>
-                <option>نجار</option>
-                <option>بناء</option>
-                <option>حداد</option>
-                <option>تكييف</option>
-                <option>أخرى</option>
-
+                <option value="">اختر المهنة</option>
+                <option value="سباك">سباك</option>
+                <option value="كهربائي">كهربائي</option>
+                <option value="صباغ">صباغ</option>
+                <option value="نجار">نجار</option>
+                <option value="بناء">بناء</option>
+                <option value="حداد">حداد</option>
+                <option value="تكييف">تكييف</option>
+                <option value="أخرى">أخرى</option>
             </select>
 
-
-            <label for="city">
-                المدينة
-            </label>
+            <label for="city">المدينة</label>
 
             <select id="city" required>
-
-                <option value="">
-                    اختر المدينة
-                </option>
-
-                <option>الرباط</option>
-                <option>سلا</option>
-                <option>تمارة</option>
-                <option>الدار البيضاء</option>
-                <option>مراكش</option>
-                <option>فاس</option>
-                <option>طنجة</option>
-                <option>مكناس</option>
-                <option>أكادير</option>
-                <option>القنيطرة</option>
-
+                <option value="">اختر المدينة</option>
+                <option value="الرباط">الرباط</option>
+                <option value="سلا">سلا</option>
+                <option value="تمارة">تمارة</option>
+                <option value="الدار البيضاء">الدار البيضاء</option>
+                <option value="مراكش">مراكش</option>
+                <option value="فاس">فاس</option>
+                <option value="طنجة">طنجة</option>
+                <option value="مكناس">مكناس</option>
+                <option value="أكادير">أكادير</option>
+                <option value="القنيطرة">القنيطرة</option>
+                <option value="وجدة">وجدة</option>
+                <option value="الناظور">الناظور</option>
+                <option value="تطوان">تطوان</option>
+                <option value="الحسيمة">الحسيمة</option>
+                <option value="الجديدة">الجديدة</option>
+                <option value="آسفي">آسفي</option>
+                <option value="بني ملال">بني ملال</option>
+                <option value="خريبكة">خريبكة</option>
+                <option value="العيون">العيون</option>
+                <option value="الداخلة">الداخلة</option>
+                <option value="الرشيدية">الرشيدية</option>
+                <option value="ورزازات">ورزازات</option>
+                <option value="تارودانت">تارودانت</option>
+                <option value="إنزكان">إنزكان</option>
             </select>
 
-
-            <label for="phone">
-                رقم الهاتف
-            </label>
+            <label for="phone">رقم الهاتف</label>
 
             <input
                 type="tel"
@@ -274,28 +216,22 @@ document.getElementById("registerForm").addEventListener("submit", async functio
                 required
             >
 
-
-            <label for="description">
-                وصف الخدمات
-            </label>
+            <label for="description">وصف الخدمات</label>
 
             <textarea
                 id="description"
                 placeholder="مثال: إصلاح تسربات المياه، تركيب الحنفيات..."
             ></textarea>
 
-
-            <button type="submit">
+            <button type="submit" id="submitButton">
                 📩 إرسال طلب التسجيل
             </button>
 
         </form>
 
-
         <div class="note">
-            ℹ️ في هذه المرحلة، النموذج تجريبي. سنربطه لاحقًا بنظام مجاني لحفظ بيانات الحرفيين.
+            ℹ️ سيتم مراجعة طلب التسجيل قبل ظهور بيانات الحرفي للزبائن.
         </div>
-
 
         <a class="back" href="index.html">
             ← العودة إلى الصفحة الرئيسية
@@ -305,38 +241,84 @@ document.getElementById("registerForm").addEventListener("submit", async functio
 
 </div>
 
-
 <script>
+const SUPABASE_URL = "https://kjmvewppokrzcbegxmwg.supabase.co";
+const SUPABASE_KEY = "sb_publishable_As8JEhEsIfOta6cyi6e_AA_tp-T9k0W";
 
-document.getElementById("registerForm").addEventListener("submit", function(event) {
+const client = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+const form = document.getElementById("registerForm");
+const submitButton = document.getElementById("submitButton");
+
+form.addEventListener("submit", async function(event) {
 
     event.preventDefault();
 
-    const name =
-        document.getElementById("name").value;
+    submitButton.disabled = true;
+    submitButton.textContent = "⏳ جاري الإرسال...";
 
-    const profession =
-        document.getElementById("profession").value;
+    const name = document.getElementById("name").value.trim();
+    const profession = document.getElementById("profession").value;
+    const city = document.getElementById("city").value;
+    const phone = document.getElementById("phone").value.trim();
+    const description = document.getElementById("description").value.trim();
 
-    const city =
-        document.getElementById("city").value;
+    try {
 
-    const phone =
-        document.getElementById("phone").value;
+        const { data, error } = await client
+            .from("craftsmen")
+            .insert([{
+                name: name,
+                profession: profession,
+                city: city,
+                phone: phone,
+                description: description,
+                status: "pending"
+            }])
+            .select();
 
-    alert(
-        "شكراً " + name +
-        " 👋\n\n" +
-        "تم استلام طلب التسجيل التجريبي.\n\n" +
-        "المهنة: " + profession +
-        "\nالمدينة: " + city +
-        "\nالهاتف: " + phone
-    );
+        if (error) {
+
+            console.error("Supabase error:", error);
+
+            alert(
+                "❌ خطأ Supabase:\n\n" +
+                error.message
+            );
+
+            return;
+        }
+
+        console.log("تم الحفظ:", data);
+
+        alert(
+            "✅ تم إرسال طلب التسجيل بنجاح!\n\n" +
+            "سيتم مراجعة معلوماتك قبل ظهورها للزبائن."
+        );
+
+        form.reset();
+
+    } catch (error) {
+
+        console.error("Unexpected error:", error);
+
+        alert(
+            "❌ حدث خطأ غير متوقع:\n\n" +
+            error.message
+        );
+
+    } finally {
+
+        submitButton.disabled = false;
+        submitButton.textContent = "📩 إرسال طلب التسجيل";
+
+    }
 
 });
-
 </script>
 
 </body>
 </html>
-```
