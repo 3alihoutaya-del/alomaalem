@@ -1,528 +1,517 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>لوحة الإدارة | ألو معلم</title>
+<meta charset="UTF-8">
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<title>TactiGol News | لوحة الإدارة</title>
 
-        body {
-            font-family: Arial, Tahoma, sans-serif;
-            background: #f5f7fa;
-            color: #222;
-        }
+<style>
 
-        header {
-            background: #222;
-            color: white;
-            padding: 18px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        .logo {
-            font-size: 25px;
-            font-weight: bold;
-        }
+body {
+    font-family: Arial, Tahoma, sans-serif;
+    background: #f3f5f8;
+    color: #111827;
+}
 
-        .logo span {
-            color: #4caf50;
-        }
+.header {
+    background: #0b1220;
+    color: white;
+    padding: 20px;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 35px auto;
-            padding: 20px;
-        }
+.header-inner {
+    max-width: 1200px;
+    margin: auto;
 
-        .box {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,.08);
-        }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
 
-        h1 {
-            margin-bottom: 10px;
-        }
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+}
 
-        .login {
-            max-width: 450px;
-            margin: 60px auto;
-        }
+.logo span {
+    color: #00a86b;
+}
 
-        input {
-            width: 100%;
-            padding: 13px;
-            margin-top: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-        }
+.back {
+    color: white;
+    text-decoration: none;
+    background: #00a86b;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
 
-        button {
-            border: none;
-            border-radius: 8px;
-            padding: 11px 18px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
 
-        .login-button {
-            width: 100%;
-            background: #16803c;
-            color: white;
-            font-size: 17px;
-        }
+.form-box,
+.articles-box {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.06);
+}
 
-        .logout {
-            background: #d62828;
-            color: white;
-        }
+h1 {
+    margin-bottom: 8px;
+}
 
-        .approve {
-            background: #16803c;
-            color: white;
-        }
+h2 {
+    margin-bottom: 20px;
+}
 
-        .reject {
-            background: #d62828;
-            color: white;
-        }
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
 
-        .refresh {
-            background: #333;
-            color: white;
-        }
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
 
-        .message {
-            margin-top: 15px;
-            padding: 12px;
-            border-radius: 8px;
-        }
+.field.full {
+    grid-column: 1 / -1;
+}
 
-        .error {
-            background: #ffe5e5;
-            color: #a00000;
-        }
+label {
+    font-weight: bold;
+}
 
-        .success {
-            background: #e5ffe9;
-            color: #087522;
-        }
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 9px;
+    font-size: 16px;
+    font-family: inherit;
+}
 
-        .table-wrapper {
-            overflow-x: auto;
-            margin-top: 25px;
-        }
+textarea {
+    min-height: 180px;
+    resize: vertical;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 900px;
-        }
+button {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
 
-        th,
-        td {
-            padding: 12px;
-            border-bottom: 1px solid #eee;
-            text-align: right;
-        }
+.save-btn {
+    background: #00a86b;
+    color: white;
+    padding: 14px 22px;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: bold;
+}
 
-        th {
-            background: #f1f3f5;
-        }
+.clear-btn {
+    background: #e5e7eb;
+    color: #111827;
+    padding: 14px 22px;
+    border-radius: 9px;
+    font-size: 16px;
+    margin-right: 8px;
+}
 
-        .status {
-            font-weight: bold;
-        }
+#message {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    display: none;
+}
 
-        .pending {
-            color: #c27a00;
-        }
+.success {
+    display: block !important;
+    background: #dcfce7;
+    color: #166534;
+}
 
-        .approved {
-            color: #16803c;
-        }
+.error {
+    display: block !important;
+    background: #fee2e2;
+    color: #991b1b;
+}
 
-        .rejected {
-            color: #d62828;
-        }
+.articles-list {
+    display: grid;
+    gap: 15px;
+}
 
-        .actions {
-            display: flex;
-            gap: 7px;
-        }
+.article-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 15px;
 
-        #dashboard {
-            display: none;
-        }
-    </style>
+    display: grid;
+    grid-template-columns: 130px 1fr auto;
+    gap: 15px;
+    align-items: center;
+}
+
+.article-item img {
+    width: 130px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.article-info h3 {
+    margin-bottom: 5px;
+}
+
+.meta {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.delete-btn {
+    background: #dc2626;
+    color: white;
+    padding: 9px 13px;
+    border-radius: 7px;
+}
+
+.edit-btn {
+    background: #2563eb;
+    color: white;
+    padding: 9px 13px;
+    border-radius: 7px;
+    margin-bottom: 7px;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+}
+
+@media(max-width:700px) {
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .field.full {
+        grid-column: auto;
+    }
+
+    .article-item {
+        grid-template-columns: 1fr;
+    }
+
+    .article-item img {
+        width: 100%;
+        height: 180px;
+    }
+
+    .actions {
+        flex-direction: row;
+        gap: 8px;
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-<header>
-    <div class="logo">
-        ألو <span>معلم</span> — الإدارة
+
+<header class="header">
+
+    <div class="header-inner">
+
+        <div class="logo">
+
+            Tacti<span>Gol</span> News
+
+        </div>
+
+        <a
+            href="index.html"
+            class="back"
+        >
+            🏠 الموقع
+        </a>
+
     </div>
 
-    <button id="logoutButton" class="logout" style="display:none;">
-        تسجيل الخروج
-    </button>
 </header>
 
 
-<div id="loginScreen" class="container">
 
-    <div class="box login">
-
-        <h1>🔐 دخول الإدارة</h1>
-
-        <p style="margin: 10px 0 20px; color:#666;">
-            هذه الصفحة مخصصة لإدارة الحرفيين.
-        </p>
-
-        <label>البريد الإلكتروني</label>
-
-        <input
-            type="email"
-            id="email"
-            placeholder="البريد الإلكتروني"
-            required
-        >
-
-        <label>كلمة المرور</label>
-
-        <input
-            type="password"
-            id="password"
-            placeholder="كلمة المرور"
-            required
-        >
-
-        <button id="loginButton" class="login-button">
-            دخول
-        </button>
-
-        <div id="loginMessage"></div>
-
-    </div>
-
-</div>
+<main class="container">
 
 
-<div id="dashboard" class="container">
+<section class="form-box">
 
-    <div class="box">
+    <h1>
+        📝 إضافة خبر جديد
+    </h1>
 
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:15px; flex-wrap:wrap;">
+    <p style="color:#6b7280;margin-bottom:20px;">
+        أضف الأخبار التي تريد نشرها على TactiGol News.
+    </p>
 
-            <div>
-                <h1>👷 إدارة الحرفيين</h1>
 
-                <p style="color:#666; margin-top:5px;">
-                    راجع طلبات التسجيل ثم وافق أو ارفض.
-                </p>
+    <form id="articleForm">
+
+
+        <div class="form-grid">
+
+
+            <div class="field full">
+
+                <label>
+                    عنوان الخبر
+                </label>
+
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="مثال: المنتخب المغربي يستعد للمباراة القادمة"
+                    required
+                >
+
             </div>
 
-            <button id="refreshButton" class="refresh">
-                🔄 تحديث
+
+            <div class="field">
+
+                <label>
+                    القسم
+                </label>
+
+                <select
+                    id="category"
+                    required
+                >
+
+                    <option value="عام">
+                        عام
+                    </option>
+
+                    <option value="المغرب">
+                        🇲🇦 المغرب
+                    </option>
+
+                    <option value="عالمية">
+                        🌍 عالمية
+                    </option>
+
+                    <option value="انتقالات">
+                        🔥 انتقالات
+                    </option>
+
+                    <option value="تكتيك">
+                        🎯 تحليل تكتيكي
+                    </option>
+
+                    <option value="دوري الأبطال">
+                        🏆 دوري الأبطال
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    الكاتب
+                </label>
+
+                <input
+                    type="text"
+                    id="author"
+                    value="TactiGol News"
+                >
+
+            </div>
+
+
+            <div class="field full">
+
+                <label>
+                    ملخص الخبر
+                </label>
+
+                <textarea
+                    id="excerpt"
+                    style="min-height:100px"
+                    placeholder="اكتب ملخصًا قصيرًا للخبر..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="field full">
+
+                <label>
+                    نص الخبر
+                </label>
+
+                <textarea
+                    id="content"
+                    placeholder="اكتب الخبر كاملًا هنا..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <div class="field full">
+
+                <label>
+                    رابط الصورة
+                </label>
+
+                <input
+                    type="url"
+                    id="image_url"
+                    placeholder="https://..."
+                >
+
+                <small style="color:#6b7280;">
+                    ضع رابط صورة مباشر ينتهي غالبًا بـ .jpg أو .png أو .webp
+                </small>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    حالة الخبر
+                </label>
+
+                <select id="status">
+
+                    <option value="published">
+                        🟢 منشور
+                    </option>
+
+                    <option value="draft">
+                        🟡 مسودة
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+
+        <div style="margin-top:20px;">
+
+            <button
+                type="submit"
+                class="save-btn"
+            >
+                📰 نشر الخبر
+            </button>
+
+
+            <button
+                type="button"
+                class="clear-btn"
+                onclick="clearForm()"
+            >
+                مسح
             </button>
 
         </div>
 
-        <div id="dashboardMessage"></div>
 
-        <div class="table-wrapper">
+        <div id="message"></div>
 
-            <table>
 
-                <thead>
-                    <tr>
-                        <th>الاسم</th>
-                        <th>المهنة</th>
-                        <th>المدينة</th>
-                        <th>الهاتف</th>
-                        <th>الوصف</th>
-                        <th>الحالة</th>
-                        <th>الإجراء</th>
-                    </tr>
-                </thead>
+    </form>
 
-                <tbody id="craftsmenTable">
-                </tbody>
+</section>
 
-            </table>
 
-        </div>
+
+<section class="articles-box">
+
+    <h2>
+        📰 الأخبار المنشورة
+    </h2>
+
+    <div
+        id="articlesList"
+        class="articles-list"
+    >
+
+        جاري تحميل الأخبار...
 
     </div>
 
-</div>
+</section>
+
+
+</main>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
 <script>
-const SUPABASE_URL = "https://kjmvewppokrzcbegxmwg.supabase.co";
-const SUPABASE_KEY = "sb_publishable_As8JEhEsIfOta6cyi6e_AA_tp-T9k0W";
 
-const client = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
 
-const ADMIN_ID = "d4dcd2a0-158e-4bb6-9ca1-1949f16fdbd3";
+const SUPABASE_URL =
+    "https://kjmvewppokrzcbegxmwg.supabase.co";
 
 
-const loginScreen = document.getElementById("loginScreen");
-const dashboard = document.getElementById("dashboard");
-const logoutButton = document.getElementById("logoutButton");
+const SUPABASE_KEY =
+    "hiden";
 
-const loginButton = document.getElementById("loginButton");
-const refreshButton = document.getElementById("refreshButton");
 
-const loginMessage = document.getElementById("loginMessage");
-const dashboardMessage = document.getElementById("dashboardMessage");
+const client =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
-const craftsmenTable = document.getElementById("craftsmenTable");
 
+let editingId = null;
 
-loginButton.addEventListener("click", login);
-
-logoutButton.addEventListener("click", async function () {
-
-    await client.auth.signOut();
-
-    dashboard.style.display = "none";
-    loginScreen.style.display = "block";
-    logoutButton.style.display = "none";
-
-});
-
-
-refreshButton.addEventListener("click", loadCraftsmen);
-
-
-async function login() {
-
-    const email =
-        document.getElementById("email").value.trim();
-
-    const password =
-        document.getElementById("password").value;
-
-    loginMessage.innerHTML = "";
-
-    if (!email || !password) {
-
-        loginMessage.innerHTML =
-            "<div class='message error'>أدخل البريد الإلكتروني وكلمة المرور.</div>";
-
-        return;
-    }
-
-    loginButton.disabled = true;
-    loginButton.textContent = "⏳ جاري الدخول...";
-
-    const { data, error } =
-        await client.auth.signInWithPassword({
-            email: email,
-            password: password
-        });
-
-    loginButton.disabled = false;
-    loginButton.textContent = "دخول";
-
-
-    if (error) {
-
-        loginMessage.innerHTML =
-            "<div class='message error'>" +
-            "❌ " + error.message +
-            "</div>";
-
-        return;
-    }
-
-
-    if (!data.user || data.user.id !== ADMIN_ID) {
-
-        await client.auth.signOut();
-
-        loginMessage.innerHTML =
-            "<div class='message error'>" +
-            "❌ هذا الحساب ليس حساب المدير." +
-            "</div>";
-
-        return;
-    }
-
-
-    loginScreen.style.display = "none";
-    dashboard.style.display = "block";
-    logoutButton.style.display = "block";
-
-    await loadCraftsmen();
-
-}
-
-
-async function loadCraftsmen() {
-
-    dashboardMessage.innerHTML = "";
-
-    craftsmenTable.innerHTML =
-        "<tr><td colspan='7' style='text-align:center;'>⏳ جاري التحميل...</td></tr>";
-
-    const { data, error } =
-        await client
-        .from("craftsmen")
-        .select("*")
-        .order("created_at", { ascending: false });
-
-
-    if (error) {
-
-        craftsmenTable.innerHTML = "";
-
-        dashboardMessage.innerHTML =
-            "<div class='message error'>" +
-            "❌ " + error.message +
-            "</div>";
-
-        return;
-    }
-
-
-    if (!data || data.length === 0) {
-
-        craftsmenTable.innerHTML =
-            "<tr><td colspan='7' style='text-align:center;'>لا توجد طلبات.</td></tr>";
-
-        return;
-    }
-
-
-    craftsmenTable.innerHTML = "";
-
-
-    data.forEach(function(craft) {
-
-        const row = document.createElement("tr");
-
-        let statusClass = "pending";
-
-        if (craft.status === "approved") {
-            statusClass = "approved";
-        }
-
-        if (craft.status === "rejected") {
-            statusClass = "rejected";
-        }
-
-
-        row.innerHTML = `
-
-            <td>${escapeHtml(craft.name)}</td>
-
-            <td>${escapeHtml(craft.profession)}</td>
-
-            <td>${escapeHtml(craft.city)}</td>
-
-            <td>${escapeHtml(craft.phone)}</td>
-
-            <td>${escapeHtml(craft.description || "")}</td>
-
-            <td class="status ${statusClass}">
-                ${escapeHtml(craft.status)}
-            </td>
-
-            <td>
-
-                <div class="actions">
-
-                    ${
-                        craft.status !== "approved"
-                        ?
-                        `<button
-                            class="approve"
-                            onclick="changeStatus(${craft.id}, 'approved')">
-                            ✅ قبول
-                        </button>`
-                        :
-                        ""
-                    }
-
-                    ${
-                        craft.status !== "rejected"
-                        ?
-                        `<button
-                            class="reject"
-                            onclick="changeStatus(${craft.id}, 'rejected')">
-                            ❌ رفض
-                        </button>`
-                        :
-                        ""
-                    }
-
-                </div>
-
-            </td>
-        `;
-
-        craftsmenTable.appendChild(row);
-
-    });
-
-}
-
-
-async function changeStatus(id, newStatus) {
-
-    const { error } =
-        await client
-        .from("craftsmen")
-        .update({
-            status: newStatus
-        })
-        .eq("id", id);
-
-
-    if (error) {
-
-        dashboardMessage.innerHTML =
-            "<div class='message error'>" +
-            "❌ " + error.message +
-            "</div>";
-
-        return;
-    }
-
-
-    dashboardMessage.innerHTML =
-        "<div class='message success'>" +
-        "✅ تم تحديث حالة الحرفي." +
-        "</div>";
-
-    await loadCraftsmen();
-
-}
 
 
 function escapeHtml(value) {
 
-    return String(value)
+    return String(value ?? "")
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
         .replaceAll(">", "&gt;")
@@ -532,35 +521,436 @@ function escapeHtml(value) {
 }
 
 
-async function checkSession() {
 
-    const { data } =
-        await client.auth.getUser();
+function showMessage(
+    text,
+    type
+) {
 
-    const user = data.user;
+    const message =
+        document.getElementById(
+            "message"
+        );
 
-    if (!user || user.id !== ADMIN_ID) {
+    message.textContent = text;
 
-        loginScreen.style.display = "block";
-        dashboard.style.display = "none";
-        logoutButton.style.display = "none";
-
-        return;
-    }
-
-
-    loginScreen.style.display = "none";
-    dashboard.style.display = "block";
-    logoutButton.style.display = "block";
-
-    await loadCraftsmen();
+    message.className = type;
 
 }
 
 
-checkSession();
+
+function clearForm() {
+
+    document.getElementById(
+        "articleForm"
+    ).reset();
+
+    document.getElementById(
+        "author"
+    ).value = "TactiGol News";
+
+    editingId = null;
+
+    document.querySelector(
+        ".save-btn"
+    ).textContent =
+        "📰 نشر الخبر";
+
+}
+
+
+
+async function loadArticles() {
+
+    const list =
+        document.getElementById(
+            "articlesList"
+        );
+
+
+    const {
+        data,
+        error
+    } = await client
+        .from("articles")
+        .select("*")
+        .order(
+            "created_at",
+            {
+                ascending: false
+            }
+        );
+
+
+    if (error) {
+
+        console.error(error);
+
+        list.innerHTML =
+            "❌ حدث خطأ أثناء تحميل الأخبار.";
+
+        return;
+
+    }
+
+
+    if (!data || !data.length) {
+
+        list.innerHTML =
+            "لا توجد أخبار بعد.";
+
+        return;
+
+    }
+
+
+    list.innerHTML =
+        data.map(
+            article => `
+
+                <div class="article-item">
+
+                    <img
+                        src="${escapeHtml(
+                            article.image_url ||
+                            "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=500&q=80"
+                        )}"
+                        alt=""
+                    >
+
+
+                    <div class="article-info">
+
+                        <h3>
+
+                            ${escapeHtml(
+                                article.title
+                            )}
+
+                        </h3>
+
+                        <div class="meta">
+
+                            ${escapeHtml(
+                                article.category
+                            )}
+
+                            ·
+
+                            ${escapeHtml(
+                                article.status
+                            )}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="actions">
+
+                        <button
+                            class="edit-btn"
+                            onclick="editArticle('${article.id}')"
+                        >
+                            ✏️ تعديل
+                        </button>
+
+
+                        <button
+                            class="delete-btn"
+                            onclick="deleteArticle('${article.id}')"
+                        >
+                            🗑️ حذف
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `
+        ).join("");
+
+}
+
+
+
+document.getElementById(
+    "articleForm"
+).addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        const title =
+            document.getElementById(
+                "title"
+            ).value.trim();
+
+
+        const excerpt =
+            document.getElementById(
+                "excerpt"
+            ).value.trim();
+
+
+        const content =
+            document.getElementById(
+                "content"
+            ).value.trim();
+
+
+        const category =
+            document.getElementById(
+                "category"
+            ).value;
+
+
+        const image_url =
+            document.getElementById(
+                "image_url"
+            ).value.trim();
+
+
+        const author =
+            document.getElementById(
+                "author"
+            ).value.trim();
+
+
+        const status =
+            document.getElementById(
+                "status"
+            ).value;
+
+
+        if (
+            !title ||
+            !content
+        ) {
+
+            showMessage(
+                "⚠️ المرجو إدخال العنوان ونص الخبر.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        const article = {
+
+            title,
+            excerpt,
+            content,
+            category,
+            image_url,
+            author,
+            status
+
+        };
+
+
+        showMessage(
+            "⏳ جاري الحفظ...",
+            "success"
+        );
+
+
+        let result;
+
+
+        if (editingId) {
+
+            result =
+                await client
+                    .from("articles")
+                    .update(article)
+                    .eq(
+                        "id",
+                        editingId
+                    );
+
+        } else {
+
+            result =
+                await client
+                    .from("articles")
+                    .insert([article]);
+
+        }
+
+
+        if (result.error) {
+
+            console.error(
+                result.error
+            );
+
+            showMessage(
+                "❌ حدث خطأ: " +
+                result.error.message,
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        showMessage(
+            editingId
+                ? "✅ تم تعديل الخبر بنجاح!"
+                : "✅ تم نشر الخبر بنجاح!",
+            "success"
+        );
+
+
+        clearForm();
+
+
+        loadArticles();
+
+    }
+);
+
+
+
+async function deleteArticle(id) {
+
+    const confirmed =
+        confirm(
+            "هل أنت متأكد من حذف هذا الخبر؟"
+        );
+
+
+    if (!confirmed)
+        return;
+
+
+    const {
+        error
+    } = await client
+        .from("articles")
+        .delete()
+        .eq(
+            "id",
+            id
+        );
+
+
+    if (error) {
+
+        alert(
+            "❌ لم يتم حذف الخبر: " +
+            error.message
+        );
+
+        return;
+
+    }
+
+
+    loadArticles();
+
+}
+
+
+
+async function editArticle(id) {
+
+    const {
+        data,
+        error
+    } = await client
+        .from("articles")
+        .select("*")
+        .eq(
+            "id",
+            id
+        )
+        .single();
+
+
+    if (error) {
+
+        alert(
+            "❌ لم يتم تحميل الخبر."
+        );
+
+        return;
+
+    }
+
+
+    editingId = id;
+
+
+    document.getElementById(
+        "title"
+    ).value =
+        data.title || "";
+
+
+    document.getElementById(
+        "excerpt"
+    ).value =
+        data.excerpt || "";
+
+
+    document.getElementById(
+        "content"
+    ).value =
+        data.content || "";
+
+
+    document.getElementById(
+        "category"
+    ).value =
+        data.category || "عام";
+
+
+    document.getElementById(
+        "image_url"
+    ).value =
+        data.image_url || "";
+
+
+    document.getElementById(
+        "author"
+    ).value =
+        data.author || "TactiGol News";
+
+
+    document.getElementById(
+        "status"
+    ).value =
+        data.status || "published";
+
+
+    document.querySelector(
+        ".save-btn"
+    ).textContent =
+        "💾 حفظ التعديل";
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+
+loadArticles();
 
 </script>
 
+
 </body>
+
 </html>
