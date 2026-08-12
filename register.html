@@ -280,32 +280,17 @@ form.addEventListener("submit", async function(event) {
             }])
             .select();
 
-        if (error) {
+         if (result.error) {
 
-    console.error("FULL SUPABASE ERROR:", error);
+        document.getElementById("result").innerHTML =
+            "<div style='background:#ffe5e5;color:#b00020;padding:15px;border-radius:10px;margin-top:20px'>" +
+            "❌ فشل الحفظ<br><br>" +
+            "السبب: " +
+            result.error.message +
+            "</div>";
 
-    alert("❌ حدث خطأ في Supabase");
-
-    const errorDetails = document.createElement("div");
-
-    errorDetails.style.cssText = `
-        margin-top:20px;
-        padding:15px;
-        background:#ffecec;
-        color:#b00020;
-        border-radius:10px;
-        direction:ltr;
-        text-align:left;
-        white-space:pre-wrap;
-        font-family:monospace;
-    `;
-
-    errorDetails.textContent = JSON.stringify(error, null, 2);
-
-    document.querySelector(".form-box").appendChild(errorDetails);
-
-    return;
-}
+        return;
+    }
 
         console.log("تم الحفظ:", data);
 
