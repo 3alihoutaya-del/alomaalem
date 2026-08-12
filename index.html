@@ -498,25 +498,42 @@ function displayCraftsmen(list) {
                 ${escapeHtml(craft.description || "")}
             </div>
 
-            <div class="contact-buttons">
+           <div class="contact-buttons">
 
-                <a
-                    class="call"
-                    href="tel:${escapeHtml(craft.phone)}"
-                >
-                    📞 اتصال
-                </a>
+    <a
+        class="call"
+        href="tel:${escapeHtml(craft.phone)}"
+    >
+        📞 اتصال
+    </a>
 
-                <a
-                    class="whatsapp"
-                    href="https://wa.me/${whatsappNumber}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    💬 WhatsApp
-                </a>
+    <a
+        class="whatsapp"
+        href="https://wa.me/${whatsappNumber}"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        💬 WhatsApp
+    </a>
 
-            </div>
+</div>
+
+<a
+    href="craftsman.html?id=${encodeURIComponent(craft.id)}"
+    style="
+        display:block;
+        margin-top:12px;
+        text-align:center;
+        padding:11px;
+        background:#222;
+        color:white;
+        border-radius:8px;
+        text-decoration:none;
+        font-weight:bold;
+    "
+>
+    👤 شاهد الملف
+</a>
         `;
 
 
