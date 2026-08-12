@@ -290,18 +290,43 @@ button {
 
             <div class="field full">
 
-                <label>
-                    عنوان الخبر
-                </label>
+    <label>
+        🖼️ صورة الخبر
+    </label>
 
-                <input
-                    type="text"
-                    id="title"
-                    placeholder="مثال: المنتخب المغربي يستعد للمباراة القادمة"
-                    required
-                >
+    <input
+        type="file"
+        id="image_file"
+        accept="image/jpeg,image/png,image/webp"
+    >
 
-            </div>
+    <input
+        type="hidden"
+        id="image_url"
+    >
+
+    <div id="imagePreviewBox" style="display:none;margin-top:10px;">
+
+        <img
+            id="imagePreview"
+            src=""
+            alt="معاينة الصورة"
+            style="
+                width:100%;
+                max-width:500px;
+                max-height:300px;
+                object-fit:cover;
+                border-radius:12px;
+            "
+        >
+
+    </div>
+
+    <small style="color:#6b7280;">
+        يمكنك رفع JPG أو PNG أو WebP.
+    </small>
+
+</div>
 
 
             <div class="field">
@@ -506,7 +531,35 @@ const client =
 
 
 let editingId = null;
+const imageFile =
+    document.getElementById("image_file");
 
+const imagePreviewBox =
+    document.getElementById("imagePreviewBox");
+
+const imagePreview =
+    document.getElementById("imagePreview");
+
+
+imageFile.addEventListener(
+    "change",
+    function () {
+
+        const file = this.files[0];
+
+        if (!file) {
+            imagePreviewBox.style.display = "none";
+            return;
+        }
+
+        imagePreview.src =
+            URL.createObjectURL(file);
+
+        imagePreviewBox.style.display =
+            "block";
+
+    }
+);
 
 
 function escapeHtml(value) {
@@ -541,7 +594,59 @@ function showMessage(
 
 
 function clearForm() {
+async function uploadImage(file) {
 
+    if (!file) {
+        return null;
+    }
+
+    const extension =
+        file.name
+        .split(".")
+        .pop()
+        .toLowerCase();
+
+    const fileName =
+        Date.now() +
+        "-" +
+        Math.random()
+            .toString(36)
+            .substring(2, 10) +
+        "." +
+        extension;
+
+    const filePath =
+        "news/" + fileName;
+
+
+    const {
+        error
+    } = await client.storage
+        .from("article-images")
+        .upload(
+            filePath,
+            file,
+            {
+                cacheControl: "3600",
+                upsert: false
+            }
+        );
+
+
+    if (error) {
+        throw error;
+    }
+
+
+    const {
+        data
+    } = client.storage
+        .from("article-images")
+        .getPublicUrl(filePath);
+
+
+    return data.publicUrl;
+}
     document.getElementById(
         "articleForm"
     ).reset();
@@ -708,10 +813,45 @@ document.getElementById(
             ).value;
 
 
-        const image_url =
-            document.getElementById(
-                "image_url"
-            ).value.trim();
+       let image_url =
+    document.getElementById(
+        "image_url"
+    ).value.trim();
+
+
+const selectedFile =
+    document.getElementById(
+        "image_file"
+    ).files[0];
+
+
+if (selectedFile) {
+
+    showMessage(
+        "⏳ جاري رفع الصورة...",
+        "success"
+    );
+
+    try {
+
+        image_url =
+            await uploadImage(
+                selectedFile
+            );
+
+    } catch (error) {
+
+        console.error(error);
+
+        showMessage(
+            "❌ فشل رفع الصورة: " +
+            error.message,
+            "error"
+        );
+
+        return;
+    }
+}
 
 
         const author =
