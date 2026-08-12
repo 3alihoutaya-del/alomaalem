@@ -1,244 +1,288 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>سجّل كحرفي | ألو معلم</title>
+<meta charset="UTF-8">
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<title>سجّل كحرفي | ألو معلم</title>
 
-        body {
-            font-family: Arial, Tahoma, sans-serif;
-            background: #f5f7fa;
-            color: #222;
-        }
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-        header {
-            background: white;
-            padding: 18px 6%;
-            box-shadow: 0 2px 10px rgba(0,0,0,.08);
-        }
+<style>
 
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: #d62828;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        .logo span {
-            color: #16803c;
-        }
+body {
+    font-family: Arial, Tahoma, sans-serif;
+    background: #f5f7fa;
+    color: #222;
+}
 
-        .container {
-            max-width: 650px;
-            margin: 50px auto;
-            padding: 20px;
-        }
+header {
+    background: white;
+    padding: 18px 6%;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
 
-        .form-box {
-            background: white;
-            padding: 35px;
-            border-radius: 18px;
-            box-shadow: 0 5px 20px rgba(0,0,0,.08);
-        }
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #d62828;
+}
 
-        h1 {
-            text-align: center;
-            margin-bottom: 10px;
-        }
+.logo span {
+    color: #16803c;
+}
 
-        .intro {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-        }
+.container {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 20px;
+}
 
-        label {
-            display: block;
-            margin: 15px 0 7px;
-            font-weight: bold;
-        }
+.form-box {
+    background: white;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+}
 
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 13px;
-            border: 1px solid #ddd;
-            border-radius: 9px;
-            font-size: 16px;
-            font-family: inherit;
-        }
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
 
-        textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
+.intro {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
 
-        button {
-            width: 100%;
-            margin-top: 25px;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            background: #16803c;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+label {
+    display: block;
+    margin: 15px 0 7px;
+    font-weight: bold;
+}
 
-        button:hover {
-            background: #116631;
-        }
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 9px;
+    font-size: 16px;
+    font-family: inherit;
+}
 
-        button:disabled {
-            opacity: .7;
-            cursor: not-allowed;
-        }
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
 
-        .back {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            color: #d62828;
-            text-decoration: none;
-            font-weight: bold;
-        }
+input[type="file"] {
+    background: #fafafa;
+}
 
-        .note {
-            background: #fff8e6;
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: 20px;
-            font-size: 14px;
-        }
+small {
+    color: #666;
+    display: block;
+    margin-top: 6px;
+}
 
-        #result {
-            margin-top: 20px;
-        }
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #16803c;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        .success {
-            background: #e5ffe9;
-            color: #087522;
-            padding: 15px;
-            border-radius: 10px;
-        }
+button:hover {
+    background: #116631;
+}
 
-        .error {
-            background: #ffe5e5;
-            color: #b00020;
-            padding: 15px;
-            border-radius: 10px;
-            direction: ltr;
-            text-align: left;
-            white-space: pre-wrap;
-            word-break: break-word;
-            font-family: monospace;
-        }
+button:disabled {
+    opacity: .7;
+    cursor: not-allowed;
+}
 
-        @media (max-width: 700px) {
-            .container {
-                margin: 20px auto;
-            }
+.note {
+    background: #fff8e6;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 14px;
+}
 
-            .form-box {
-                padding: 25px 18px;
-            }
-        }
-    </style>
+.back {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #d62828;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#result {
+    margin-top: 20px;
+}
+
+.success {
+    background: #e5ffe9;
+    color: #087522;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.error {
+    background: #ffe5e5;
+    color: #b00020;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+@media (max-width: 700px) {
+
+    .container {
+        margin: 20px auto;
+    }
+
+    .form-box {
+        padding: 25px 18px;
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
 <header>
+
     <div class="logo">
         ألو <span>معلم</span>
     </div>
+
 </header>
+
 
 <div class="container">
 
-    <div class="form-box">
+<div class="form-box">
 
-        <h1>👷 سجّل كحرفي</h1>
+<h1>👷 سجّل كحرفي</h1>
 
-        <p class="intro">
-            عرّف الزبائن بخدماتك وخليهم يلقاوك بسهولة.
-        </p>
+<p class="intro">
+    عرّف الزبائن بخدماتك وخليهم يلقاوك بسهولة.
+</p>
 
-        <form id="registerForm">
 
-            <label for="name">الاسم الكامل</label>
+<form id="registerForm">
 
-            <input
-                type="text"
-                id="name"
-                placeholder="مثال: محمد العلوي"
-                required
-            >
 
-            <label for="profession">المهنة</label>
+<label for="name">
+    الاسم الكامل
+</label>
 
-            <select id="profession" required>
-                <option value="">اختر المهنة</option>
-                <option value="سباك">سباك</option>
-                <option value="كهربائي">كهربائي</option>
-                <option value="صباغ">صباغ</option>
-                <option value="نجار">نجار</option>
-                <option value="بناء">بناء</option>
-                <option value="حداد">حداد</option>
-                <option value="تكييف">تكييف</option>
-                <option value="أخرى">أخرى</option>
-            </select>
+<input
+    type="text"
+    id="name"
+    placeholder="مثال: محمد العلوي"
+    required
+>
 
-            <label for="city">المدينة</label>
 
-            <select id="city" required>
-                <option value="">اختر المدينة</option>
-                <option value="الرباط">الرباط</option>
-                <option value="سلا">سلا</option>
-                <option value="تمارة">تمارة</option>
-                <option value="الدار البيضاء">الدار البيضاء</option>
-                <option value="مراكش">مراكش</option>
-                <option value="فاس">فاس</option>
-                <option value="طنجة">طنجة</option>
-                <option value="مكناس">مكناس</option>
-                <option value="أكادير">أكادير</option>
-                <option value="القنيطرة">القنيطرة</option>
-                <option value="وجدة">وجدة</option>
-                <option value="الناظور">الناظور</option>
-                <option value="تطوان">تطوان</option>
-                <option value="الحسيمة">الحسيمة</option>
-                <option value="الجديدة">الجديدة</option>
-                <option value="آسفي">آسفي</option>
-                <option value="بني ملال">بني ملال</option>
-                <option value="خريبكة">خريبكة</option>
-                <option value="العيون">العيون</option>
-                <option value="الداخلة">الداخلة</option>
-                <option value="الرشيدية">الرشيدية</option>
-                <option value="ورزازات">ورزازات</option>
-                <option value="تارودانت">تارودانت</option>
-                <option value="إنزكان">إنزكان</option>
-            </select>
+<label for="profession">
+    المهنة
+</label>
 
-            <label for="phone">رقم الهاتف</label>
+<select id="profession" required>
 
-            <input
-                type="tel"
-                id="phone"
-                placeholder="مثال: 0612345678"
-                required
-            >
-<label for="photo">📷 صورة الحرفي</label>
+<option value="">
+    اختر المهنة
+</option>
+
+<option value="سباك">سباك</option>
+<option value="كهربائي">كهربائي</option>
+<option value="صباغ">صباغ</option>
+<option value="نجار">نجار</option>
+<option value="بناء">بناء</option>
+<option value="حداد">حداد</option>
+<option value="تكييف">تكييف</option>
+<option value="أخرى">أخرى</option>
+
+</select>
+
+
+<label for="city">
+    المدينة
+</label>
+
+<select id="city" required>
+
+<option value="">
+    اختر المدينة
+</option>
+
+<option value="الرباط">الرباط</option>
+<option value="سلا">سلا</option>
+<option value="تمارة">تمارة</option>
+<option value="الدار البيضاء">الدار البيضاء</option>
+<option value="مراكش">مراكش</option>
+<option value="فاس">فاس</option>
+<option value="طنجة">طنجة</option>
+<option value="مكناس">مكناس</option>
+<option value="أكادير">أكادير</option>
+<option value="القنيطرة">القنيطرة</option>
+<option value="وجدة">وجدة</option>
+<option value="الناظور">الناظور</option>
+<option value="تطوان">تطوان</option>
+<option value="الحسيمة">الحسيمة</option>
+<option value="الجديدة">الجديدة</option>
+<option value="آسفي">آسفي</option>
+<option value="بني ملال">بني ملال</option>
+<option value="خريبكة">خريبكة</option>
+<option value="العيون">العيون</option>
+<option value="الداخلة">الداخلة</option>
+<option value="الرشيدية">الرشيدية</option>
+<option value="ورزازات">ورزازات</option>
+<option value="تارودانت">تارودانت</option>
+<option value="إنزكان">إنزكان</option>
+
+</select>
+
+
+<label for="phone">
+    رقم الهاتف
+</label>
+
+<input
+    type="tel"
+    id="phone"
+    placeholder="مثال: 0612345678"
+    required
+>
+
+
+<label for="photo">
+    📷 صورة الحرفي
+</label>
 
 <input
     type="file"
@@ -246,306 +290,349 @@
     accept="image/jpeg,image/png,image/webp"
 >
 
-<small style="color:#666;display:block;margin-top:6px;">
-    الصورة اختيارية — JPG أو PNG أو WebP، بحد أقصى 2MB.
+<small>
+    الصورة اختيارية — JPG أو PNG أو WebP — الحد الأقصى 2MB.
 </small>
-            <label for="description">وصف الخدمات</label>
 
-            <textarea
-                id="description"
-                placeholder="مثال: إصلاح تسربات المياه، تركيب الحنفيات..."
-            ></textarea>
 
-            <button type="submit" id="submitButton">
-                📩 إرسال طلب التسجيل
-            </button>
+<label for="description">
+    وصف الخدمات
+</label>
 
-        </form>
+<textarea
+    id="description"
+    placeholder="مثال: إصلاح تسربات المياه، تركيب الحنفيات..."
+></textarea>
 
-        <div id="result"></div>
 
-        <div class="note">
-            ℹ️ سيتم مراجعة طلب التسجيل قبل ظهور بيانات الحرفي للزبائن.
-        </div>
+<button
+    type="submit"
+    id="submitButton"
+>
+    📩 إرسال طلب التسجيل
+</button>
 
-        <a class="back" href="index.html">
-            ← العودة إلى الصفحة الرئيسية
-        </a>
 
-    </div>
+</form>
+
+
+<div id="result"></div>
+
+
+<div class="note">
+    ℹ️ سيتم مراجعة طلب التسجيل قبل ظهور بيانات الحرفي للزبائن.
+</div>
+
+
+<a
+    class="back"
+    href="index.html"
+>
+    ← العودة إلى الصفحة الرئيسية
+</a>
+
 
 </div>
 
+</div>
+
+
 <script>
-const SUPABASE_URL = "https://kjmvewppokrzcbegxmwg.supabase.co";
-const SUPABASE_KEY = "sb_publishable_As8JEhEsIfOta6cyi6e_AA_tp-T9k0W";
 
-const client = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
-
-const form = document.getElementById("registerForm");
-const submitButton = document.getElementById("submitButton");
-const resultBox = document.getElementById("result");
-
-form.addEventListener("submit", async function(event) {
-
-    event.preventDefault();
-
-    submitButton.disabled = true;
-    submitButton.textContent = "⏳ جاري الإرسال...";
+const SUPABASE_URL =
+    "https://kjmvewppokrzcbegxmwg.supabase.co";
 
 
-    const name =
-        document.getElementById("name").value.trim();
-
-    const profession =
-        document.getElementById("profession").value;
-
-    const city =
-        document.getElementById("city").value;
-
-    const phone =
-        document.getElementById("phone").value.trim();
-
-    const description =
-        document.getElementById("description").value.trim();
-
-    const photoFile =
-        document.getElementById("photo").files[0];
+const SUPABASE_KEY =
+    "sb_publishable_As8JEhEsIfOta6cyi6e_AA_tp-T9k0W";
 
 
-    try {
-
-        let photoUrl = null;
-
-
-        /* =========================
-           رفع الصورة
-        ========================= */
-
-        if (photoFile) {
-
-            if (photoFile.size > 2 * 1024 * 1024) {
-
-                throw new Error(
-                    "حجم الصورة يجب ألا يتجاوز 2MB."
-                );
-
-            }
+const client =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
 
-            const allowedTypes = [
-                "image/jpeg",
-                "image/png",
-                "image/webp"
-            ];
+const form =
+    document.getElementById("registerForm");
 
 
-            if (!allowedTypes.includes(photoFile.type)) {
-
-                throw new Error(
-                    "الصورة يجب أن تكون JPG أو PNG أو WebP."
-                );
-
-            }
+const submitButton =
+    document.getElementById("submitButton");
 
 
-            const extension =
-                photoFile.name
-                    .split(".")
-                    .pop()
-                    .toLowerCase();
+const result =
+    document.getElementById("result");
 
 
-            const fileName =
-                crypto.randomUUID() +
-                "." +
-                extension;
+form.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
 
 
-            const { error: uploadError } =
-                await client.storage
-                    .from("craftsmen-photos")
-                    .upload(
-                        fileName,
-                        photoFile,
-                        {
-                            contentType: photoFile.type,
-                            upsert: false
-                        }
+        submitButton.disabled = true;
+
+        submitButton.textContent =
+            "⏳ جاري الإرسال...";
+
+        result.innerHTML = "";
+
+
+        try {
+
+
+            const name =
+                document
+                    .getElementById("name")
+                    .value
+                    .trim();
+
+
+            const profession =
+                document
+                    .getElementById("profession")
+                    .value;
+
+
+            const city =
+                document
+                    .getElementById("city")
+                    .value;
+
+
+            const phone =
+                document
+                    .getElementById("phone")
+                    .value
+                    .trim();
+
+
+            const description =
+                document
+                    .getElementById("description")
+                    .value
+                    .trim();
+
+
+            const photoInput =
+                document.getElementById("photo");
+
+
+            const photoFile =
+                photoInput.files[0];
+
+
+            let photoUrl = null;
+
+
+            /* =========================
+               التحقق من الصورة
+            ========================= */
+
+            if (photoFile) {
+
+
+                if (
+                    photoFile.size >
+                    2 * 1024 * 1024
+                ) {
+
+                    throw new Error(
+                        "حجم الصورة يجب ألا يتجاوز 2MB."
                     );
 
+                }
 
-            if (uploadError) {
 
-                throw uploadError;
+                const allowedTypes = [
+
+                    "image/jpeg",
+                    "image/png",
+                    "image/webp"
+
+                ];
+
+
+                if (
+                    !allowedTypes.includes(
+                        photoFile.type
+                    )
+                ) {
+
+                    throw new Error(
+                        "الصورة يجب أن تكون JPG أو PNG أو WebP."
+                    );
+
+                }
+
+
+                /* =========================
+                   اسم الملف
+                ========================= */
+
+                const extension =
+                    photoFile.name
+                        .split(".")
+                        .pop()
+                        .toLowerCase();
+
+
+                const fileName =
+                    crypto.randomUUID() +
+                    "." +
+                    extension;
+
+
+                /* =========================
+                   رفع الصورة
+                ========================= */
+
+                const uploadResult =
+                    await client.storage
+                        .from("craftsmen-photos")
+                        .upload(
+                            fileName,
+                            photoFile,
+                            {
+                                contentType:
+                                    photoFile.type,
+
+                                upsert: false
+                            }
+                        );
+
+
+                if (uploadResult.error) {
+
+                    throw uploadResult.error;
+
+                }
+
+
+                /* =========================
+                   رابط الصورة
+                ========================= */
+
+                const publicResult =
+                    client.storage
+                        .from("craftsmen-photos")
+                        .getPublicUrl(
+                            fileName
+                        );
+
+
+                photoUrl =
+                    publicResult.data.publicUrl;
 
             }
 
 
-            const { data: publicUrlData } =
-                client.storage
-                    .from("craftsmen-photos")
-                    .getPublicUrl(fileName);
+            /* =========================
+               حفظ الحرفي
+            ========================= */
+
+            const insertResult =
+                await client
+                    .from("craftsmen")
+                    .insert([{
+
+                        name: name,
+
+                        profession: profession,
+
+                        city: city,
+
+                        phone: phone,
+
+                        description: description,
+
+                        photo_url: photoUrl,
+
+                        status: "pending"
+
+                    }])
+                    .select();
 
 
-            photoUrl =
-                publicUrlData.publicUrl;
+            if (insertResult.error) {
+
+                throw insertResult.error;
+
+            }
+
+
+            console.log(
+                "تم الحفظ:",
+                insertResult.data
+            );
+
+
+            result.innerHTML = `
+
+                <div class="success">
+
+                    ✅ تم إرسال طلب التسجيل بنجاح!
+
+                    <br><br>
+
+                    سيتم مراجعة معلوماتك قبل ظهورها للزبائن.
+
+                </div>
+
+            `;
+
+
+            form.reset();
+
 
         }
 
+        catch (error) {
 
-        /* =========================
-           حفظ الحرفي
-        ========================= */
-
-        const { data, error } =
-            await client
-                .from("craftsmen")
-                .insert([{
-                    name: name,
-                    profession: profession,
-                    city: city,
-                    phone: phone,
-                    description: description,
-                    photo_url: photoUrl,
-                    status: "pending"
-                }])
-                .select();
-
-
-        if (error) {
 
             console.error(
-                "Supabase error:",
+                "Registration error:",
                 error
             );
 
-            throw error;
+
+            result.innerHTML = `
+
+                <div class="error">
+
+                    ❌ حدث خطأ
+
+                    <br><br>
+
+                    ${String(error.message || error)}
+
+                </div>
+
+            `;
 
         }
 
 
-        console.log(
-            "تم الحفظ:",
-            data
-        );
+        finally {
 
 
-        alert(
-            "✅ تم إرسال طلب التسجيل بنجاح!\n\n" +
-            "سيتم مراجعة معلوماتك قبل ظهورها للزبائن."
-        );
+            submitButton.disabled = false;
 
+            submitButton.textContent =
+                "📩 إرسال طلب التسجيل";
 
-        form.reset();
-
-
-    } catch (error) {
-
-        console.error(
-            "Unexpected error:",
-            error
-        );
-
-
-        alert(
-            "❌ حدث خطأ:\n\n" +
-            error.message
-        );
-
-
-    } finally {
-
-        submitButton.disabled = false;
-
-        submitButton.textContent =
-            "📩 إرسال طلب التسجيل";
-
-    }
-
-});
-
-
-    if (uploadError) {
-        throw uploadError;
-    }
-
-
-    const { data: publicUrlData } =
-        client.storage
-            .from("craftsmen-photos")
-            .getPublicUrl(fileName);
-
-
-    photoUrl =
-        publicUrlData.publicUrl;
-}
-
-
-const { data, error } = await client
-    .from("craftsmen")
-    .insert([{
-        name: name,
-        profession: profession,
-        city: city,
-        phone: phone,
-        description: description,
-        photo_url: photoUrl,
-        status: "pending"
-    }])
-    .select();
-
-
-if (error) {
-
-    console.error("Supabase error:", error);
-
-    throw error;
-}
-
-        
-
-            console.error("Supabase error:", response.error);
-
-            resultBox.innerHTML =
-                "<div class='error'>" +
-                "❌ فشل الحفظ<br><br>" +
-                response.error.message +
-                "</div>";
-
-            return;
         }
 
-        resultBox.innerHTML =
-            "<div class='success'>" +
-            "✅ تم إرسال طلب التسجيل بنجاح!<br><br>" +
-            "سيتم مراجعة معلوماتك قبل ظهورها للزبائن." +
-            "</div>";
-
-        form.reset();
-
-    } catch (error) {
-
-        console.error("Unexpected error:", error);
-
-        resultBox.innerHTML =
-            "<div class='error'>" +
-            "❌ حدث خطأ غير متوقع<br><br>" +
-            error.message +
-            "</div>";
-
-    } finally {
-
-        submitButton.disabled = false;
-        submitButton.textContent = "📩 إرسال طلب التسجيل";
-
     }
 
-});
-</script>>
+);
+
+</script>
+
 
 </body>
+
 </html>
