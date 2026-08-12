@@ -161,17 +161,17 @@ document.getElementById("registerForm").addEventListener("submit", async functio
         }]);
 
 
-    if (error) {
+  if (error) {
 
-        console.error(error);
+    console.error("Supabase error:", error);
 
-        alert(
-            "❌ حدث خطأ أثناء التسجيل.\n\n" +
-            "حاول مرة أخرى."
-        );
+    alert(
+        "❌ خطأ Supabase:\n\n" +
+        error.message
+    );
 
-        return;
-    }
+    return;
+}
 
 
     alert(
