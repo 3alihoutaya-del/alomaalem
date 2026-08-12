@@ -296,17 +296,16 @@ form.addEventListener("submit", async function(event) {
 
     try {
 
-        const { data, error } = await client
-            .from("craftsmen")
-            .insert({
-                name: name,
-                profession: profession,
-                city: city,
-                phone: phone,
-                description: description,
-                status: "pending"
-            })
-            .select();
+        const { error } = await client
+    .from("craftsmen")
+    .insert({
+        name: name,
+        profession: profession,
+        city: city,
+        phone: phone,
+        description: description,
+        status: "pending"
+    });
 
         if (error) {
 
