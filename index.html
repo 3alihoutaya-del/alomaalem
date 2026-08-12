@@ -414,8 +414,6 @@
 </footer>
 
 
-<script>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
@@ -430,31 +428,60 @@ const client = window.supabase.createClient(
 let craftsmenData = [];
 
 
+function escapeHtml(value) {
+    return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+
 function displayCraftsmen(list) {
 
     const container = document.getElementById("craftsmen");
 
+    if (!container) {
+        return;
+    }
+
     container.innerHTML = "";
 
-    if (list.length === 0) {
+    if (!list || list.length === 0) {
+
         container.innerHTML = `
-            <div style="text-align:center;width:100%;background:white;padding:30px;border-radius:15px;">
+            <div style="
+                text-align:center;
+                width:100%;
+                background:white;
+                padding:30px;
+                border-radius:15px;
+            ">
                 <h3>😔 ما لقيناش حرفي بهاد المواصفات</h3>
                 <p>جرب مهنة أو مدينة أخرى.</p>
             </div>
         `;
+
         return;
     }
+
 
     list.forEach(craft => {
 
         const card = document.createElement("div");
+
         card.className = "craftsman";
 
-        const whatsappNumber =
-            craft.phone.startsWith("0")
-            ? "212" + craft.phone.substring(1)
-            : craft.phone;
+
+        let whatsappNumber = craft.phone || "";
+
+        whatsappNumber = whatsappNumber.replace(/\D/g, "");
+
+        if (whatsappNumber.startsWith("0")) {
+            whatsappNumber = "212" + whatsappNumber.substring(1);
+        }
+
 
         card.innerHTML = `
             <h3>👷 ${escapeHtml(craft.name)}</h3>
@@ -473,54 +500,82 @@ function displayCraftsmen(list) {
 
             <div class="contact-buttons">
 
-                <a class="call" href="tel:${escapeHtml(craft.phone)}">
+                <a
+                    class="call"
+                    href="tel:${escapeHtml(craft.phone)}"
+                >
                     📞 اتصال
                 </a>
 
-                <a class="whatsapp"
-                   href="https://wa.me/${whatsappNumber}"
-                   target="_blank"
-                   rel="noopener">
+                <a
+                    class="whatsapp"
+                    href="https://wa.me/${whatsappNumber}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     💬 WhatsApp
                 </a>
 
             </div>
         `;
 
+
         container.appendChild(card);
+
     });
-}
-
-
-function escapeHtml(value) {
-    return String(value ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
 }
 
 
 async function loadCraftsmen() {
 
-    const { data, error } = await client
-        .from("craftsmen")
-        .select("id,name,profession,city,phone,description,status")
-        .eq("status", "approved")
-        .order("created_at", { ascending: false });
+    const container = document.getElementById("craftsmen");
 
-    if (error) {
-        console.error("Supabase:", error);
+    if (container) {
 
-        document.getElementById("craftsmen").innerHTML = `
-            <div style="text-align:center;background:#ffe5e5;color:#b00020;padding:20px;border-radius:12px;">
-                حدث خطأ أثناء تحميل الحرفيين.
+        container.innerHTML = `
+            <div style="
+                text-align:center;
+                background:white;
+                padding:20px;
+                border-radius:12px;
+            ">
+                ⏳ جاري تحميل الحرفيين...
             </div>
         `;
 
+    }
+
+
+    const { data, error } = await client
+        .from("craftsmen")
+        .select("id,name,profession,city,phone,description,status,created_at")
+        .eq("status", "approved")
+        .order("created_at", { ascending: false });
+
+
+    if (error) {
+
+        console.error("Supabase error:", error);
+
+        if (container) {
+
+            container.innerHTML = `
+                <div style="
+                    text-align:center;
+                    background:#ffe5e5;
+                    color:#b00020;
+                    padding:20px;
+                    border-radius:12px;
+                ">
+                    ❌ حدث خطأ أثناء تحميل الحرفيين.
+                </div>
+            `;
+
+        }
+
         return;
     }
+
 
     craftsmenData = data || [];
 
@@ -528,47 +583,82 @@ async function loadCraftsmen() {
 }
 
 
-async function searchCraftsmen() {
+function searchCraftsmen() {
+
+    const professionElement =
+        document.getElementById("profession");
+
+    const cityElement =
+        document.getElementById("city");
+
 
     const profession =
-        document.getElementById("profession").value;
+        professionElement ? professionElement.value : "";
 
     const city =
-        document.getElementById("city").value;
+        cityElement ? cityElement.value : "";
 
-    const results =
-        craftsmenData.filter(craft => {
 
-            const professionMatch =
-                !profession || craft.profession === profession;
+    const results = craftsmenData.filter(craft => {
 
-            const cityMatch =
-                !city || craft.city === city;
+        const professionMatch =
+            !profession ||
+            craft.profession === profession;
 
-            return professionMatch && cityMatch;
-        });
+        const cityMatch =
+            !city ||
+            craft.city === city;
+
+        return professionMatch && cityMatch;
+
+    });
+
 
     displayCraftsmen(results);
 
-    document.getElementById("results")
-        .scrollIntoView({
+
+    const resultsSection =
+        document.getElementById("results");
+
+    if (resultsSection) {
+
+        resultsSection.scrollIntoView({
             behavior: "smooth"
         });
+
+    }
+
 }
 
 
 function chooseProfession(profession) {
 
-    document.getElementById("profession").value = profession;
+    const professionElement =
+        document.getElementById("profession");
 
-    document.getElementById("home")
-        .scrollIntoView({
+    if (professionElement) {
+
+        professionElement.value = profession;
+
+    }
+
+
+    const home =
+        document.getElementById("home");
+
+    if (home) {
+
+        home.scrollIntoView({
             behavior: "smooth"
         });
+
+    }
+
 }
 
 
 loadCraftsmen();
+
 </script>
 
 </script>
