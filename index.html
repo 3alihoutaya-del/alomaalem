@@ -321,7 +321,12 @@
                 <option value="أكادير">أكادير</option>
                 <option value="القنيطرة">القنيطرة</option>
             </select>
-
+<input
+    type="text"
+    id="searchText"
+    placeholder="🔎 ابحث باسم الحرفي أو الخدمة..."
+    oninput="searchCraftsmen()"
+>
             <button class="search-btn" onclick="searchCraftsmen()">
                 🔎 ابحث
             </button>
@@ -649,6 +654,58 @@ async function loadCraftsmen() {
 
 
 function searchCraftsmen() {
+
+    const profession =
+        document.getElementById("profession").value;
+
+    const city =
+        document.getElementById("city").value;
+
+    const searchText =
+        document.getElementById("searchText")
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    const results =
+        craftsmenData.filter(craft => {
+
+            const professionMatch =
+                !profession ||
+                craft.profession === profession;
+
+
+            const cityMatch =
+                !city ||
+                craft.city === city;
+
+
+            const text =
+                (
+                    (craft.name || "") + " " +
+                    (craft.profession || "") + " " +
+                    (craft.description || "")
+                ).toLowerCase();
+
+
+            const textMatch =
+                !searchText ||
+                text.includes(searchText);
+
+
+            return (
+                professionMatch &&
+                cityMatch &&
+                textMatch
+            );
+
+        });
+
+
+    displayCraftsmen(results);
+
+}
 
     const professionElement =
         document.getElementById("profession");
