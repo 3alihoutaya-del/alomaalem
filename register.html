@@ -122,6 +122,29 @@
             font-size: 14px;
         }
 
+        #result {
+            margin-top: 20px;
+        }
+
+        .success {
+            background: #e5ffe9;
+            color: #087522;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .error {
+            background: #ffe5e5;
+            color: #b00020;
+            padding: 15px;
+            border-radius: 10px;
+            direction: ltr;
+            text-align: left;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-family: monospace;
+        }
+
         @media (max-width: 700px) {
             .container {
                 margin: 20px auto;
@@ -152,21 +175,7 @@
             عرّف الزبائن بخدماتك وخليهم يلقاوك بسهولة.
         </p>
 
-       <form id="registerForm">
-
-    <!-- حقول التسجيل هنا -->
-
-    <button type="submit">
-        📩 إرسال طلب التسجيل
-    </button>
-
-</form>
-
-<div id="result"></div>
-
-<div class="note">
-    ℹ️ سيتم مراجعة طلب التسجيل قبل ظهورها للزبائن.
-</div>
+        <form id="registerForm">
 
             <label for="name">الاسم الكامل</label>
 
@@ -243,6 +252,8 @@
 
         </form>
 
+        <div id="result"></div>
+
         <div class="note">
             ℹ️ سيتم مراجعة طلب التسجيل قبل ظهور بيانات الحرفي للزبائن.
         </div>
@@ -266,10 +277,13 @@ const client = window.supabase.createClient(
 
 const form = document.getElementById("registerForm");
 const submitButton = document.getElementById("submitButton");
+const resultBox = document.getElementById("result");
 
 form.addEventListener("submit", async function(event) {
 
     event.preventDefault();
+
+    resultBox.innerHTML = "";
 
     submitButton.disabled = true;
     submitButton.textContent = "⏳ جاري الإرسال...";
@@ -284,34 +298,36 @@ form.addEventListener("submit", async function(event) {
 
         const { data, error } = await client
             .from("craftsmen")
-            .insert([{
+            .insert({
                 name: name,
                 profession: profession,
                 city: city,
                 phone: phone,
                 description: description,
                 status: "pending"
-            }])
+            })
             .select();
 
-         if (result.error) {
+        if (error) {
 
-        document.getElementById("result").innerHTML =
-            "<div style='background:#ffe5e5;color:#b00020;padding:15px;border-radius:10px;margin-top:20px'>" +
-            "❌ فشل الحفظ<br><br>" +
-            "السبب: " +
-            result.error.message +
-            "</div>";
+            console.error("Supabase error:", error);
 
-        return;
-    }
+            resultBox.innerHTML =
+                "<div class='error'>" +
+                "❌ فشل الحفظ\n\n" +
+                JSON.stringify(error, null, 2) +
+                "</div>";
+
+            return;
+        }
 
         console.log("تم الحفظ:", data);
 
-        alert(
-            "✅ تم إرسال طلب التسجيل بنجاح!\n\n" +
-            "سيتم مراجعة معلوماتك قبل ظهورها للزبائن."
-        );
+        resultBox.innerHTML =
+            "<div class='success'>" +
+            "✅ تم إرسال طلب التسجيل بنجاح!<br><br>" +
+            "سيتم مراجعة معلوماتك قبل ظهورها للزبائن." +
+            "</div>";
 
         form.reset();
 
@@ -319,10 +335,11 @@ form.addEventListener("submit", async function(event) {
 
         console.error("Unexpected error:", error);
 
-        alert(
-            "❌ حدث خطأ غير متوقع:\n\n" +
-            error.message
-        );
+        resultBox.innerHTML =
+            "<div class='error'>" +
+            "❌ حدث خطأ غير متوقع\n\n" +
+            error.message +
+            "</div>";
 
     } finally {
 
