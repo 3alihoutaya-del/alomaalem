@@ -55,7 +55,20 @@
         .logo span {
             color: #16803c;
         }
+.register-btn {
+    display: inline-block;
+    background: #d62828;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: .2s;
+}
 
+.register-btn:hover {
+    background: #b71f1f;
+}
         .hero {
             background: linear-gradient(
                 135deg,
@@ -283,7 +296,19 @@
         }
 
         @media (max-width: 800px) {
+@media (max-width: 600px) {
 
+    .header-content {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .register-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+}
             .search-fields {
                 grid-template-columns: 1fr;
             }
@@ -313,6 +338,10 @@
         <div class="logo">
             ألو <span>معلم</span>
         </div>
+
+        <a href="register.html" class="register-btn">
+            👷 سجّل كحرفي
+        </a>
 
     </div>
 
