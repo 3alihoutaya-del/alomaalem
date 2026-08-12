@@ -1,15 +1,22 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>ألو معلم | الحرفيين والخدمات في المغرب</title>
 
-    <meta name="description" content="ألو معلم منصة مغربية للعثور على الحرفيين والخدمات المهنية حسب المهنة والمدينة.">
+    <meta name="description"
+          content="ألو معلم منصة مغربية للعثور على الحرفيين والخدمات المهنية حسب المهنة والمدينة.">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -20,23 +27,27 @@
             font-family: Arial, Tahoma, sans-serif;
             background: #f5f7fa;
             color: #222;
-            line-height: 1.7;
         }
 
         header {
-            background: #fff;
-            padding: 16px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: white;
+            padding: 18px 6%;
             box-shadow: 0 2px 10px rgba(0,0,0,.08);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
+        .header-content {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
         .logo {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: bold;
             color: #d62828;
         }
@@ -45,73 +56,66 @@
             color: #16803c;
         }
 
-        nav a {
-            text-decoration: none;
-            color: #333;
-            margin-right: 20px;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: #d62828;
-        }
-
         .hero {
-            background: linear-gradient(135deg, #d62828, #16803c);
+            background: linear-gradient(
+                135deg,
+                #16803c,
+                #0f6b32
+            );
+
             color: white;
+            padding: 65px 20px;
             text-align: center;
-            padding: 70px 20px;
         }
 
         .hero h1 {
-            font-size: 46px;
-            margin-bottom: 10px;
+            font-size: 38px;
+            margin-bottom: 15px;
         }
 
         .hero p {
-            font-size: 21px;
+            font-size: 18px;
             margin-bottom: 30px;
         }
 
         .search-box {
-            background: white;
-            max-width: 950px;
+            max-width: 1000px;
             margin: auto;
-            padding: 25px;
+            background: white;
+            padding: 20px;
             border-radius: 18px;
-            box-shadow: 0 8px 30px rgba(0,0,0,.18);
+            box-shadow: 0 8px 30px rgba(0,0,0,.15);
         }
 
-      .search-fields {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr auto;
-    gap: 12px;
-}
+        .search-fields {
+            display: grid;
+            grid-template-columns:
+                1fr 1fr 1.5fr auto;
+            gap: 12px;
+        }
 
-select,
-.search-fields input,
-.search-btn {
-    width: 100%;
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 16px;
-    font-family: inherit;
-}
+        select,
+        input,
+        .search-btn {
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: inherit;
+        }
 
-select,
-.search-fields input {
-    border: 1px solid #ddd;
-    background: white;
-}
+        select,
+        input {
+            border: 1px solid #ddd;
+            background: white;
+            color: #222;
+        }
 
-.search-fields input {
-    outline: none;
-}
-
-.search-fields input:focus,
-select:focus {
-    border-color: #16803c;
-}
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #16803c;
+        }
 
         .search-btn {
             border: none;
@@ -119,102 +123,124 @@ select:focus {
             color: white;
             font-weight: bold;
             cursor: pointer;
+            transition: .2s;
         }
 
         .search-btn:hover {
-            background: #b51f1f;
+            background: #b71f1f;
         }
 
-        .section {
-            padding: 55px 6%;
-        }
-
-        .section h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 30px;
-        }
-
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 18px;
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .service {
-            background: white;
-            padding: 25px;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 3px 12px rgba(0,0,0,.07);
+        .clear-btn {
+            margin-top: 12px;
+            padding: 10px 20px;
+            border: none;
+            background: #eee;
+            color: #333;
+            border-radius: 8px;
             cursor: pointer;
-            transition: .3s;
         }
 
-        .service:hover {
-            transform: translateY(-5px);
+        .clear-btn:hover {
+            background: #ddd;
         }
 
-        .service .icon {
-            font-size: 42px;
-        }
-
-        .results {
-            max-width: 1100px;
-            margin: auto;
+        .results-section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
         }
 
         .results-title {
             text-align: center;
-            margin-bottom: 25px;
-            font-size: 25px;
+            margin-bottom: 30px;
         }
 
-        .craftsmen {
+        .results-title h2 {
+            margin-bottom: 8px;
+        }
+
+        .results-title p {
+            color: #777;
+        }
+
+        #craftsmen {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
         }
 
         .craftsman {
             background: white;
-            border-radius: 16px;
+            border-radius: 18px;
             padding: 22px;
-            box-shadow: 0 4px 15px rgba(0,0,0,.08);
+            box-shadow: 0 5px 20px rgba(0,0,0,.08);
+            text-align: center;
+            transition: transform .2s,
+                        box-shadow .2s;
+
+            cursor: pointer;
+        }
+
+        .craftsman:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,.12);
+        }
+
+        .craftsman-photo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 15px;
+        }
+
+        .craftsman-avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: #16803c;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 55px;
+            margin: 0 auto 15px;
         }
 
         .craftsman h3 {
-            margin-bottom: 5px;
-            font-size: 21px;
+            font-size: 22px;
+            margin-bottom: 8px;
         }
 
         .profession {
             color: #d62828;
             font-weight: bold;
+            margin-bottom: 8px;
         }
 
         .city {
-            color: #555;
-            margin: 8px 0;
+            color: #666;
+            margin-bottom: 12px;
         }
 
-        .rating {
-            color: #f4a900;
-            margin-bottom: 15px;
+        .description {
+            color: #555;
+            line-height: 1.7;
+            min-height: 50px;
+            margin-bottom: 18px;
         }
 
         .contact-buttons {
             display: flex;
-            gap: 8px;
+            gap: 10px;
         }
 
         .contact-buttons a {
             flex: 1;
-            text-align: center;
-            padding: 10px;
-            border-radius: 8px;
+            padding: 12px 8px;
+            border-radius: 9px;
             text-decoration: none;
             color: white;
             font-weight: bold;
@@ -225,585 +251,697 @@ select:focus {
         }
 
         .whatsapp {
-            background: #25d366;
+            background: #25D366;
         }
 
-        .cta {
-            background: #16803c;
-            color: white;
+        .empty {
+            grid-column: 1 / -1;
+            background: white;
+            padding: 40px 20px;
+            border-radius: 18px;
             text-align: center;
-            padding: 55px 20px;
         }
 
-        .cta h2 {
-            font-size: 30px;
+        .empty h3 {
             margin-bottom: 10px;
         }
 
-        .cta a {
-            display: inline-block;
-            margin-top: 20px;
+        .loading {
+            grid-column: 1 / -1;
             background: white;
-            color: #16803c;
-            padding: 13px 28px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
+            padding: 40px;
+            border-radius: 18px;
+            text-align: center;
         }
 
         footer {
+            margin-top: 60px;
             background: #222;
             color: white;
             text-align: center;
-            padding: 25px;
+            padding: 30px 20px;
         }
 
-        @media (max-width: 700px) {
-.search-fields {
-    grid-template-columns: 1fr;
-}
-            header {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            nav a {
-                margin: 0 7px;
-                font-size: 14px;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-            }
+        @media (max-width: 800px) {
 
             .search-fields {
                 grid-template-columns: 1fr;
-                <input
-    type="text"
-    id="searchText"
-    placeholder="🔎 ابحث باسم الحرفي أو الخدمة..."
-    oninput="searchCraftsmen()"
->
             }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .hero {
+                padding: 45px 15px;
+            }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
 <header>
 
-    <div class="logo">
-        ألو <span>معلم</span>
-    </div>
+    <div class="header-content">
 
-    <nav>
-        <a href="#home">الرئيسية</a>
-        <a href="#services">الخدمات</a>
-        <a href="#results">الحرفيين</a>
-        <a href="#join">سجّل كحرفي</a>
-    </nav>
+        <div class="logo">
+            ألو <span>معلم</span>
+        </div>
+
+    </div>
 
 </header>
 
 
-<section class="hero" id="home">
+<section class="hero">
 
-    <h1>ألو معلم 👷</h1>
+    <h1>👷 ألو معلم</h1>
 
-    <p>لقي المعلم اللي كتقلب عليه بسهولة</p>
+    <p>
+        لقي المعلم اللي كتقلب عليه بسهولة
+    </p>
+
 
     <div class="search-box">
 
         <div class="search-fields">
 
+
             <select id="profession">
-                <option value="">اختر المهنة</option>
-                <option value="سباك">🔧 سباك</option>
-                <option value="كهربائي">⚡ كهربائي</option>
-                <option value="صباغ">🎨 صباغ</option>
-                <option value="نجار">🪚 نجار</option>
-                <option value="بناء">🧱 بناء</option>
-                <option value="حداد">🔩 حداد</option>
-                <option value="تكييف">❄️ تكييف</option>
+
+                <option value="">
+                    اختر المهنة
+                </option>
+
+                <option value="سباك">
+                    🔧 سباك
+                </option>
+
+                <option value="كهربائي">
+                    ⚡ كهربائي
+                </option>
+
+                <option value="صباغ">
+                    🎨 صباغ
+                </option>
+
+                <option value="نجار">
+                    🪚 نجار
+                </option>
+
+                <option value="بناء">
+                    🧱 بناء
+                </option>
+
+                <option value="حداد">
+                    🔩 حداد
+                </option>
+
+                <option value="تكييف">
+                    ❄️ تكييف
+                </option>
+
             </select>
 
+
             <select id="city">
-                <option value="">اختر المدينة</option>
-                <option value="الرباط">الرباط</option>
-                <option value="سلا">سلا</option>
-                <option value="تمارة">تمارة</option>
-                <option value="الدار البيضاء">الدار البيضاء</option>
-                <option value="مراكش">مراكش</option>
-                <option value="فاس">فاس</option>
-                <option value="طنجة">طنجة</option>
-                <option value="مكناس">مكناس</option>
-                <option value="أكادير">أكادير</option>
-                <option value="القنيطرة">القنيطرة</option>
+
+                <option value="">
+                    اختر المدينة
+                </option>
+
+                <option value="الرباط">
+                    الرباط
+                </option>
+
+                <option value="سلا">
+                    سلا
+                </option>
+
+                <option value="تمارة">
+                    تمارة
+                </option>
+
+                <option value="الدار البيضاء">
+                    الدار البيضاء
+                </option>
+
+                <option value="مراكش">
+                    مراكش
+                </option>
+
+                <option value="فاس">
+                    فاس
+                </option>
+
+                <option value="طنجة">
+                    طنجة
+                </option>
+
+                <option value="مكناس">
+                    مكناس
+                </option>
+
+                <option value="أكادير">
+                    أكادير
+                </option>
+
+                <option value="القنيطرة">
+                    القنيطرة
+                </option>
+
+                <option value="وجدة">
+                    وجدة
+                </option>
+
+                <option value="تطوان">
+                    تطوان
+                </option>
+
+                <option value="الناظور">
+                    الناظور
+                </option>
+
             </select>
+
+
             <input
-    type="text"
-    id="searchText"
-    placeholder="🔎 ابحث باسم الحرفي أو الخدمة..."
->
-            <button class="search-btn" onclick="searchCraftsmen()">
+                type="text"
+                id="searchText"
+                placeholder="🔎 ابحث باسم الحرفي أو الخدمة..."
+            >
+
+
+            <button
+                type="button"
+                class="search-btn"
+                onclick="searchCraftsmen()"
+            >
                 🔎 ابحث
             </button>
 
+
         </div>
+
+
+        <button
+            type="button"
+            class="clear-btn"
+            onclick="clearSearch()"
+        >
+            مسح البحث
+        </button>
 
     </div>
 
 </section>
 
 
-<section class="section" id="services">
+<section
+    class="results-section"
+    id="results"
+>
 
-    <h2>الخدمات</h2>
 
-    <div class="services">
+    <div class="results-title">
 
-        <div class="service" onclick="chooseProfession('سباك')">
-            <div class="icon">🔧</div>
-            <h3>سباك</h3>
-        </div>
+        <h2>
+            👷 الحرفيون المتاحون
+        </h2>
 
-        <div class="service" onclick="chooseProfession('كهربائي')">
-            <div class="icon">⚡</div>
-            <h3>كهربائي</h3>
-        </div>
+        <p>
+            اختار الحرفي المناسب وتواصل معه مباشرة
+        </p>
 
-        <div class="service" onclick="chooseProfession('صباغ')">
-            <div class="icon">🎨</div>
-            <h3>صباغ</h3>
-        </div>
+    </div>
 
-        <div class="service" onclick="chooseProfession('نجار')">
-            <div class="icon">🪚</div>
-            <h3>نجار</h3>
-        </div>
 
-        <div class="service" onclick="chooseProfession('بناء')">
-            <div class="icon">🧱</div>
-            <h3>بناء</h3>
-        </div>
+    <div id="craftsmen">
 
-        <div class="service" onclick="chooseProfession('حداد')">
-            <div class="icon">🔩</div>
-            <h3>حداد</h3>
-        </div>
-
-        <div class="service" onclick="chooseProfession('تكييف')">
-            <div class="icon">❄️</div>
-            <h3>تكييف</h3>
+        <div class="loading">
+            ⏳ جاري تحميل الحرفيين...
         </div>
 
     </div>
 
-</section>
-
-
-<section class="section" id="results">
-
-    <div class="results">
-
-        <h2 class="results-title">👷 الحرفيون</h2>
-
-        <div id="craftsmen" class="craftsmen"></div>
-
-    </div>
-
-</section>
-
-
-<section class="cta" id="join">
-
-    <h2>واش أنت حرفي؟ 👷</h2>
-
-    <p>خلي الزبائن يلقاو خدمتك بسهولة</p>
-
-   <a href="register.html">
-    📩 سجّل كحرفي
-</a>
 
 </section>
 
 
 <footer>
 
-    <p>© 2026 ألو معلم - جميع الحقوق محفوظة</p>
-
-    <p>منصة مغربية لربط الحرفيين بالزبائن</p>
+    <p>
+        © 2026 ألو معلم - جميع الحقوق محفوظة
+    </p>
 
 </footer>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-const SUPABASE_URL = "https://kjmvewppokrzcbegxmwg.supabase.co";
-const SUPABASE_KEY = "sb_publishable_As8JEhEsIfOta6cyi6e_AA_tp-T9k0W";
 
-const client = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
+
+const SUPABASE_URL =
+    "https://kjmvewppokrzcbegxmwg.supabase.co";
+
+
+const SUPABASE_KEY =
+    "sb_publishable_As8JEhEsIfOta6cyi6e_AA_tp-T9k0W";
+
+
+const client =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
 
 let craftsmenData = [];
 
 
+
 function escapeHtml(value) {
+
     return String(value ?? "")
+
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
         .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
+
 }
+
 
 
 function displayCraftsmen(list) {
 
-    const container = document.getElementById("craftsmen");
+    const container =
+        document.getElementById(
+            "craftsmen"
+        );
 
-    if (!container) {
-        return;
-    }
 
     container.innerHTML = "";
+
 
     if (!list || list.length === 0) {
 
         container.innerHTML = `
-            <div style="
-                text-align:center;
-                width:100%;
-                background:white;
-                padding:30px;
-                border-radius:15px;
-            ">
-                <h3>😔 ما لقيناش حرفي بهاد المواصفات</h3>
-                <p>جرب مهنة أو مدينة أخرى.</p>
+
+            <div class="empty">
+
+                <h3>
+                    😔 ما لقيناش حرفي بهاد المواصفات
+                </h3>
+
+                <p>
+                    جرب مهنة أو مدينة أو اسم آخر.
+                </p>
+
             </div>
+
         `;
 
         return;
-    }
-
-
-    list.forEach(craft => {
-
-        const card = document.createElement("div");
-card.className = "craftsman";
-
-card.style.cursor = "pointer";
-
-card.addEventListener("click", function () {
-    window.location.href =
-        "craftsman.html?id=" +
-        encodeURIComponent(craft.id);
-});
-card.style.cursor = "pointer";
-
-card.addEventListener("click", function () {
-    window.location.href =
-        "craftsman.html?id=" +
-        encodeURIComponent(craft.id);
-});
-    
-
-
-        let whatsappNumber = craft.phone || "";
-
-        whatsappNumber = whatsappNumber.replace(/\D/g, "");
-
-        if (whatsappNumber.startsWith("0")) {
-            whatsappNumber = "212" + whatsappNumber.substring(1);
-        }
-
-
-        card.innerHTML = `
-        ${craft.photo_url ? `
-    <img
-        src="${escapeHtml(craft.photo_url)}"
-        alt="${escapeHtml(craft.name)}"
-        style="
-            width:100px;
-            height:100px;
-            object-fit:cover;
-            border-radius:50%;
-            display:block;
-            margin:0 auto 15px;
-        "
-    >
-` : `
-    <div style="
-        width:100px;
-        height:100px;
-        border-radius:50%;
-        background:#16803c;
-        color:white;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        font-size:45px;
-        margin:0 auto 15px;
-    ">
-        👷
-    </div>
-`}
-            <h3>👷 ${escapeHtml(craft.name)}</h3>
-
-            <div class="profession">
-                ${escapeHtml(craft.profession)}
-            </div>
-
-            <div class="city">
-                📍 ${escapeHtml(craft.city)}
-            </div>
-
-            <div style="margin:10px 0;color:#555;">
-                ${escapeHtml(craft.description || "")}
-            </div>
-
-           <div class="contact-buttons">
-
-    <a
-        class="call"
-        href="tel:${escapeHtml(craft.phone)}"
-    >
-        📞 اتصال
-    </a>
-
-    <a
-        class="whatsapp"
-        href="https://wa.me/${whatsappNumber}"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        💬 WhatsApp
-    </a>
-
-</div>
-
-<a
-    href="craftsman.html?id=${encodeURIComponent(craft.id)}"
-    style="
-        display:block;
-        margin-top:12px;
-        text-align:center;
-        padding:11px;
-        background:#222;
-        color:white;
-        border-radius:8px;
-        text-decoration:none;
-        font-weight:bold;
-    "
->
-    👤 شاهد الملف
-</a>
-        `;
-
-card.querySelectorAll("a").forEach(function(link) {
-    link.addEventListener("click", function(event) {
-        event.stopPropagation();
-    });
-});
-        container.appendChild(card);
-
-    });
-}
-
-
-async function loadCraftsmen() {
-
-    const container = document.getElementById("craftsmen");
-
-    if (container) {
-
-        container.innerHTML = `
-            <div style="
-                text-align:center;
-                background:white;
-                padding:20px;
-                border-radius:12px;
-            ">
-                ⏳ جاري تحميل الحرفيين...
-            </div>
-        `;
 
     }
 
 
-    const { data, error } = await client
-        .from("craftsmen")
-        .select("id,name,profession,city,phone,description,photo_url,status")
-        .eq("status", "approved")
-        .order("created_at", { ascending: false });
+    list.forEach(function(craft) {
 
 
-    if (error) {
+        const card =
+            document.createElement("div");
 
-        console.error("Supabase error:", error);
 
-        if (container) {
+        card.className =
+            "craftsman";
 
-            container.innerHTML = `
-                <div style="
-                    text-align:center;
-                    background:#ffe5e5;
-                    color:#b00020;
-                    padding:20px;
-                    border-radius:12px;
-                ">
-                    ❌ حدث خطأ أثناء تحميل الحرفيين.
+
+        card.addEventListener(
+            "click",
+            function() {
+
+                window.location.href =
+                    "craftsman.html?id=" +
+                    encodeURIComponent(
+                        craft.id
+                    );
+
+            }
+        );
+
+
+        let photoHTML;
+
+
+        if (craft.photo_url) {
+
+            photoHTML = `
+
+                <img
+                    class="craftsman-photo"
+                    src="${escapeHtml(
+                        craft.photo_url
+                    )}"
+                    alt="${escapeHtml(
+                        craft.name
+                    )}"
+                >
+
+            `;
+
+        } else {
+
+            photoHTML = `
+
+                <div class="craftsman-avatar">
+                    👷
                 </div>
+
             `;
 
         }
 
+
+        const phone =
+            String(craft.phone || "");
+
+
+        const whatsappNumber =
+            phone.startsWith("0")
+                ? "212" + phone.substring(1)
+                : phone;
+
+
+        card.innerHTML = `
+
+            ${photoHTML}
+
+
+            <h3>
+                👷 ${escapeHtml(
+                    craft.name
+                )}
+            </h3>
+
+
+            <div class="profession">
+                ${escapeHtml(
+                    craft.profession
+                )}
+            </div>
+
+
+            <div class="city">
+                📍 ${escapeHtml(
+                    craft.city
+                )}
+            </div>
+
+
+            <div class="description">
+
+                ${escapeHtml(
+                    craft.description || ""
+                )}
+
+            </div>
+
+
+            <div class="contact-buttons">
+
+
+                <a
+                    class="call"
+                    href="tel:${escapeHtml(
+                        phone
+                    )}"
+                >
+                    📞 اتصال
+                </a>
+
+
+                <a
+                    class="whatsapp"
+                    href="https://wa.me/${whatsappNumber}"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    💬 WhatsApp
+                </a>
+
+
+            </div>
+
+        `;
+
+
+        card
+            .querySelectorAll("a")
+            .forEach(function(link) {
+
+                link.addEventListener(
+                    "click",
+                    function(event) {
+
+                        event.stopPropagation();
+
+                    }
+                );
+
+            });
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+
+async function loadCraftsmen() {
+
+
+    const { data, error } =
+        await client
+
+            .from("craftsmen")
+
+            .select(
+                "id,name,profession,city,phone,description,photo_url,status"
+            )
+
+            .eq(
+                "status",
+                "approved"
+            )
+
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
+
+
+    if (error) {
+
+        console.error(
+            "Supabase:",
+            error
+        );
+
+
+        document.getElementById(
+            "craftsmen"
+        ).innerHTML = `
+
+            <div class="empty">
+
+                ❌ حدث خطأ أثناء تحميل الحرفيين.
+
+            </div>
+
+        `;
+
         return;
+
     }
 
 
-    craftsmenData = data || [];
+    craftsmenData =
+        data || [];
 
-    displayCraftsmen(craftsmenData);
+
+    displayCraftsmen(
+        craftsmenData
+    );
+
 }
+
 
 
 function searchCraftsmen() {
 
+
     const profession =
-        document.getElementById("profession").value;
+        document.getElementById(
+            "profession"
+        ).value;
+
 
     const city =
-        document.getElementById("city").value;
+        document.getElementById(
+            "city"
+        ).value;
+
 
     const searchText =
-        document.getElementById("searchText").value
+        document.getElementById(
+            "searchText"
+        ).value
         .trim()
         .toLowerCase();
 
 
-    const results = craftsmenData.filter(function(craft) {
-
-        const name =
-            String(craft.name || "").toLowerCase();
-
-        const professionText =
-            String(craft.profession || "").toLowerCase();
-
-        const description =
-            String(craft.description || "").toLowerCase();
+    const results =
+        craftsmenData.filter(
+            function(craft) {
 
 
-        const professionMatch =
-            !profession ||
-            craft.profession === profession;
+                const name =
+                    String(
+                        craft.name || ""
+                    ).toLowerCase();
 
 
-        const cityMatch =
-            !city ||
-            craft.city === city;
+                const professionText =
+                    String(
+                        craft.profession || ""
+                    ).toLowerCase();
 
 
-        const textMatch =
-            !searchText ||
-            name.includes(searchText) ||
-            professionText.includes(searchText) ||
-            description.includes(searchText);
+                const description =
+                    String(
+                        craft.description || ""
+                    ).toLowerCase();
 
 
-        return (
-            professionMatch &&
-            cityMatch &&
-            textMatch
+                const professionMatch =
+                    !profession ||
+                    craft.profession ===
+                    profession;
+
+
+                const cityMatch =
+                    !city ||
+                    craft.city === city;
+
+
+                const textMatch =
+                    !searchText ||
+                    name.includes(
+                        searchText
+                    ) ||
+                    professionText.includes(
+                        searchText
+                    ) ||
+                    description.includes(
+                        searchText
+                    );
+
+
+                return (
+                    professionMatch &&
+                    cityMatch &&
+                    textMatch
+                );
+
+            }
         );
 
+
+    displayCraftsmen(
+        results
+    );
+
+
+    document.getElementById(
+        "results"
+    ).scrollIntoView({
+        behavior: "smooth"
     });
 
-
-    displayCraftsmen(results);
 }
-    const professionElement =
-        document.getElementById("profession");
-
-    const cityElement =
-        document.getElementById("city");
 
 
-    const profession =
-        professionElement ? professionElement.value : "";
 
-    const city =
-        cityElement ? cityElement.value : "";
+function clearSearch() {
 
 
-    const results = craftsmenData.filter(craft => {
-
-        const professionMatch =
-            !profession ||
-            craft.profession === profession;
-
-        const cityMatch =
-            !city ||
-            craft.city === city;
-
-        return professionMatch && cityMatch;
-
-    });
+    document.getElementById(
+        "profession"
+    ).value = "";
 
 
-    displayCraftsmen(results);
+    document.getElementById(
+        "city"
+    ).value = "";
 
 
-    const resultsSection =
-        document.getElementById("results");
+    document.getElementById(
+        "searchText"
+    ).value = "";
 
-    if (resultsSection) {
 
-        resultsSection.scrollIntoView({
-            behavior: "smooth"
-        });
-
-    }
+    displayCraftsmen(
+        craftsmenData
+    );
 
 }
 
 
-function chooseProfession(profession) {
 
-    const professionElement =
-        document.getElementById("profession");
-
-    if (professionElement) {
-
-        professionElement.value = profession;
-
-    }
+document.getElementById(
+    "profession"
+).addEventListener(
+    "change",
+    searchCraftsmen
+);
 
 
-    const home =
-        document.getElementById("home");
+document.getElementById(
+    "city"
+).addEventListener(
+    "change",
+    searchCraftsmen
+);
 
-    if (home) {
 
-        home.scrollIntoView({
-            behavior: "smooth"
-        });
+document.getElementById(
+    "searchText"
+).addEventListener(
+    "input",
+    searchCraftsmen
+);
 
-    }
-
-}
 
 
 loadCraftsmen();
 
-</script>
 
 </script>
+
 
 </body>
+
 </html>
-```
