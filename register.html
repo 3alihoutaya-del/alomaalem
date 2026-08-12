@@ -307,16 +307,82 @@ const photoFile =
     document.getElementById("photo").files[0];
     try {
 
-        const response = await client
-            .from("craftsmen")
-            .insert({
-                name: name,
-                profession: profession,
-                city: city,
-                phone: phone,
-                description: description,
-                status: "pending"
+       let photoUrl = null;
+
+if (photoFile) {
+
+    if (photoFile.size > 2 * 1024 * 1024) {
+
+        throw new Error(
+            "حجم الصورة يجب ألا يتجاوز 2MB."
+        );
+    }
+
+    const allowedTypes = [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+    ];
+
+    if (!allowedTypes.includes(photoFile.type)) {
+
+        throw new Error(
+            "صيغة الصورة يجب أن تكون JPG أو PNG أو WebP."
+        );
+    }
+
+    const fileExtension =
+        photoFile.name.split(".").pop().toLowerCase();
+
+    const fileName =
+        crypto.randomUUID() + "." + fileExtension;
+
+
+    const { error: uploadError } =
+        await client.storage
+            .from("craftsmen-photos")
+            .upload(fileName, photoFile, {
+                contentType: photoFile.type,
+                upsert: false
             });
+
+
+    if (uploadError) {
+        throw uploadError;
+    }
+
+
+    const { data: publicUrlData } =
+        client.storage
+            .from("craftsmen-photos")
+            .getPublicUrl(fileName);
+
+
+    photoUrl =
+        publicUrlData.publicUrl;
+}
+
+
+const { data, error } = await client
+    .from("craftsmen")
+    .insert([{
+        name: name,
+        profession: profession,
+        city: city,
+        phone: phone,
+        description: description,
+        photo_url: photoUrl,
+        status: "pending"
+    }])
+    .select();
+
+
+if (error) {
+
+    console.error("Supabase error:", error);
+
+    throw error;
+}
 
         if (response.error) {
 
