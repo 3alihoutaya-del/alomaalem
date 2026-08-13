@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>تفاصيل المباراة | TactiGol News</title>
+
+<meta name="description"
+      content="تفاصيل مباريات كرة القدم والنتائج والمواعيد على TactiGol News">
+
+<meta name="theme-color"
+      content="#07111f">
+
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:
+        Arial,
+        Tahoma,
+        sans-serif;
+
+    background:#f3f5f7;
+
+    color:#17202a;
+
+    line-height:1.7;
+
+    transition:
+        background .25s,
+        color .25s;
+
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    font-family:inherit;
+}
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root{
+
+    --dark:#07111f;
+
+    --dark2:#0d1b2a;
+
+    --green:#00a86b;
+
+    --green-dark:#087f56;
+
+    --red:#e63946;
+
+    --white:#ffffff;
+
+    --bg:#f3f5f7;
+
+    --card:#ffffff;
+
+    --text:#17202a;
+
+    --muted:#77808a;
+
+    --border:#e2e6ea;
+
+    --shadow:
+        0 6px 20px rgba(0,0,0,.06);
+
+}
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+body.dark{
+
+    --bg:#09111d;
+
+    --card:#101a29;
+
+    --text:#f4f7fa;
+
+    --muted:#a8b2bd;
+
+    --border:#263548;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+
+    background:
+        linear-gradient(
+            135deg,
+            #07111f,
+            #0c1d30
+        );
+
+    color:white;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    box-shadow:
+        0 4px 20px rgba(0,0,0,.18);
+
+}
+
+
+.header-inner{
+
+    max-width:1250px;
+
+    min-height:72px;
+
+    margin:auto;
+
+    padding:
+        10px 18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+}
+
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:900;
+
+    white-space:nowrap;
+
+}
+
+
+.logo span{
+
+    color:var(--green);
+
+}
+
+
+.logo small{
+
+    display:block;
+
+    text-align:center;
+
+    color:#9ca9b7;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    margin-top:-7px;
+
+}
+
+
+.nav{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:4px;
+
+    flex:1;
+
+    overflow-x:auto;
+
+}
+
+
+.nav::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+.nav a{
+
+    color:#d8e1e9;
+
+    padding:
+        8px 12px;
+
+    border-radius:7px;
+
+    font-size:14px;
+
+    white-space:nowrap;
+
+}
+
+
+.nav a:hover{
+
+    background:#14273b;
+
+    color:white;
+
+}
+
+
+.nav a.active{
+
+    background:var(--green);
+
+    color:white;
+
+}
+
+
+.actions{
+
+    display:flex;
+
+    gap:8px;
+
+}
+
+
+.icon-btn{
+
+    width:40px;
+
+    height:40px;
+
+    border:1px solid #26384b;
+
+    border-radius:8px;
+
+    background:#102033;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container{
+
+    max-width:1050px;
+
+    margin:auto;
+
+    padding:
+        25px 18px 60px;
+
+}
+
+
+/* =====================================================
+   BREADCRUMB
+===================================================== */
+
+.breadcrumb{
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    margin-bottom:15px;
+
+}
+
+
+.breadcrumb a{
+
+    color:var(--green);
+
+    font-weight:bold;
+
+}
+
+
+/* =====================================================
+   MATCH PAGE
+===================================================== */
+
+.match-page{
+
+    background:var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+/* =====================================================
+   MATCH HERO
+===================================================== */
+
+.match-hero{
+
+    background:
+        linear-gradient(
+            135deg,
+            #07111f,
+            #102941
+        );
+
+    color:white;
+
+    padding:
+        30px 25px 35px;
+
+    text-align:center;
+
+}
+
+
+.competition{
+
+    display:inline-block;
+
+    background:
+        rgba(0,168,107,.15);
+
+    border:
+        1px solid
+        rgba(0,168,107,.35);
+
+    color:#5ee7b7;
+
+    border-radius:20px;
+
+    padding:
+        5px 14px;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    margin-bottom:12px;
+
+}
+
+
+.match-status{
+
+    margin-top:5px;
+
+    display:inline-block;
+
+    font-size:12px;
+
+    padding:
+        4px 11px;
+
+    border-radius:20px;
+
+}
+
+
+.match-status.scheduled{
+
+    background:#164e35;
+
+    color:#86efac;
+
+}
+
+
+.match-status.live{
+
+    background:#651b1b;
+
+    color:#fca5a5;
+
+}
+
+
+.match-status.finished{
+
+    background:#334155;
+
+    color:#e2e8f0;
+
+}
+
+
+.match-status.postponed{
+
+    background:#684c12;
+
+    color:#fde68a;
+
+}
+
+
+/* =====================================================
+   TEAMS
+===================================================== */
+
+.match-teams{
+
+    max-width:800px;
+
+    margin:
+        30px auto 0;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 150px 1fr;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+
+.team{
+
+    text-align:center;
+
+}
+
+
+.team-logo{
+
+    width:90px;
+
+    height:90px;
+
+    object-fit:contain;
+
+    margin:
+        0 auto 12px;
+
+}
+
+
+.team-placeholder{
+
+    width:90px;
+
+    height:90px;
+
+    margin:
+        0 auto 12px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.12);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:42px;
+
+}
+
+
+.team-name{
+
+    font-size:20px;
+
+    font-weight:900;
+
+}
+
+
+.score-area{
+
+    text-align:center;
+
+}
+
+
+.score{
+
+    font-size:42px;
+
+    font-weight:900;
+
+    line-height:1.1;
+
+}
+
+
+.match-time{
+
+    color:#b9c7d4;
+
+    font-size:13px;
+
+    margin-top:8px;
+
+}
+
+
+/* =====================================================
+   INFO
+===================================================== */
+
+.match-info{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.1);
+
+    margin-top:30px;
+
+    padding-top:20px;
+
+    gap:10px;
+
+}
+
+
+.info-item{
+
+    text-align:center;
+
+    color:#cbd5df;
+
+    font-size:13px;
+
+}
+
+
+.info-item strong{
+
+    display:block;
+
+    color:white;
+
+    font-size:14px;
+
+    margin-top:3px;
+
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+.match-body{
+
+    padding:25px;
+
+}
+
+
+.section-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:15px;
+
+}
+
+
+.section-title::before{
+
+    content:"";
+
+    width:5px;
+
+    height:25px;
+
+    background:var(--green);
+
+    border-radius:5px;
+
+}
+
+
+.section-title h2{
+
+    font-size:21px;
+
+}
+
+
+/* =====================================================
+   NOTICE
+===================================================== */
+
+.notice{
+
+    background:var(--bg);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:10px;
+
+    padding:18px;
+
+    color:var(--muted);
+
+    text-align:center;
+
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.back-button{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    margin-top:20px;
+
+    background:var(--green);
+
+    color:white;
+
+    padding:
+        9px 16px;
+
+    border-radius:7px;
+
+    font-weight:bold;
+
+    font-size:13px;
+
+}
+
+
+.back-button:hover{
+
+    background:var(--green-dark);
+
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading{
+
+    background:var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:12px;
+
+    padding:40px;
+
+    text-align:center;
+
+    color:var(--muted);
+
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.error{
+
+    background:var(--card);
+
+    border:
+        1px solid #ef4444;
+
+    border-radius:12px;
+
+    padding:30px;
+
+    text-align:center;
+
+    color:#dc2626;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    background:#050c15;
+
+    color:#b8c3ce;
+
+    padding:
+        30px 18px;
+
+}
+
+
+.footer-inner{
+
+    max-width:1050px;
+
+    margin:auto;
+
+    text-align:center;
+
+}
+
+
+.footer-logo{
+
+    color:white;
+
+    font-size:24px;
+
+    font-weight:900;
+
+}
+
+
+.footer-logo span{
+
+    color:var(--green);
+
+}
+
+
+.copyright{
+
+    margin-top:8px;
+
+    color:#8794a1;
+
+    font-size:12px;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:700px){
+
+    .header-inner{
+
+        flex-wrap:wrap;
+
+    }
+
+
+    .nav{
+
+        order:3;
+
+        flex-basis:100%;
+
+    }
+
+
+    .match-teams{
+
+        grid-template-columns:
+            1fr 90px 1fr;
+
+        gap:8px;
+
+    }
+
+
+    .team-logo,
+    .team-placeholder{
+
+        width:65px;
+
+        height:65px;
+
+    }
+
+
+    .team-name{
+
+        font-size:15px;
+
+    }
+
+
+    .score{
+
+        font-size:30px;
+
+    }
+
+
+    .match-info{
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+
+@media(max-width:450px){
+
+    .container{
+
+        padding:
+            15px 10px 40px;
+
+    }
+
+
+    .match-hero{
+
+        padding:
+            25px 12px 30px;
+
+    }
+
+
+    .match-teams{
+
+        grid-template-columns:
+            1fr 70px 1fr;
+
+    }
+
+
+    .team-name{
+
+        font-size:13px;
+
+    }
+
+
+    .score{
+
+        font-size:25px;
+
+    }
+
+
+    .match-body{
+
+        padding:18px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="header-inner">
+
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+
+            Tacti<span>Gol</span>
+
+            <small>
+                NEWS
+            </small>
+
+        </a>
+
+
+        <nav class="nav">
+
+            <a href="index.html">
+                الرئيسية
+            </a>
+
+            <a
+                href="matches.html"
+                class="active"
+            >
+                ⚽ المباريات
+            </a>
+
+            <a href="index.html#latest">
+                📰 الأخبار
+            </a>
+
+            <a href="index.html#morocco">
+                🇲🇦 المغرب
+            </a>
+
+            <a href="index.html#world">
+                🌍 عالمي
+            </a>
+
+            <a href="index.html#transfers">
+                🔥 الانتقالات
+            </a>
+
+            <a href="index.html#tactics">
+                🎯 تكتيك
+            </a>
+
+        </nav>
+
+
+        <div class="actions">
+
+            <button
+                class="icon-btn"
+                id="darkBtn"
+                type="button"
+                title="الوضع الليلي"
+            >
+                🌙
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="container">
+
+
+    <div class="breadcrumb">
+
+        <a href="index.html">
+            الرئيسية
+        </a>
+
+        &nbsp; ← &nbsp;
+
+        <a href="matches.html">
+            المباريات
+        </a>
+
+        &nbsp; ← &nbsp;
+
+        تفاصيل المباراة
+
+    </div>
+
+
+    <div id="matchContainer">
+
+        <div class="loading">
+
+            ⏳ جاري تحميل تفاصيل المباراة...
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-inner">
+
+        <div class="footer-logo">
+
+            Tacti<span>Gol</span> News
+
+        </div>
+
+        <div class="copyright">
+
+            © 2026 TactiGol News
+            — جميع الحقوق محفوظة
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+/* =====================================================
+   SUPABASE
+===================================================== */
+
+const SUPABASE_URL =
+    "https://kjmvewppokrzcbegxmwg.supabase.co";
+
+
+const SUPABASE_KEY =
+    "sb_publishable_As8JEhEsIfOta6cyi6e_AA_tp-T9k0W";
+
+
+const client =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* =====================================================
+   DEFAULT
+===================================================== */
+
+const DEFAULT_LOGO = "";
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHtml(value){
+
+    return String(
+        value ?? ""
+    )
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* =====================================================
+   GET ID
+===================================================== */
+
+function getMatchId(){
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    return params.get("id");
+
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+function formatDate(date){
+
+    if(!date)
+        return "";
+
+    const d =
+        new Date(date);
+
+    if(
+        Number.isNaN(
+            d.getTime()
+        )
+    )
+        return "";
+
+    return d.toLocaleDateString(
+        "ar-MA",
+        {
+            weekday:"long",
+            year:"numeric",
+            month:"long",
+            day:"numeric"
+        }
+    );
+
+}
+
+
+/* =====================================================
+   TIME
+===================================================== */
+
+function formatTime(date){
+
+    if(!date)
+        return "";
+
+    const d =
+        new Date(date);
+
+    if(
+        Number.isNaN(
+            d.getTime()
+        )
+    )
+        return "";
+
+    return d.toLocaleTimeString(
+        "ar-MA",
+        {
+            hour:"2-digit",
+            minute:"2-digit"
+        }
+    );
+
+}
+
+
+/* =====================================================
+   STATUS TEXT
+===================================================== */
+
+function statusText(status){
+
+    switch(status){
+
+        case "live":
+            return "🔴 المباراة مباشرة";
+
+        case "finished":
+            return "✅ انتهت المباراة";
+
+        case "postponed":
+            return "⏸️ المباراة مؤجلة";
+
+        case "scheduled":
+            return "⏰ مباراة قادمة";
+
+        default:
+            return status || "مباراة";
+
+    }
+
+}
+
+
+/* =====================================================
+   STATUS CLASS
+===================================================== */
+
+function statusClass(status){
+
+    if(
+        [
+            "live",
+            "finished",
+            "scheduled",
+            "postponed"
+        ].includes(status)
+    ){
+
+        return status;
+
+    }
+
+    return "scheduled";
+
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+function renderLogo(
+    url,
+    team
+){
+
+    if(url){
+
+        return `
+
+            <img
+                class="team-logo"
+                src="${escapeHtml(url)}"
+                alt="${escapeHtml(team)}"
+            >
+
+        `;
+
+    }
+
+
+    return `
+
+        <div class="team-placeholder">
+            ⚽
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   LOAD MATCH
+===================================================== */
+
+async function loadMatch(){
+
+    const container =
+        document.getElementById(
+            "matchContainer"
+        );
+
+
+    const id =
+        getMatchId();
+
+
+    if(!id){
+
+        container.innerHTML = `
+
+            <div class="error">
+
+                ❌ لم يتم تحديد المباراة.
+
+                <br><br>
+
+                <a
+                    href="matches.html"
+                    class="back-button"
+                >
+                    ← العودة إلى المباريات
+                </a>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    try{
+
+        const result =
+            await client
+            .from("matches")
+            .select("*")
+            .eq(
+                "id",
+                id
+            )
+            .single();
+
+
+        if(result.error){
+
+            console.error(
+                "❌ Match:",
+                result.error
+            );
+
+
+            container.innerHTML = `
+
+                <div class="error">
+
+                    ❌ لم يتم العثور على المباراة.
+
+                    <br><br>
+
+                    <a
+                        href="matches.html"
+                        class="back-button"
+                    >
+                        ← العودة إلى المباريات
+                    </a>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        renderMatch(
+            result.data
+        );
+
+    }
+    catch(error){
+
+        console.error(
+            "❌ Match error:",
+            error
+        );
+
+
+        container.innerHTML = `
+
+            <div class="error">
+
+                ❌ حدث خطأ أثناء تحميل المباراة.
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   RENDER MATCH
+===================================================== */
+
+function renderMatch(match){
+
+    const container =
+        document.getElementById(
+            "matchContainer"
+        );
+
+
+    const homeTeam =
+        match.home_team ||
+        "الفريق المضيف";
+
+
+    const awayTeam =
+        match.away_team ||
+        "الفريق الضيف";
+
+
+    const competition =
+        match.competition ||
+        "كرة القدم";
+
+
+    const status =
+        match.status ||
+        "scheduled";
+
+
+    const homeScore =
+        match.home_score ??
+        "-";
+
+
+    const awayScore =
+        match.away_score ??
+        "-";
+
+
+    document.title =
+        homeTeam +
+        " × " +
+        awayTeam +
+        " | TactiGol News";
+
+
+    container.innerHTML = `
+
+        <article
+            class="match-page"
+        >
+
+
+            <section
+                class="match-hero"
+            >
+
+
+                <div class="competition">
+
+                    🏆
+
+                    ${escapeHtml(
+                        competition
+                    )}
+
+                </div>
+
+
+                <div>
+
+                    <span
+                        class="match-status ${statusClass(status)}"
+                    >
+
+                        ${statusText(status)}
+
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="match-teams"
+                >
+
+
+                    <!-- HOME -->
+
+                    <div class="team">
+
+
+                        ${renderLogo(
+                            match.home_logo,
+                            homeTeam
+                        )}
+
+
+                        <div class="team-name">
+
+                            ${escapeHtml(
+                                homeTeam
+                            )}
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- SCORE -->
+
+                    <div class="score-area">
+
+
+                        <div class="score">
+
+                            ${escapeHtml(
+                                homeScore
+                            )}
+
+                            -
+
+                            ${escapeHtml(
+                                awayScore
+                            )}
+
+                        </div>
+
+
+                        <div class="match-time">
+
+                            ${formatDate(
+                                match.match_date
+                            )}
+
+                            <br>
+
+                            ⏰
+
+                            ${formatTime(
+                                match.match_date
+                            )}
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- AWAY -->
+
+                    <div class="team">
+
+
+                        ${renderLogo(
+                            match.away_logo,
+                            awayTeam
+                        )}
+
+
+                        <div class="team-name">
+
+                            ${escapeHtml(
+                                awayTeam
+                            )}
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="match-info">
+
+
+                    <div class="info-item">
+
+                        🏆
+
+                        <strong>
+                            البطولة
+                        </strong>
+
+                        ${escapeHtml(
+                            competition
+                        )}
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        📅
+
+                        <strong>
+                            التاريخ
+                        </strong>
+
+                        ${formatDate(
+                            match.match_date
+                        )}
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        🏟️
+
+                        <strong>
+                            الملعب
+                        </strong>
+
+                        ${escapeHtml(
+                            match.stadium ||
+                            "غير محدد"
+                        )}
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+            <section class="match-body">
+
+
+                <div class="section-title">
+
+                    <h2>
+                        معلومات المباراة
+                    </h2>
+
+                </div>
+
+
+                <div class="notice">
+
+                    ${getMatchMessage(
+                        match
+                    )}
+
+                </div>
+
+
+                <a
+                    href="matches.html"
+                    class="back-button"
+                >
+
+                    ← العودة إلى جميع المباريات
+
+                </a>
+
+
+            </section>
+
+
+        </article>
+
+    `;
+
+}
+
+
+/* =====================================================
+   MATCH MESSAGE
+===================================================== */
+
+function getMatchMessage(match){
+
+    switch(match.status){
+
+        case "live":
+
+            return `
+                🔴
+                المباراة جارية الآن.
+                تابع TactiGol News لمعرفة آخر المستجدات.
+            `;
+
+
+        case "finished":
+
+            return `
+                ✅
+                انتهت المباراة.
+                النتيجة النهائية:
+                <strong>
+                    ${escapeHtml(
+                        match.home_score ?? "-"
+                    )}
+                    -
+                    ${escapeHtml(
+                        match.away_score ?? "-"
+                    )}
+                </strong>
+            `;
+
+
+        case "postponed":
+
+            return `
+                ⏸️
+                تم تأجيل هذه المباراة.
+            `;
+
+
+        default:
+
+            return `
+                ⏰
+                المباراة مبرمجة بتاريخ
+                <strong>
+                    ${formatDate(
+                        match.match_date
+                    )}
+                </strong>
+                في الساعة
+                <strong>
+                    ${formatTime(
+                        match.match_date
+                    )}
+                </strong>.
+            `;
+
+    }
+
+}
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+const darkBtn =
+    document.getElementById(
+        "darkBtn"
+    );
+
+
+function updateDarkButton(){
+
+    darkBtn.textContent =
+        document.body.classList.contains(
+            "dark"
+        )
+        ? "☀️"
+        : "🌙";
+
+}
+
+
+darkBtn.addEventListener(
+    "click",
+    function(){
+
+        document.body.classList.toggle(
+            "dark"
+        );
+
+
+        const dark =
+            document.body.classList.contains(
+                "dark"
+            );
+
+
+        localStorage.setItem(
+            "tactigol-dark",
+            dark
+        );
+
+
+        updateDarkButton();
+
+    }
+);
+
+
+if(
+    localStorage.getItem(
+        "tactigol-dark"
+    ) === "true"
+){
+
+    document.body.classList.add(
+        "dark"
+    );
+
+}
+
+
+updateDarkButton();
+
+
+/* =====================================================
+   START
+===================================================== */
+
+loadMatch();
+
+</script>
+
+
+</body>
+
+</html>
