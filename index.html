@@ -11,13 +11,10 @@
     <title>TactiGol News | أخبار كرة القدم</title>
 
     <meta name="description"
-          content="TactiGol News - آخر أخبار كرة القدم المغربية والعالمية، الانتقالات، التحليل التكتيكي ونتائج المباريات.">
-
-    <meta name="keywords"
-          content="كرة القدم, أخبار كرة القدم, المغرب, المنتخب المغربي, انتقالات, تحليل تكتيكي, TactiGol">
+          content="TactiGol News - أخبار كرة القدم المغربية والعالمية، الانتقالات والتحليل التكتيكي.">
 
     <meta name="theme-color"
-          content="#0b1220">
+          content="#07111f">
 
     <style>
 
@@ -27,20 +24,16 @@
             padding: 0;
         }
 
-
         :root {
-            --bg: #f4f6f9;
+            --bg: #f4f6f8;
             --card: #ffffff;
             --text: #111827;
             --muted: #6b7280;
-            --dark: #0b1220;
-            --dark2: #111c32;
-            --green: #00a86b;
-            --red: #e63946;
-            --gold: #f4b400;
             --border: #e5e7eb;
+            --primary: #00a86b;
+            --primary-dark: #087f56;
+            --dark: #07111f;
         }
-
 
         body {
             font-family:
@@ -54,20 +47,24 @@
             line-height: 1.7;
 
             transition:
-                background .3s,
-                color .3s;
+                background .25s,
+                color .25s;
         }
-
 
         a {
-            text-decoration: none;
             color: inherit;
+            text-decoration: none;
         }
 
-
         img {
-            max-width: 100%;
             display: block;
+            max-width: 100%;
+        }
+
+        button,
+        input,
+        select {
+            font-family: inherit;
         }
 
 
@@ -76,13 +73,7 @@
         ========================= */
 
         header {
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--dark),
-                    var(--dark2)
-                );
-
+            background: var(--dark);
             color: white;
 
             position: sticky;
@@ -91,73 +82,66 @@
             z-index: 1000;
 
             box-shadow:
-                0 3px 15px rgba(0,0,0,.15);
+                0 4px 20px rgba(0,0,0,.15);
         }
 
+        .header-inner {
+            max-width: 1200px;
 
-        .top-header {
-            max-width: 1250px;
             margin: auto;
 
+            min-height: 72px;
+
             padding:
-                15px 20px;
+                10px 20px;
 
             display: flex;
 
             align-items: center;
 
-            justify-content:
-                space-between;
+            justify-content: space-between;
 
             gap: 20px;
         }
 
-
         .logo {
-            font-size: 30px;
+            font-size: 28px;
+
             font-weight: 900;
 
-            letter-spacing: -1px;
+            white-space: nowrap;
         }
 
-
-        .logo .tacti {
-            color: white;
+        .logo span {
+            color: var(--primary);
         }
 
-
-        .logo .gol {
-            color: var(--green);
-        }
-
-
-        .logo small {
-            display: block;
-
-            font-size: 11px;
-
-            color: #cbd5e1;
-
-            letter-spacing: 2px;
-
-            margin-top: -7px;
-        }
-
-
-        .header-actions {
+        nav {
             display: flex;
 
             align-items: center;
 
-            gap: 10px;
+            gap: 18px;
+
+            overflow-x: auto;
         }
 
+        nav a {
+            color: #dbe3ec;
 
-        .icon-btn {
+            font-size: 14px;
+
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        .dark-btn {
             border: none;
 
-            background:
-                rgba(255,255,255,.1);
+            background: #182536;
 
             color: white;
 
@@ -168,162 +152,104 @@
 
             cursor: pointer;
 
-            font-size: 19px;
-        }
+            font-size: 18px;
 
-
-        .search-top {
-            display: flex;
-
-            background: white;
-
-            border-radius: 10px;
-
-            overflow: hidden;
-        }
-
-
-        .search-top input {
-            border: none;
-
-            outline: none;
-
-            padding: 10px 13px;
-
-            width: 210px;
-
-            font-family: inherit;
-        }
-
-
-        .search-top button {
-            border: none;
-
-            background: var(--green);
-
-            color: white;
-
-            padding:
-                0 15px;
-
-            cursor: pointer;
+            flex-shrink: 0;
         }
 
 
         /* =========================
-           NAVIGATION
-        ========================= */
-
-        nav {
-            border-top:
-                1px solid
-                rgba(255,255,255,.08);
-        }
-
-
-        .nav-inner {
-            max-width: 1250px;
-            margin: auto;
-
-            display: flex;
-
-            overflow-x: auto;
-
-            scrollbar-width: none;
-        }
-
-
-        .nav-inner::-webkit-scrollbar {
-            display: none;
-        }
-
-
-        .nav-inner a {
-            color: #e5e7eb;
-
-            padding:
-                12px 15px;
-
-            white-space: nowrap;
-
-            font-size: 14px;
-        }
-
-
-        .nav-inner a:hover {
-            background:
-                rgba(255,255,255,.08);
-
-            color: white;
-        }
-
-
-        /* =========================
-           BREAKING NEWS
-        ========================= */
-
-        .breaking {
-            background: var(--red);
-
-            color: white;
-        }
-
-
-        .breaking-inner {
-            max-width: 1250px;
-
-            margin: auto;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 15px;
-
-            padding:
-                8px 20px;
-        }
-
-
-        .breaking-title {
-            background: white;
-
-            color: var(--red);
-
-            padding:
-                4px 10px;
-
-            border-radius: 5px;
-
-            font-weight: bold;
-
-            white-space: nowrap;
-        }
-
-
-        #breakingText {
-            white-space: nowrap;
-
-            overflow: hidden;
-
-            text-overflow: ellipsis;
-
-            flex: 1;
-        }
-
-
-        /* =========================
-           CONTAINER
+           MAIN
         ========================= */
 
         .container {
-            max-width: 1250px;
+            max-width: 1200px;
 
-            margin:
-                30px auto;
+            margin: auto;
 
             padding:
-                0 20px;
+                25px 20px 50px;
+        }
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search-box {
+            background: var(--card);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 15px;
+
+            padding: 18px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,.04);
+        }
+
+        .search-form {
+            display: grid;
+
+            grid-template-columns:
+                1fr 2fr auto;
+
+            gap: 10px;
+        }
+
+        .search-form input,
+        .search-form select {
+            width: 100%;
+
+            padding: 13px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 9px;
+
+            background: var(--card);
+
+            color: var(--text);
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        .search-form input:focus,
+        .search-form select:focus {
+            border-color:
+                var(--primary);
+        }
+
+        .search-btn {
+            border: none;
+
+            background:
+                var(--primary);
+
+            color: white;
+
+            padding:
+                0 25px;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            font-size: 15px;
+        }
+
+        .search-btn:hover {
+            background:
+                var(--primary-dark);
         }
 
 
@@ -337,113 +263,87 @@
             grid-template-columns:
                 2fr 1fr;
 
-            gap: 20px;
+            gap: 15px;
 
-            margin-bottom: 35px;
+            margin-bottom: 40px;
         }
 
-
         .hero-main {
-            min-height: 420px;
+            position: relative;
+
+            min-height: 430px;
 
             border-radius: 18px;
 
             overflow: hidden;
 
-            position: relative;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #111827,
-                    #1f2937
-                );
-
-            color: white;
+            background: #111;
         }
-
 
         .hero-main img {
             width: 100%;
-            height: 100%;
 
-            min-height: 420px;
+            height: 430px;
 
             object-fit: cover;
-
-            opacity: .7;
         }
 
+        .hero-main::after {
+            content: "";
 
-        .hero-overlay {
             position: absolute;
 
             inset: 0;
 
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: flex-end;
-
-            padding: 30px;
-
             background:
                 linear-gradient(
                     transparent 20%,
-                    rgba(0,0,0,.85)
+                    rgba(0,0,0,.88)
                 );
         }
 
+        .hero-overlay {
+            position: absolute;
 
-        .category {
-            display: inline-block;
+            z-index: 2;
 
-            background: var(--green);
+            bottom: 0;
+
+            right: 0;
+            left: 0;
+
+            padding: 30px;
 
             color: white;
-
-            padding:
-                4px 9px;
-
-            border-radius: 5px;
-
-            font-size: 12px;
-
-            margin-bottom: 10px;
-
-            width: fit-content;
         }
-
 
         .hero-title {
             font-size: 32px;
 
-            line-height: 1.35;
+            line-height: 1.4;
 
-            margin-bottom: 8px;
+            margin-top: 8px;
         }
-
 
         .hero-meta {
             color: #d1d5db;
 
             font-size: 13px;
-        }
 
+            margin-top: 8px;
+        }
 
         .side-news {
             display: grid;
 
-            grid-template-rows:
-                1fr 1fr;
-
-            gap: 20px;
+            gap: 15px;
         }
-
 
         .side-card {
             background: var(--card);
+
+            border:
+                1px solid var(--border);
 
             border-radius: 15px;
 
@@ -452,89 +352,67 @@
             display: grid;
 
             grid-template-columns:
-                42% 58%;
-
-            box-shadow:
-                0 4px 15px
-                rgba(0,0,0,.06);
+                150px 1fr;
         }
 
-
         .side-card img {
-            width: 100%;
-            height: 100%;
+            width: 150px;
 
-            min-height: 180px;
+            height: 150px;
 
             object-fit: cover;
         }
 
-
         .side-content {
-            padding: 17px;
+            padding: 15px;
         }
-
 
         .side-content h3 {
             font-size: 17px;
 
             line-height: 1.5;
 
-            margin-bottom: 10px;
-        }
-
-
-        .date {
-            color: var(--muted);
-
-            font-size: 12px;
+            margin-top: 5px;
         }
 
 
         /* =========================
-           SECTION
+           SECTIONS
         ========================= */
 
         .section {
-            margin-bottom: 40px;
-        }
+            margin-bottom: 45px;
 
+            scroll-margin-top: 100px;
+        }
 
         .section-header {
             display: flex;
 
             align-items: center;
 
-            justify-content:
-                space-between;
+            justify-content: space-between;
 
             margin-bottom: 18px;
 
             border-right:
-                5px solid
-                var(--green);
+                5px solid var(--primary);
 
             padding-right: 12px;
         }
 
-
         .section-header h2 {
-            font-size: 24px;
+            font-size: 25px;
         }
-
 
         .view-all {
-            color: var(--green);
-
-            font-size: 14px;
+            color:
+                var(--primary);
 
             font-weight: bold;
+
+            font-size: 14px;
         }
-
-
-        /* =========================
-           NEWS GRID
-        ========================= */
 
         .news-grid {
             display: grid;
@@ -545,77 +423,75 @@
             gap: 18px;
         }
 
-
         .news-card {
             background: var(--card);
+
+            border:
+                1px solid var(--border);
 
             border-radius: 14px;
 
             overflow: hidden;
-
-            box-shadow:
-                0 4px 15px
-                rgba(0,0,0,.05);
 
             transition:
                 transform .2s,
                 box-shadow .2s;
         }
 
-
         .news-card:hover {
             transform:
                 translateY(-4px);
 
             box-shadow:
-                0 8px 25px
-                rgba(0,0,0,.1);
+                0 10px 25px rgba(0,0,0,.08);
         }
-
 
         .news-card-image {
-            height: 190px;
+            aspect-ratio: 16 / 9;
 
-            position: relative;
+            overflow: hidden;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #d1d5db,
-                    #9ca3af
-                );
+            background: #ddd;
         }
-
 
         .news-card-image img {
             width: 100%;
+
             height: 100%;
 
             object-fit: cover;
+
+            transition:
+                transform .3s;
         }
 
+        .news-card:hover
+        .news-card-image img {
+            transform:
+                scale(1.05);
+        }
 
         .news-card-content {
             padding: 15px;
         }
 
+        .category {
+            color:
+                var(--primary);
+
+            font-weight: bold;
+
+            font-size: 13px;
+        }
 
         .news-card h3 {
-            font-size: 17px;
+            font-size: 18px;
 
             line-height: 1.5;
 
-            margin-bottom: 8px;
-        }
+            margin-top: 5px;
 
-
-        .news-card p {
-            color: var(--muted);
-
-            font-size: 13px;
-
-            display:
-                -webkit-box;
+            display: -webkit-box;
 
             -webkit-line-clamp: 2;
 
@@ -624,73 +500,30 @@
             overflow: hidden;
         }
 
+        .news-card p {
+            color:
+                var(--muted);
 
-        /* =========================
-           FEATURED
-        ========================= */
+            font-size: 14px;
 
-        .featured-grid {
-            display: grid;
+            margin-top: 8px;
 
-            grid-template-columns:
-                repeat(3, 1fr);
+            display: -webkit-box;
 
-            gap: 18px;
-        }
+            -webkit-line-clamp: 2;
 
-
-        .featured {
-            position: relative;
-
-            min-height: 270px;
-
-            border-radius: 16px;
+            -webkit-box-orient: vertical;
 
             overflow: hidden;
-
-            background: #111827;
-
-            color: white;
         }
 
+        .date {
+            color:
+                var(--muted);
 
-        .featured img {
-            width: 100%;
-            height: 100%;
+            font-size: 12px;
 
-            min-height: 270px;
-
-            object-fit: cover;
-
-            opacity: .7;
-        }
-
-
-        .featured-content {
-            position: absolute;
-
-            inset: 0;
-
-            padding: 20px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: flex-end;
-
-            background:
-                linear-gradient(
-                    transparent 20%,
-                    rgba(0,0,0,.85)
-                );
-        }
-
-
-        .featured h3 {
-            font-size: 20px;
-
-            line-height: 1.45;
+            margin-top: 8px;
         }
 
 
@@ -698,15 +531,34 @@
            SEARCH RESULTS
         ========================= */
 
-        #searchResults {
+        #searchSection {
             display: none;
         }
 
 
-        .search-title {
-            margin-bottom: 20px;
+        /* =========================
+           STATES
+        ========================= */
 
-            font-size: 25px;
+        .loading,
+        .empty,
+        .error {
+            background: var(--card);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            text-align: center;
+
+            color: var(--muted);
+        }
+
+        .error {
+            color: #dc2626;
         }
 
 
@@ -717,19 +569,15 @@
         footer {
             background: var(--dark);
 
-            color: white;
+            color: #cbd5e1;
 
-            margin-top: 50px;
+            padding: 35px 20px;
         }
 
-
         .footer-inner {
-            max-width: 1250px;
+            max-width: 1200px;
 
             margin: auto;
-
-            padding:
-                45px 20px;
 
             display: grid;
 
@@ -739,49 +587,45 @@
             gap: 30px;
         }
 
-
         .footer-logo {
-            font-size: 28px;
+            font-size: 24px;
 
             font-weight: bold;
+
+            color: white;
+        }
+
+        .footer-logo span {
+            color:
+                var(--primary);
+        }
+
+        footer h3 {
+            color: white;
 
             margin-bottom: 10px;
         }
 
+        footer a {
+            display: block;
 
-        .footer-description {
-            color: #9ca3af;
+            margin: 5px 0;
 
-            max-width: 500px;
-        }
-
-
-        .footer-links {
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 7px;
-        }
-
-
-        .footer-links a {
             color: #cbd5e1;
-
-            font-size: 14px;
         }
-
 
         .copyright {
+            max-width: 1200px;
+
+            margin:
+                30px auto 0;
+
+            padding-top: 20px;
+
             border-top:
-                1px solid
-                rgba(255,255,255,.08);
+                1px solid #263548;
 
             text-align: center;
-
-            padding: 15px;
-
-            color: #9ca3af;
 
             font-size: 13px;
         }
@@ -792,7 +636,7 @@
         ========================= */
 
         body.dark {
-            --bg: #080d17;
+            --bg: #0b1220;
             --card: #111827;
             --text: #f3f4f6;
             --muted: #9ca3af;
@@ -800,142 +644,94 @@
         }
 
 
-        body.dark .side-card,
-        body.dark .news-card,
-        body.dark .register-box {
-            box-shadow:
-                0 4px 15px
-                rgba(0,0,0,.3);
-        }
-
-
         /* =========================
-           LOADING
-        ========================= */
-
-        .loading {
-            text-align: center;
-
-            padding: 40px;
-
-            color: var(--muted);
-        }
-
-
-        .empty {
-            background: var(--card);
-
-            padding: 30px;
-
-            text-align: center;
-
-            border-radius: 15px;
-
-            color: var(--muted);
-        }
-
-
-        /* =========================
-           MOBILE
+           RESPONSIVE
         ========================= */
 
         @media (max-width: 1000px) {
 
             .news-grid {
                 grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-            .hero {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-main {
-                min-height: 400px;
-            }
-
-            .featured-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
+                    repeat(3, 1fr);
             }
 
         }
 
 
-        @media (max-width: 650px) {
+        @media (max-width: 800px) {
 
-            .top-header {
+            .header-inner {
                 flex-wrap: wrap;
             }
 
-            .logo {
-                font-size: 25px;
-            }
+            nav {
+                width: 100%;
 
-            .search-top {
                 order: 3;
-
-                width: 100%;
             }
 
-            .search-top input {
-                width: 100%;
+            .hero {
+                grid-template-columns:
+                    1fr;
             }
 
-            .hero-main,
-            .hero-main img {
-                min-height: 330px;
+            .search-form {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .search-btn {
+                min-height: 48px;
+            }
+
+            .news-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .footer-inner {
+                grid-template-columns:
+                    1fr;
+            }
+
+        }
+
+
+        @media (max-width: 520px) {
+
+            .container {
+                padding:
+                    18px 12px 40px;
+            }
+
+            .search-form {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .news-grid {
+                grid-template-columns:
+                    1fr;
             }
 
             .hero-title {
                 font-size: 24px;
             }
 
+            .hero-main,
+            .hero-main img {
+                min-height: 330px;
+                height: 330px;
+            }
+
             .side-card {
                 grid-template-columns:
-                    1fr;
+                    120px 1fr;
             }
 
             .side-card img {
-                height: 180px;
-            }
-
-            .news-grid {
-                grid-template-columns:
-                    1fr 1fr;
-
-                gap: 12px;
-            }
-
-            .news-card-image {
-                height: 140px;
-            }
-
-            .news-card h3 {
-                font-size: 15px;
-            }
-
-            .featured-grid {
-                grid-template-columns:
-                    1fr;
-            }
-
-            .footer-inner {
-                grid-template-columns: 1fr;
-            }
-
-            .breaking-title {
-                font-size: 12px;
-            }
-
-        }
-
-
-        @media (max-width: 430px) {
-
-            .news-grid {
-                grid-template-columns:
-                    1fr;
+                width: 120px;
+                height: 125px;
             }
 
         }
@@ -948,75 +744,20 @@
 <body>
 
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
 
-    <div class="top-header">
+    <div class="header-inner">
 
-        <a href="index.html"
-           class="logo">
 
-            <span class="tacti">
-                Tacti
-            </span>
-
-            <span class="gol">
-                Gol
-            </span>
-
-            <small>
-                NEWS
-            </small>
-
+        <a
+            href="index.html"
+            class="logo"
+        >
+            Tacti<span>Gol</span> News
         </a>
 
 
-        <div class="header-actions">
-
-            <div class="search-top">
-
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="🔎 ابحث عن خبر..."
-                    onkeydown="
-                        if(event.key==='Enter')
-                        searchNews()
-                    "
-                >
-
-                <button
-                    onclick="searchNews()"
-                >
-                    🔎
-                </button>
-
-            </div>
-
-
-            <button
-                class="icon-btn"
-                onclick="toggleDarkMode()"
-                title="الوضع الليلي"
-            >
-                🌙
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <nav>
-
-        <div class="nav-inner">
-
-            <a href="index.html">
-                🏠 الرئيسية
-            </a>
+        <nav>
 
             <a href="#latest">
                 📰 آخر الأخبار
@@ -1031,63 +772,142 @@
             </a>
 
             <a href="#transfers">
-                🔥 الانتقالات
+                🔥 انتقالات
             </a>
 
             <a href="#tactics">
                 🎯 تكتيك
             </a>
 
-            <a href="#champions">
-                🏆 دوري الأبطال
-            </a>
-
-            <a href="#videos">
-                🎥 فيديو
-            </a>
-
-        </div>
-
-    </nav>
-
-</header>
+        </nav>
 
 
+        <button
+            type="button"
+            class="dark-btn"
+            id="darkBtn"
+        >
+            🌙
+        </button>
 
-<!-- =========================
-     BREAKING
-========================= -->
-
-<div class="breaking">
-
-    <div class="breaking-inner">
-
-        <div class="breaking-title">
-            🔴 عاجل
-        </div>
-
-        <div id="breakingText">
-            أهلاً بكم في TactiGol News — أخبار الكرة من زاوية مختلفة
-        </div>
 
     </div>
 
-</div>
+</header>
 
 
 
 <main class="container">
 
 
-    <!-- =========================
+    <!-- =====================
+         SEARCH
+    ====================== -->
+
+    <section class="search-box">
+
+        <form
+            id="searchForm"
+            class="search-form"
+        >
+
+
+            <select id="categorySearch">
+
+                <option value="">
+                    جميع الأقسام
+                </option>
+
+                <option value="المغرب">
+                    🇲🇦 المغرب
+                </option>
+
+                <option value="عالمية">
+                    🌍 عالمية
+                </option>
+
+                <option value="انتقالات">
+                    🔥 انتقالات
+                </option>
+
+                <option value="تكتيك">
+                    🎯 تكتيك
+                </option>
+
+                <option value="عام">
+                    📰 عام
+                </option>
+
+            </select>
+
+
+            <input
+                type="text"
+                id="searchText"
+                placeholder="🔎 ابحث باسم الخبر أو الموضوع..."
+            >
+
+
+            <button
+                type="submit"
+                class="search-btn"
+            >
+                🔎 بحث
+            </button>
+
+
+        </form>
+
+    </section>
+
+
+
+    <!-- =====================
+         SEARCH RESULTS
+    ====================== -->
+
+    <section
+        class="section"
+        id="searchSection"
+    >
+
+        <div class="section-header">
+
+            <h2>
+                🔎 نتائج البحث
+            </h2>
+
+            <a
+                href="#"
+                id="clearSearch"
+                class="view-all"
+            >
+                إغلاق
+            </a>
+
+        </div>
+
+
+        <div
+            id="searchGrid"
+            class="news-grid"
+        ></div>
+
+    </section>
+
+
+
+    <!-- =====================
          HERO
-    ========================= -->
+    ====================== -->
 
-    <section class="hero"
-             id="heroSection">
+    <section class="hero">
 
-        <div class="hero-main"
-             id="heroMain">
+
+        <div
+            class="hero-main"
+            id="heroMain"
+        >
 
             <div class="loading">
                 ⏳ جاري تحميل الأخبار...
@@ -1096,44 +916,25 @@
         </div>
 
 
-        <div class="side-news"
-             id="sideNews">
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         SEARCH RESULTS
-    ========================= -->
-
-    <section
-        class="section"
-        id="searchResults"
-    >
-
-        <div class="section-header">
-
-            <h2 class="search-title">
-                🔎 نتائج البحث
-            </h2>
-
-        </div>
-
         <div
-            class="news-grid"
-            id="searchGrid"
-        ></div>
+            class="side-news"
+            id="sideNews"
+        >
+
+            <div class="loading">
+                ⏳ جاري تحميل الأخبار...
+            </div>
+
+        </div>
+
 
     </section>
 
 
 
-    <!-- =========================
+    <!-- =====================
          LATEST
-    ========================= -->
+    ====================== -->
 
     <section
         class="section"
@@ -1146,19 +947,12 @@
                 📰 آخر الأخبار
             </h2>
 
-            <a
-                href="#latest"
-                class="view-all"
-            >
-                عرض الكل ←
-            </a>
-
         </div>
 
 
         <div
-            class="news-grid"
             id="latestGrid"
+            class="news-grid"
         >
 
             <div class="loading">
@@ -1167,13 +961,14 @@
 
         </div>
 
+
     </section>
 
 
 
-    <!-- =========================
+    <!-- =====================
          MOROCCO
-    ========================= -->
+    ====================== -->
 
     <section
         class="section"
@@ -1183,31 +978,30 @@
         <div class="section-header">
 
             <h2>
-                🇲🇦 الكرة المغربية
+                🇲🇦 أخبار المغرب
             </h2>
-
-            <a
-                href="#morocco"
-                class="view-all"
-            >
-                المزيد ←
-            </a>
 
         </div>
 
 
         <div
-            class="news-grid"
             id="moroccoGrid"
-        ></div>
+            class="news-grid"
+        >
+
+            <div class="empty">
+                لا توجد أخبار في هذا القسم حاليًا.
+            </div>
+
+        </div>
 
     </section>
 
 
 
-    <!-- =========================
+    <!-- =====================
          WORLD
-    ========================= -->
+    ====================== -->
 
     <section
         class="section"
@@ -1220,28 +1014,27 @@
                 🌍 كرة القدم العالمية
             </h2>
 
-            <a
-                href="#world"
-                class="view-all"
-            >
-                المزيد ←
-            </a>
-
         </div>
 
 
         <div
-            class="news-grid"
             id="worldGrid"
-        ></div>
+            class="news-grid"
+        >
+
+            <div class="empty">
+                لا توجد أخبار في هذا القسم حاليًا.
+            </div>
+
+        </div>
 
     </section>
 
 
 
-    <!-- =========================
+    <!-- =====================
          TRANSFERS
-    ========================= -->
+    ====================== -->
 
     <section
         class="section"
@@ -1251,31 +1044,30 @@
         <div class="section-header">
 
             <h2>
-                🔥 سوق الانتقالات
+                🔥 الانتقالات
             </h2>
-
-            <a
-                href="#transfers"
-                class="view-all"
-            >
-                المزيد ←
-            </a>
 
         </div>
 
 
         <div
-            class="featured-grid"
             id="transfersGrid"
-        ></div>
+            class="news-grid"
+        >
+
+            <div class="empty">
+                لا توجد أخبار في هذا القسم حاليًا.
+            </div>
+
+        </div>
 
     </section>
 
 
 
-    <!-- =========================
+    <!-- =====================
          TACTICS
-    ========================= -->
+    ====================== -->
 
     <section
         class="section"
@@ -1288,20 +1080,19 @@
                 🎯 التحليل التكتيكي
             </h2>
 
-            <a
-                href="#tactics"
-                class="view-all"
-            >
-                المزيد ←
-            </a>
-
         </div>
 
 
         <div
-            class="featured-grid"
             id="tacticsGrid"
-        ></div>
+            class="news-grid"
+        >
+
+            <div class="empty">
+                لا توجد أخبار في هذا القسم حاليًا.
+            </div>
+
+        </div>
 
     </section>
 
@@ -1310,9 +1101,9 @@
 
 
 
-<!-- =========================
+<!-- =====================
      FOOTER
-========================= -->
+===================== -->
 
 <footer>
 
@@ -1322,28 +1113,13 @@
         <div>
 
             <div class="footer-logo">
-
-                <span>
-                    Tacti
-                </span>
-
-                <span style="color:#00a86b;">
-                    Gol
-                </span>
-
-                News
-
+                Tacti<span>Gol</span> News
             </div>
 
-
-            <p class="footer-description">
-
-                TactiGol News منصة إخبارية
-                تهتم بآخر أخبار كرة القدم
-                المغربية والعالمية،
-                والتحليل التكتيكي
-                والانتقالات.
-
+            <p style="margin-top:10px;">
+                منصة إخبارية تهتم بأخبار
+                كرة القدم المغربية والعالمية
+                والانتقالات والتحليل التكتيكي.
             </p>
 
         </div>
@@ -1355,25 +1131,21 @@
                 الأقسام
             </h3>
 
-            <div class="footer-links">
+            <a href="#morocco">
+                🇲🇦 المغرب
+            </a>
 
-                <a href="#morocco">
-                    الكرة المغربية
-                </a>
+            <a href="#world">
+                🌍 عالمية
+            </a>
 
-                <a href="#world">
-                    كرة القدم العالمية
-                </a>
+            <a href="#transfers">
+                🔥 انتقالات
+            </a>
 
-                <a href="#transfers">
-                    الانتقالات
-                </a>
-
-                <a href="#tactics">
-                    التحليل التكتيكي
-                </a>
-
-            </div>
+            <a href="#tactics">
+                🎯 تكتيك
+            </a>
 
         </div>
 
@@ -1381,24 +1153,20 @@
         <div>
 
             <h3>
-                TactiGol
+                روابط
             </h3>
 
-            <div class="footer-links">
+            <a href="admin.html">
+                🔐 الإدارة
+            </a>
 
-                <a href="#">
-                    من نحن
-                </a>
+            <a href="#">
+                من نحن
+            </a>
 
-                <a href="#">
-                    اتصل بنا
-                </a>
-
-                <a href="#">
-                    سياسة الخصوصية
-                </a>
-
-            </div>
+            <a href="#">
+                اتصل بنا
+            </a>
 
         </div>
 
@@ -1417,27 +1185,36 @@
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- =====================
+     SUPABASE LIBRARY
+===================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
 
 
 <script>
 
-
-/* =========================
+/* ==========================================
    SUPABASE
-========================= */
+========================================== */
 
 const SUPABASE_URL =
-    "sb_publishable_As8JEhEsIfOta6cyi6e_AA_tp-T9k0W";
+    "https://kjmvewppokrzcbegxmwg.supabase.co";
 
 
 /*
-  const SUPABASE_KEY =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...";
+   ⚠️ ضع هنا Publishable / Anon Key
+   الخاص بمشروع Supabase.
+
+   لا تستخدم service_role
+   ولا secret key.
 */
 
 const SUPABASE_KEY =
-    "hiden";
+    "sb_publishable_As8JEhEsIfOta6cyi6e_AA_tp-T9k0W";
 
 
 const client =
@@ -1447,243 +1224,53 @@ const client =
     );
 
 
-
-/* =========================
-   DEMO ARTICLES
-========================= */
-
-const demoArticles = [
-
-    {
-        id: "demo1",
-
-        title:
-            "TactiGol News — أخبار كرة القدم من زاوية مختلفة",
-
-        excerpt:
-            "تابع معنا آخر أخبار كرة القدم المغربية والعالمية والتحليلات التكتيكية.",
-
-        category:
-            "عام",
-
-        image:
-            "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80",
-
-        created_at:
-            new Date().toISOString()
-    },
-
-
-    {
-        id: "demo2",
-
-        title:
-            "المنتخب المغربي يواصل الاستعداد للاستحقاقات القادمة",
-
-        excerpt:
-            "آخر أخبار المنتخب المغربي والتحضيرات للمباريات القادمة.",
-
-        category:
-            "المغرب",
-
-        image:
-            "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?auto=format&fit=crop&w=900&q=80",
-
-        created_at:
-            new Date().toISOString()
-    },
-
-
-    {
-        id: "demo3",
-
-        title:
-            "أبرز أخبار سوق الانتقالات الأوروبية",
-
-        excerpt:
-            "كل جديد حول تحركات الأندية واللاعبين في سوق الانتقالات.",
-
-        category:
-            "انتقالات",
-
-        image:
-            "https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=900&q=80",
-
-        created_at:
-            new Date().toISOString()
-    },
-
-
-    {
-        id: "demo4",
-
-        title:
-            "كيف يمكن للتحليل التكتيكي أن يغيّر قراءة المباراة؟",
-
-        excerpt:
-            "نظرة على أهم الأفكار والخطط التكتيكية في كرة القدم الحديثة.",
-
-        category:
-            "تكتيك",
-
-        image:
-            "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?auto=format&fit=crop&w=900&q=80",
-
-        created_at:
-            new Date().toISOString()
-    },
-
-
-    {
-        id: "demo5",
-
-        title:
-            "أخبار جديدة من الملاعب الأوروبية",
-
-        excerpt:
-            "آخر المستجدات من أبرز الدوريات الأوروبية.",
-
-        category:
-            "عالمية",
-
-        image:
-            "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=900&q=80",
-
-        created_at:
-            new Date().toISOString()
-    },
-
-
-    {
-        id: "demo6",
-
-        title:
-            "النجوم الشباب يخطفون الأنظار",
-
-        excerpt:
-            "مواهب جديدة تفرض نفسها في عالم كرة القدم.",
-
-        category:
-            "عالمية",
-
-        image:
-            "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&w=900&q=80",
-
-        created_at:
-            new Date().toISOString()
-    },
-
-
-    {
-        id: "demo7",
-
-        title:
-            "تحليل تكتيكي: أهمية الضغط العالي",
-
-        excerpt:
-            "كيف تستخدم الفرق الضغط العالي لاستعادة الكرة؟",
-
-        category:
-            "تكتيك",
-
-        image:
-            "https://images.unsplash.com/photo-1552318965-6e6be7484adf?auto=format&fit=crop&w=900&q=80",
-
-        created_at:
-            new Date().toISOString()
-    },
-
-
-    {
-        id: "demo8",
-
-        title:
-            "حركة جديدة في سوق الانتقالات",
-
-        excerpt:
-            "أندية كبيرة تستعد لتحركات جديدة خلال الميركاتو.",
-
-        category:
-            "انتقالات",
-
-        image:
-            "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=900&q=80",
-
-        created_at:
-            new Date().toISOString()
-    }
-
-];
-
-
+/* ==========================================
+   VARIABLES
+========================================== */
 
 let articles = [];
 
 
+const DEFAULT_IMAGE =
+    "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80";
 
-/* =========================
+
+/* ==========================================
    ESCAPE HTML
-========================= */
+========================================== */
 
 function escapeHtml(value) {
 
-    return String(value ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-}
-
-
-
-/* =========================
-   DATE
-========================= */
-
-function formatDate(date) {
-
-    if (!date)
-        return "";
-
-    try {
-
-        return new Date(date)
-            .toLocaleDateString(
-                "ar-MA",
-                {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric"
-                }
-            );
-
-    } catch {
-
-        return "";
-
-    }
+    return String(
+        value ?? ""
+    )
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 
 }
 
 
-
-/* =========================
+/* ==========================================
    ARTICLE URL
-========================= */
+========================================== */
 
 function articleUrl(article) {
 
     if (
-        article.id &&
-        !String(article.id)
-            .startsWith("demo")
+        article &&
+        article.id !== null &&
+        article.id !== undefined
     ) {
 
-        return:
-        `article.html?id=${encodeURIComponent(
-            article.id
-        )}`;
+        return (
+            "article.html?id=" +
+            encodeURIComponent(
+                article.id
+            )
+        );
 
     }
 
@@ -1692,34 +1279,65 @@ function articleUrl(article) {
 }
 
 
+/* ==========================================
+   DATE
+========================================== */
 
-/* =========================
-   CARD
-========================= */
+function formatDate(date) {
+
+    if (!date)
+        return "";
+
+    const d =
+        new Date(date);
+
+
+    if (
+        Number.isNaN(
+            d.getTime()
+        )
+    ) {
+
+        return "";
+
+    }
+
+
+    return d.toLocaleDateString(
+        "ar-MA",
+        {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        }
+    );
+
+}
+
+
+/* ==========================================
+   ARTICLE CARD
+========================================== */
 
 function articleCard(article) {
 
-    const url =
-        articleUrl(article);
+    const image =
+        article.image_url ||
+        DEFAULT_IMAGE;
 
 
     return `
 
         <article class="news-card">
 
-            <a href="${url}">
+            <a href="${articleUrl(article)}">
+
 
                 <div class="news-card-image">
 
                     <img
-                        src="${escapeHtml(
-                            article.image ||
-                            article.image_url ||
-                            "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=80"
-                        )}"
-                        alt="${escapeHtml(
-                            article.title
-                        )}"
+                        src="${escapeHtml(image)}"
+                        alt="${escapeHtml(article.title)}"
                         loading="lazy"
                     >
 
@@ -1727,6 +1345,7 @@ function articleCard(article) {
 
 
                 <div class="news-card-content">
+
 
                     <span class="category">
 
@@ -1751,7 +1370,6 @@ function articleCard(article) {
 
                         ${escapeHtml(
                             article.excerpt ||
-                            article.description ||
                             ""
                         )}
 
@@ -1766,7 +1384,9 @@ function articleCard(article) {
 
                     </div>
 
+
                 </div>
+
 
             </a>
 
@@ -1777,44 +1397,116 @@ function articleCard(article) {
 }
 
 
+/* ==========================================
+   RENDER SECTION
+========================================== */
 
-/* =========================
+function renderSection(
+    elementId,
+    list
+) {
+
+    const element =
+        document.getElementById(
+            elementId
+        );
+
+
+    if (!element)
+        return;
+
+
+    if (
+        !list ||
+        list.length === 0
+    ) {
+
+        element.innerHTML = `
+            <div class="empty">
+                لا توجد أخبار في هذا القسم حاليًا.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    element.innerHTML =
+        list
+            .slice(0, 8)
+            .map(articleCard)
+            .join("");
+
+}
+
+
+/* ==========================================
    HERO
-========================= */
+========================================== */
 
 function renderHero() {
 
-    if (!articles.length)
+    const hero =
+        document.getElementById(
+            "heroMain"
+        );
+
+
+    const side =
+        document.getElementById(
+            "sideNews"
+        );
+
+
+    if (!hero || !side)
         return;
+
+
+    if (
+        !articles ||
+        articles.length === 0
+    ) {
+
+        hero.innerHTML = `
+            <div class="empty">
+                لا توجد أخبار منشورة حاليًا.
+            </div>
+        `;
+
+        side.innerHTML = "";
+
+        return;
+
+    }
 
 
     const main =
         articles[0];
 
 
-    const side =
+    const sideArticles =
         articles.slice(1, 3);
 
 
-    document.getElementById(
-        "heroMain"
-    ).innerHTML = `
+    const mainImage =
+        main.image_url ||
+        DEFAULT_IMAGE;
+
+
+    hero.innerHTML = `
 
         <a href="${articleUrl(main)}">
 
+
             <img
-                src="${escapeHtml(
-                    main.image ||
-                    main.image_url ||
-                    ""
-                )}"
-                alt="${escapeHtml(
-                    main.title
-                )}"
+                src="${escapeHtml(mainImage)}"
+                alt="${escapeHtml(main.title)}"
             >
 
 
             <div class="hero-overlay">
+
 
                 <span class="category">
 
@@ -1843,39 +1535,44 @@ function renderHero() {
 
                 </div>
 
+
             </div>
+
 
         </a>
 
     `;
 
 
-    document.getElementById(
-        "sideNews"
-    ).innerHTML =
-        side.map(function(article) {
+    side.innerHTML =
+        sideArticles
+        .map(function(article) {
+
+            const image =
+                article.image_url ||
+                DEFAULT_IMAGE;
+
 
             return `
 
                 <article class="side-card">
 
-                    <a href="${articleUrl(article)}">
+
+                    <a
+                        href="${articleUrl(article)}"
+                    >
 
                         <img
-                            src="${escapeHtml(
-                                article.image ||
-                                article.image_url ||
-                                ""
-                            )}"
-                            alt="${escapeHtml(
-                                article.title
-                            )}"
+                            src="${escapeHtml(image)}"
+                            alt="${escapeHtml(article.title)}"
+                            loading="lazy"
                         >
 
                     </a>
 
 
                     <div class="side-content">
+
 
                         <span class="category">
 
@@ -1887,7 +1584,9 @@ function renderHero() {
                         </span>
 
 
-                        <a href="${articleUrl(article)}">
+                        <a
+                            href="${articleUrl(article)}"
+                        >
 
                             <h3>
 
@@ -1908,67 +1607,29 @@ function renderHero() {
 
                         </div>
 
+
                     </div>
+
 
                 </article>
 
             `;
 
-        }).join("");
+        })
+        .join("");
 
 }
 
 
-
-/* =========================
-   RENDER SECTIONS
-========================= */
-
-function renderSection(
-    elementId,
-    list
-) {
-
-    const element =
-        document.getElementById(
-            elementId
-        );
-
-
-    if (!element)
-        return;
-
-
-    if (!list.length) {
-
-        element.innerHTML = `
-            <div class="empty">
-                لا توجد أخبار في هذا القسم حاليًا.
-            </div>
-        `;
-
-        return;
-
-    }
-
-
-    element.innerHTML =
-        list
-            .slice(0, 8)
-            .map(articleCard)
-            .join("");
-
-}
-
-
-
-/* =========================
-   LOAD ARTICLES
-========================= */
+/* ==========================================
+   LOAD ARTICLES FROM SUPABASE
+========================================== */
 
 async function loadArticles() {
 
-    let data = null;
+    console.log(
+        "⏳ تحميل الأخبار..."
+    );
 
 
     try {
@@ -1976,7 +1637,13 @@ async function loadArticles() {
         const result =
             await client
                 .from("articles")
-                .select("*")
+                .select(
+                    "id,title,excerpt,content,category,image_url,author,status,created_at,updated_at"
+                )
+                .eq(
+                    "status",
+                    "published"
+                )
                 .order(
                     "created_at",
                     {
@@ -1986,357 +1653,360 @@ async function loadArticles() {
                 .limit(50);
 
 
-        if (
-            !result.error &&
-            result.data &&
-            result.data.length
-        ) {
+        if (result.error) {
 
-            data = result.data;
+            console.error(
+                "❌ Supabase:",
+                result.error
+            );
+
+
+            showError(
+                result.error.message
+            );
+
+
+            return;
 
         }
 
+
+        articles =
+            result.data || [];
+
+
+        console.log(
+            "✅ الأخبار:",
+            articles
+        );
+
+
+        renderHero();
+
+
+        renderSection(
+            "latestGrid",
+            articles
+        );
+
+
+        renderSection(
+            "moroccoGrid",
+            articles.filter(
+                function(article) {
+
+                    return (
+                        article.category ===
+                        "المغرب"
+                    );
+
+                }
+            )
+        );
+
+
+        renderSection(
+            "worldGrid",
+            articles.filter(
+                function(article) {
+
+                    return (
+                        article.category ===
+                        "عالمية"
+                    );
+
+                }
+            )
+        );
+
+
+        renderSection(
+            "transfersGrid",
+            articles.filter(
+                function(article) {
+
+                    return (
+                        article.category ===
+                        "انتقالات"
+                    );
+
+                }
+            )
+        );
+
+
+        renderSection(
+            "tacticsGrid",
+            articles.filter(
+                function(article) {
+
+                    return (
+                        article.category ===
+                        "تكتيك"
+                    );
+
+                }
+            )
+        );
+
+
     } catch(error) {
 
-        console.warn(
-            "Supabase articles:",
+        console.error(
+            "❌ خطأ:",
             error
         );
 
+
+        showError(
+            error.message
+        );
+
     }
 
-
-    articles =
-        data && data.length
-        ? data
-        : demoArticles;
+}
 
 
-    renderHero();
+/* ==========================================
+   ERROR
+========================================== */
 
+function showError(message) {
 
-    renderSection(
+    const ids = [
+
         "latestGrid",
-        articles
-    );
-
-
-    renderSection(
         "moroccoGrid",
-        articles.filter(
-            article =>
-                String(
-                    article.category || ""
-                ).includes("مغرب")
-        )
-    );
-
-
-    renderSection(
         "worldGrid",
-        articles.filter(
-            article =>
-                String(
-                    article.category || ""
-                ).includes("عالم")
-        )
-    );
-
-
-    renderFeatured(
         "transfersGrid",
-        articles.filter(
-            article =>
-                String(
-                    article.category || ""
-                ).includes("انتقال")
-        )
-    );
+        "tacticsGrid"
+
+    ];
 
 
-    renderFeatured(
-        "tacticsGrid",
-        articles.filter(
-            article =>
-                String(
-                    article.category || ""
-                ).includes("تكتي")
-        )
-    );
+    ids.forEach(
+        function(id) {
+
+            const element =
+                document.getElementById(
+                    id
+                );
 
 
-    updateBreaking();
-
-}
-
+            if (!element)
+                return;
 
 
-/* =========================
-   FEATURED
-========================= */
+            element.innerHTML = `
 
-function renderFeatured(
-    elementId,
-    list
-) {
+                <div class="error">
 
-    const element =
-        document.getElementById(
-            elementId
-        );
+                    ❌ حدث خطأ أثناء تحميل الأخبار.
 
+                    <br>
 
-    if (!element)
-        return;
+                    <small>
+                        ${escapeHtml(
+                            message || ""
+                        )}
+                    </small>
 
+                </div>
 
-    if (!list.length) {
+            `;
 
-        element.innerHTML = `
-            <div class="empty">
-                لا توجد أخبار في هذا القسم حاليًا.
-            </div>
-        `;
-
-        return;
-
-    }
-
-
-    element.innerHTML =
-        list
-            .slice(0, 3)
-            .map(function(article) {
-
-                return `
-
-                    <article class="featured">
-
-                        <a href="${articleUrl(article)}">
-
-                            <img
-                                src="${escapeHtml(
-                                    article.image ||
-                                    article.image_url ||
-                                    ""
-                                )}"
-                                alt="${escapeHtml(
-                                    article.title
-                                )}"
-                            >
-
-
-                            <div class="featured-content">
-
-                                <span class="category">
-
-                                    ${escapeHtml(
-                                        article.category ||
-                                        "أخبار"
-                                    )}
-
-                                </span>
-
-
-                                <h3>
-
-                                    ${escapeHtml(
-                                        article.title
-                                    )}
-
-                                </h3>
-
-                            </div>
-
-                        </a>
-
-                    </article>
-
-                `;
-
-            })
-            .join("");
-
-}
-
-
-
-/* =========================
-   BREAKING NEWS
-========================= */
-
-function updateBreaking() {
-
-    if (!articles.length)
-        return;
-
-
-    const news =
-        articles.slice(0, 5);
-
-
-    let index = 0;
-
-
-    const element =
-        document.getElementById(
-            "breakingText"
-        );
-
-
-    function show() {
-
-        if (!news.length)
-            return;
-
-
-        element.textContent =
-            news[index].title;
-
-
-        index =
-            (index + 1) %
-            news.length;
-
-    }
-
-
-    show();
-
-
-    setInterval(
-        show,
-        5000
+        }
     );
 
 }
 
 
-
-/* =========================
+/* ==========================================
    SEARCH
-========================= */
+========================================== */
 
 function searchNews() {
 
-    const input =
+    const searchInput =
         document.getElementById(
-            "searchInput"
+            "searchText"
         );
 
 
-    const query =
-        input.value
-            .trim()
-            .toLowerCase();
-
-
-    const section =
+    const categoryInput =
         document.getElementById(
-            "searchResults"
+            "categorySearch"
         );
 
 
-    const grid =
-        document.getElementById(
-            "searchGrid"
-        );
+    const text =
+        searchInput.value
+        .trim()
+        .toLowerCase();
 
 
-    if (!query) {
-
-        section.style.display =
-            "none";
-
-        return;
-
-    }
+    const category =
+        categoryInput.value;
 
 
     const results =
         articles.filter(
-            article => {
+            function(article) {
 
-                const text =
+                const searchableText =
                     (
-                        article.title ||
-                        ""
-                    ) +
-                    " " +
-                    (
-                        article.excerpt ||
-                        ""
-                    ) +
-                    " " +
-                    (
-                        article.category ||
-                        ""
+                        (article.title || "") +
+                        " " +
+                        (article.excerpt || "") +
+                        " " +
+                        (article.content || "") +
+                        " " +
+                        (article.category || "")
+                    )
+                    .toLowerCase();
+
+
+                const textMatch =
+                    !text ||
+                    searchableText.includes(
+                        text
                     );
 
 
-                return text
-                    .toLowerCase()
-                    .includes(query);
+                const categoryMatch =
+                    !category ||
+                    article.category ===
+                    category;
+
+
+                return (
+                    textMatch &&
+                    categoryMatch
+                );
 
             }
         );
 
 
-    section.style.display =
+    document.getElementById(
+        "searchSection"
+    ).style.display =
         "block";
 
 
-    if (!results.length) {
-
-        grid.innerHTML = `
-            <div class="empty">
-                😔 لم نجد أخبارًا مطابقة للبحث.
-            </div>
-        `;
-
-    } else {
-
-        grid.innerHTML =
-            results
-                .map(articleCard)
-                .join("");
-
-    }
+    renderSection(
+        "searchGrid",
+        results
+    );
 
 
-    section.scrollIntoView({
+    document.getElementById(
+        "searchSection"
+    ).scrollIntoView({
         behavior: "smooth"
     });
 
 }
 
 
+/* ==========================================
+   SEARCH EVENT
+========================================== */
 
-/* =========================
+document.getElementById(
+    "searchForm"
+).addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+        searchNews();
+
+    }
+);
+
+
+/* ==========================================
+   CLEAR SEARCH
+========================================== */
+
+document.getElementById(
+    "clearSearch"
+).addEventListener(
+    "click",
+    function(event) {
+
+        event.preventDefault();
+
+
+        document.getElementById(
+            "searchText"
+        ).value = "";
+
+
+        document.getElementById(
+            "categorySearch"
+        ).value = "";
+
+
+        document.getElementById(
+            "searchSection"
+        ).style.display =
+            "none";
+
+    }
+);
+
+
+/* ==========================================
    DARK MODE
-========================= */
+========================================== */
 
-function toggleDarkMode() {
-
-    document.body.classList.toggle(
-        "dark"
+const darkBtn =
+    document.getElementById(
+        "darkBtn"
     );
 
 
-    localStorage.setItem(
-        "tactigol-dark",
+function updateDarkButton() {
+
+    darkBtn.textContent =
         document.body.classList.contains(
             "dark"
         )
-    );
+        ? "☀️"
+        : "🌙";
 
 }
 
 
+darkBtn.addEventListener(
+    "click",
+    function() {
 
-/* =========================
-   START
-========================= */
+        document.body.classList.toggle(
+            "dark"
+        );
+
+
+        const isDark =
+            document.body.classList.contains(
+                "dark"
+            );
+
+
+        localStorage.setItem(
+            "tactigol-dark",
+            isDark
+        );
+
+
+        updateDarkButton();
+
+    }
+);
+
 
 if (
     localStorage.getItem(
@@ -2350,6 +2020,13 @@ if (
 
 }
 
+
+updateDarkButton();
+
+
+/* ==========================================
+   START
+========================================== */
 
 loadArticles();
 
