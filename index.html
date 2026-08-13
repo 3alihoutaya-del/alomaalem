@@ -1489,7 +1489,9 @@ footer a{
                 type="button"
                 title="الوضع الليلي"
             >
-                🌙
+                🌙<div class="visitor-time" id="visitorTime">
+    ☀️ <span>--:--</span>
+</div>
             </button>
 
         </div>
@@ -3320,7 +3322,41 @@ updateDarkButton();
 
 loadArticles();
 loadMatches();
+function updateVisitorTime() {
 
+    const now = new Date();
+
+    const time =
+        now.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false
+        });
+
+    const hour = now.getHours();
+
+    const icon =
+        hour >= 6 && hour < 19
+            ? "☀️"
+            : "🌙";
+
+    const element =
+        document.getElementById("visitorTime");
+
+    if (element) {
+
+        element.innerHTML =
+            `${icon} <span>${time}</span>`;
+
+    }
+}
+
+updateVisitorTime();
+
+setInterval(
+    updateVisitorTime,
+    1000
+);
 </script>
 
 
