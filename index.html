@@ -1988,7 +1988,7 @@ async function loadArticles() {
         if (result.error) {
 
             console.error(
-                "Supabase articles error:",
+                "❌ Supabase:",
                 result.error
             );
 
@@ -2002,14 +2002,14 @@ async function loadArticles() {
             articles = result.data;
 
             console.log(
-                "✅ تم تحميل الأخبار:",
+                "✅ أخبار Supabase:",
                 articles
             );
 
         } else {
 
             console.warn(
-                "لا توجد أخبار منشورة في Supabase"
+                "⚠️ لا توجد أخبار منشورة"
             );
 
             articles = demoArticles;
@@ -2020,7 +2020,7 @@ async function loadArticles() {
     } catch (error) {
 
         console.error(
-            "❌ خطأ في تحميل الأخبار:",
+            "❌ خطأ:",
             error
         );
 
@@ -2029,14 +2029,20 @@ async function loadArticles() {
     }
 
 
+    /* الرئيسية */
+
     renderHero();
 
+
+    /* آخر الأخبار */
 
     renderSection(
         "latestGrid",
         articles
     );
 
+
+    /* المغرب */
 
     renderSection(
         "moroccoGrid",
@@ -2047,6 +2053,8 @@ async function loadArticles() {
     );
 
 
+    /* العالمية */
+
     renderSection(
         "worldGrid",
         articles.filter(
@@ -2055,6 +2063,8 @@ async function loadArticles() {
         )
     );
 
+
+    /* الانتقالات */
 
     renderSection(
         "transfersGrid",
@@ -2065,6 +2075,8 @@ async function loadArticles() {
     );
 
 
+    /* التحليل التكتيكي */
+
     renderSection(
         "tacticsGrid",
         articles.filter(
@@ -2073,17 +2085,7 @@ async function loadArticles() {
         )
     );
 
-
-    renderSection(
-        "championsGrid",
-        articles.filter(
-            article =>
-                article.category === "دوري الأبطال"
-        )
-    );
-
 }
-
 
 /* =========================
    FEATURED
