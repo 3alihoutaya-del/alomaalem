@@ -1641,7 +1641,7 @@ footer a{
         </h2>
 
         <a
-            href="#"
+            href="#matches"
             class="more"
         >
             جميع المباريات ←
@@ -1649,125 +1649,14 @@ footer a{
 
     </div>
 
+    <div
+        class="matches"
+        id="matchesGrid"
+    >
 
-    <div class="matches">
-
-
-        <div class="match-card">
-
-            <div class="match-league">
-                الدوري المغربي
-            </div>
-
-            <span class="match-status">
-                قريبًا
-            </span>
-
-            <div class="match-teams">
-
-                <div class="team">
-                    الفريق الأول
-                </div>
-
-                <div class="score">
-                    -
-                </div>
-
-                <div class="team">
-                    الفريق الثاني
-                </div>
-
-            </div>
-
+        <div class="loading">
+            ⏳ جاري تحميل المباريات...
         </div>
-
-
-        <div class="match-card">
-
-            <div class="match-league">
-                دوري أبطال أوروبا
-            </div>
-
-            <span class="match-status">
-                قريبًا
-            </span>
-
-            <div class="match-teams">
-
-                <div class="team">
-                    فريق
-                </div>
-
-                <div class="score">
-                    -
-                </div>
-
-                <div class="team">
-                    فريق
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="match-card">
-
-            <div class="match-league">
-                الدوري الإسباني
-            </div>
-
-            <span class="match-status">
-                قريبًا
-            </span>
-
-            <div class="match-teams">
-
-                <div class="team">
-                    ريال مدريد
-                </div>
-
-                <div class="score">
-                    -
-                </div>
-
-                <div class="team">
-                    برشلونة
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="match-card">
-
-            <div class="match-league">
-                الدوري الإنجليزي
-            </div>
-
-            <span class="match-status">
-                قريبًا
-            </span>
-
-            <div class="match-teams">
-
-                <div class="team">
-                    فريق
-                </div>
-
-                <div class="score">
-                    -
-                </div>
-
-                <div class="team">
-                    فريق
-                </div>
-
-            </div>
-
-        </div>
-
 
     </div>
 
@@ -2745,7 +2634,275 @@ function renderTrending(){
 
 }
 
+/* =====================================================
+   LOAD MATCHES
+===================================================== */
 
+async function loadMatches(){
+
+    const element =
+        document.getElementById(
+            "matchesGrid"
+        );
+
+    if(!element)
+        return;
+
+    try{
+
+        const result =
+            await client
+            .from("matches")
+            .select("*")
+            .order(
+                "match_date",
+                {
+                    ascending:true
+                }
+            )
+            .limit(20);
+
+
+        if(result.error){
+
+            console.error(
+                "❌ Supabase matches:",
+                result.error
+            );
+
+            element.innerHTML = `
+
+                <div class="error">
+
+                    ❌ حدث خطأ أثناء تحميل المباريات.
+
+                </div>
+
+            `;
+
+            return;
+        }
+
+
+        const matches =
+            result.data || [];
+
+
+        if(!matches.length){
+
+            element.innerHTML = `
+
+                <div class="empty">
+
+                    لا توجد مباريات حاليًا.
+
+                </div>
+
+            `;
+
+            return;
+        }
+
+
+        element.innerHTML =
+            matches
+            .map(renderMatch)
+            .join("");
+
+
+    }
+    catch(error){
+
+        console.error(
+            "❌ Matches error:",
+            error
+        );
+
+        element.innerHTML = `
+
+            <div class="error">
+
+                ❌ تعذر تحميل المباريات.
+
+            </div>
+
+        `;
+
+    }
+
+}
+   /* =====================================================
+   RENDER MATCH
+===================================================== */
+
+function renderMatch(match){
+
+    const date =
+        new Date(
+            match.match_date
+        );
+
+
+    const time =
+        date.toLocaleTimeString(
+            "ar-MA",
+            {
+                hour:"2-digit",
+                minute:"2-digit"
+            }
+        );
+
+
+    let statusText =
+        "قادمة";
+
+
+    if(match.status === "live"){
+
+        statusText =
+            "🔴 مباشر";
+
+    }
+    else if(match.status === "finished"){
+
+        statusText =
+            "انتهت";
+
+    }
+    else if(match.status === "postponed"){
+
+        statusText =
+            "مؤجلة";
+
+    }
+
+
+    const homeScore =
+        match.home_score ??
+        "-";
+
+
+    const awayScore =
+        match.away_score ??
+        "-";
+
+
+    return `
+
+        <article class="match-card">
+
+            <div class="match-league">
+
+                ${escapeHtml(
+                    match.competition ||
+                    "كرة القدم"
+                )}
+
+            </div>
+
+
+            <span class="match-status">
+
+                ${statusText}
+
+            </span>
+
+
+            <div class="match-teams">
+
+
+                <div class="team">
+
+                    ${
+                        match.home_logo
+                        ?
+                        `<img
+                            src="${escapeHtml(match.home_logo)}"
+                            style="
+                                width:35px;
+                                height:35px;
+                                object-fit:contain;
+                                margin:auto;
+                            "
+                            alt=""
+                        >`
+                        :
+                        ""
+                    }
+
+                    <div>
+                        ${escapeHtml(
+                            match.home_team
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div
+                        class="score"
+                    >
+
+                        ${homeScore}
+                        -
+                        ${awayScore}
+
+                    </div>
+
+
+                    <div
+                        style="
+                            font-size:11px;
+                            color:var(--muted);
+                            margin-top:4px;
+                        "
+                    >
+
+                        ${time}
+
+                    </div>
+
+                </div>
+
+
+                <div class="team">
+
+                    ${
+                        match.away_logo
+                        ?
+                        `<img
+                            src="${escapeHtml(match.away_logo)}"
+                            style="
+                                width:35px;
+                                height:35px;
+                                object-fit:contain;
+                                margin:auto;
+                            "
+                            alt=""
+                        >`
+                        :
+                        ""
+                    }
+
+                    <div>
+                        ${escapeHtml(
+                            match.away_team
+                        )}
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </article>
+
+    `;
+
+}
 /* =====================================================
    LOAD ARTICLES
 ===================================================== */
@@ -3162,6 +3319,7 @@ updateDarkButton();
 ===================================================== */
 
 loadArticles();
+loadMatches();
 
 </script>
 
