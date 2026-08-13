@@ -3320,8 +3320,18 @@ updateDarkButton();
    START
 ===================================================== */
 
+/* =========================
+   تحميل البيانات
+========================= */
+
 loadArticles();
 loadMatches();
+
+
+/* =========================
+   توقيت جهاز الزائر
+========================= */
+
 function updateVisitorTime() {
 
     const now = new Date();
@@ -3349,14 +3359,52 @@ function updateVisitorTime() {
             `${icon} <span>${time}</span>`;
 
     }
+
 }
 
+
+/* تشغيل الساعة */
+
 updateVisitorTime();
+
+
+/* تحديث كل ثانية */
 
 setInterval(
     updateVisitorTime,
     1000
 );
+   .visitor-time {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    padding:8px 10px;
+
+    border-radius:8px;
+
+    background:rgba(255,255,255,.08);
+
+    color:#fff;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    direction:ltr;
+
+}
+
+.visitor-time span {
+
+    min-width:42px;
+
+    text-align:center;
+
+}
 </script>
 
 
