@@ -1969,15 +1969,13 @@ function renderSection(
 
 async function loadArticles() {
 
-    let data = null;
-
-
     try {
 
         const result =
             await client
                 .from("articles")
                 .select("*")
+                .eq("status", "published")
                 .order(
                     "created_at",
                     {
@@ -1987,30 +1985,48 @@ async function loadArticles() {
                 .limit(50);
 
 
-        if (
-            !result.error &&
+        if (result.error) {
+
+            console.error(
+                "Supabase articles error:",
+                result.error
+            );
+
+            articles = demoArticles;
+
+        } else if (
             result.data &&
-            result.data.length
+            result.data.length > 0
         ) {
 
-            data = result.data;
+            articles = result.data;
+
+            console.log(
+                "✅ تم تحميل الأخبار:",
+                articles
+            );
+
+        } else {
+
+            console.warn(
+                "لا توجد أخبار منشورة في Supabase"
+            );
+
+            articles = demoArticles;
 
         }
 
-    } catch(error) {
 
-        console.warn(
-            "Supabase articles:",
+    } catch (error) {
+
+        console.error(
+            "❌ خطأ في تحميل الأخبار:",
             error
         );
 
+        articles = demoArticles;
+
     }
-
-
-    articles =
-        data && data.length
-        ? data
-        : demoArticles;
 
 
     renderHero();
@@ -2026,9 +2042,7 @@ async function loadArticles() {
         "moroccoGrid",
         articles.filter(
             article =>
-                String(
-                    article.category || ""
-                ).includes("مغرب")
+                article.category === "المغرب"
         )
     );
 
@@ -2037,39 +2051,38 @@ async function loadArticles() {
         "worldGrid",
         articles.filter(
             article =>
-                String(
-                    article.category || ""
-                ).includes("عالم")
+                article.category === "عالمية"
         )
     );
 
 
-    renderFeatured(
+    renderSection(
         "transfersGrid",
         articles.filter(
             article =>
-                String(
-                    article.category || ""
-                ).includes("انتقال")
+                article.category === "انتقالات"
         )
     );
 
 
-    renderFeatured(
+    renderSection(
         "tacticsGrid",
         articles.filter(
             article =>
-                String(
-                    article.category || ""
-                ).includes("تكتي")
+                article.category === "تكتيك"
         )
     );
 
 
-    updateBreaking();
+    renderSection(
+        "championsGrid",
+        articles.filter(
+            article =>
+                article.category === "دوري الأبطال"
+        )
+    );
 
 }
-
 
 
 /* =========================
