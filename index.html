@@ -3379,7 +3379,147 @@ searchInput.addEventListener(
 loadArticles();
 
 loadMatches();
+/* =====================================================
+   LOAD TRANSFERS
+===================================================== */
 
+async function loadTransfers() {
+
+    const grid =
+        document.getElementById("transfersGrid");
+
+    if (!grid) return;
+
+
+    const {
+        data,
+        error
+    } = await client
+
+        .from("transfers")
+
+        .select("*")
+
+        .order(
+            "created_at",
+            {
+                ascending: false
+            }
+        )
+
+        .limit(3);
+
+
+    if (error) {
+
+        console.error(
+            "Transfers error:",
+            error
+        );
+
+        grid.innerHTML = `
+            <div class="loading">
+                ❌ تعذر تحميل الانتقالات
+            </div>
+        `;
+
+        return;
+    }
+
+
+    if (!data || data.length === 0) {
+
+        grid.innerHTML = `
+            <div class="loading">
+                🔄 لا توجد انتقالات حتى الآن
+            </div>
+        `;
+
+        return;
+    }
+
+
+    grid.innerHTML =
+        data
+        .map(transfer => {
+
+            const player =
+                transfer.player_name ||
+                "لاعب";
+
+            const from =
+                transfer.from_club ||
+                "غير معروف";
+
+            const to =
+                transfer.to_club ||
+                "غير معروف";
+
+            const fee =
+                transfer.fee ||
+                "غير معلنة";
+
+
+            return `
+
+                <div class="transfer-card">
+
+                    <div class="transfer-icon">
+                        🔄
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            ${escapeHtml(player)}
+                        </strong>
+
+                        <span>
+                            ${escapeHtml(from)}
+                            →
+                            ${escapeHtml(to)}
+                        </span>
+
+                        <span>
+                            💰 ${escapeHtml(fee)}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        })
+        .join("");
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHtml(value) {
+
+    return String(value ?? "")
+
+        .replaceAll("&", "&amp;")
+
+        .replaceAll("<", "&lt;")
+
+        .replaceAll(">", "&gt;")
+
+        .replaceAll('"', "&quot;")
+
+        .replaceAll("'", "&#039;");
+}
+
+
+/* =====================================================
+   START TRANSFERS
+===================================================== */
+
+loadTransfers();
 </script>
 
 
