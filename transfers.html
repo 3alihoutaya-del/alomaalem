@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>آخر الانتقالات | TactiGol News</title>
+
+<meta name="description"
+      content="آخر انتقالات لاعبي كرة القدم وأخبار سوق الانتقالات - TactiGol News">
+
+<style>
+
+/* =========================
+   VARIABLES
+========================= */
+
+:root {
+    --green: #00a86b;
+    --green-dark: #078153;
+
+    --bg: #f4f6f8;
+    --card: #ffffff;
+
+    --text: #111827;
+    --muted: #6b7280;
+
+    --border: #e5e7eb;
+
+    --header: #07111f;
+
+    --shadow:
+        0 8px 25px rgba(0,0,0,.07);
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark {
+    --bg: #07111f;
+    --card: #0f1b2b;
+
+    --text: #f3f4f6;
+    --muted: #aab4c0;
+
+    --border: #263548;
+
+    --header: #050c15;
+
+    --shadow:
+        0 8px 25px rgba(0,0,0,.30);
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:
+        Arial,
+        Tahoma,
+        sans-serif;
+
+    background: var(--bg);
+    color: var(--text);
+
+    line-height: 1.7;
+
+    transition:
+        background .25s,
+        color .25s;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    background:
+        linear-gradient(
+            135deg,
+            #07111f,
+            #0d2136
+        );
+
+    color: white;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    box-shadow:
+        0 4px 20px rgba(0,0,0,.18);
+}
+
+.header-inner {
+    max-width: 1200px;
+
+    min-height: 72px;
+
+    margin: auto;
+
+    padding: 10px 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+    min-width: 145px;
+
+    font-size: 27px;
+
+    font-weight: 900;
+
+    line-height: 1.1;
+}
+
+.logo span {
+    color: var(--green);
+}
+
+.logo small {
+    display: block;
+
+    color: #9ca9b7;
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav {
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    flex: 1;
+
+    overflow-x: auto;
+}
+
+.nav::-webkit-scrollbar {
+    display: none;
+}
+
+.nav a {
+    padding: 8px 11px;
+
+    border-radius: 7px;
+
+    color: #d9e1e8;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+}
+
+.nav a:hover,
+.nav a.active {
+    background: var(--green);
+    color: white;
+}
+
+
+/* =========================
+   ACTIONS
+========================= */
+
+.actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+.visitor-time {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 8px 9px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    direction: ltr;
+
+    white-space: nowrap;
+}
+
+.visitor-time span {
+    min-width: 40px;
+
+    text-align: center;
+}
+
+.icon-btn {
+    width: 39px;
+    height: 39px;
+
+    border:
+        1px solid #294056;
+
+    border-radius: 8px;
+
+    background: #102337;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 25px 18px 60px;
+}
+
+
+/* =========================
+   BREADCRUMB
+========================= */
+
+.breadcrumb {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-bottom: 15px;
+}
+
+.breadcrumb a {
+    color: var(--green);
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.transfers-hero {
+    background:
+        linear-gradient(
+            135deg,
+            #07111f,
+            #0d3b2c
+        );
+
+    color: white;
+
+    border-radius: 18px;
+
+    padding: 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    box-shadow: var(--shadow);
+
+    margin-bottom: 25px;
+}
+
+.hero-icon {
+    width: 85px;
+    height: 85px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.12);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 46px;
+
+    flex-shrink: 0;
+}
+
+.transfers-hero h1 {
+    font-size: 29px;
+
+    font-weight: 900;
+}
+
+.transfers-hero p {
+    margin-top: 5px;
+
+    color: #cbd5e1;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+.stat {
+    background: var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 18px;
+
+    text-align: center;
+
+    box-shadow: var(--shadow);
+}
+
+.stat-icon {
+    font-size: 24px;
+}
+
+.stat-number {
+    font-size: 23px;
+
+    font-weight: 900;
+}
+
+.stat-label {
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   FILTERS
+========================= */
+
+.filters {
+    background: var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 14px;
+
+    padding: 15px;
+
+    box-shadow: var(--shadow);
+
+    margin-bottom: 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 180px 180px;
+
+    gap: 10px;
+}
+
+.search-box,
+.filter-select {
+    width: 100%;
+
+    height: 43px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 9px;
+
+    background: var(--bg);
+
+    color: var(--text);
+
+    padding: 0 12px;
+
+    outline: none;
+}
+
+.search-box:focus,
+.filter-select:focus {
+    border-color: var(--green);
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+}
+
+.section-header h2 {
+    font-size: 22px;
+
+    font-weight: 900;
+}
+
+
+/* =========================
+   GRID
+========================= */
+
+.transfers-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 14px;
+}
+
+
+/* =========================
+   TRANSFER CARD
+========================= */
+
+.transfer-card {
+    background: var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 14px;
+
+    padding: 17px;
+
+    box-shadow: var(--shadow);
+
+    transition:
+        transform .2s,
+        box-shadow .2s;
+}
+
+.transfer-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 14px 30px rgba(0,0,0,.10);
+}
+
+.transfer-top {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 14px;
+}
+
+.transfer-date {
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+.transfer-type {
+    padding: 4px 9px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(0,168,107,.10);
+
+    color: var(--green);
+
+    font-size: 10px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   PLAYER
+========================= */
+
+.player {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+}
+
+.player-photo,
+.player-placeholder {
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+}
+
+.player-photo {
+    object-fit: cover;
+
+    border:
+        1px solid var(--border);
+}
+
+.player-placeholder {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: var(--bg);
+
+    border:
+        1px solid var(--border);
+
+    font-size: 25px;
+}
+
+.player-name {
+    font-size: 17px;
+
+    font-weight: 900;
+}
+
+.player-position {
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+
+/* =========================
+   CLUBS
+========================= */
+
+.clubs {
+    display: grid;
+
+    grid-template-columns:
+        1fr 65px 1fr;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 12px;
+
+    background: var(--bg);
+
+    border-radius: 10px;
+}
+
+.club {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 5px;
+}
+
+.club-logo,
+.club-placeholder {
+    width: 45px;
+    height: 45px;
+}
+
+.club-logo {
+    object-fit: contain;
+}
+
+.club-placeholder {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--card);
+
+    border:
+        1px solid var(--border);
+
+    font-size: 20px;
+}
+
+.club-name {
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+.arrow {
+    text-align: center;
+
+    font-size: 24px;
+
+    color: var(--green);
+}
+
+
+/* =========================
+   INFO
+========================= */
+
+.transfer-info {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-top:
+        1px solid var(--border);
+
+    margin-top: 12px;
+
+    padding-top: 10px;
+
+    font-size: 11px;
+}
+
+.fee {
+    color: var(--green);
+
+    font-weight: 900;
+}
+
+.status-badge {
+    padding: 4px 8px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+
+    background: #dcfce7;
+
+    color: #15803d;
+}
+
+
+/* =========================
+   MESSAGES
+========================= */
+
+.empty,
+.error,
+.loading {
+    grid-column: 1 / -1;
+
+    background: var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 40px 20px;
+
+    text-align: center;
+
+    color: var(--muted);
+}
+
+.error {
+    color: #dc2626;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    background: #050c15;
+
+    color: #aab5c1;
+
+    padding: 35px 18px;
+
+    text-align: center;
+}
+
+.footer-logo {
+    color: white;
+
+    font-size: 24px;
+
+    font-weight: 900;
+}
+
+.footer-logo span {
+    color: var(--green);
+}
+
+.footer-text {
+    margin-top: 7px;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px) {
+
+    .filters {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .search-box {
+        grid-column: 1 / -1;
+    }
+}
+
+
+@media(max-width:700px) {
+
+    .header-inner {
+        flex-wrap: wrap;
+    }
+
+    .nav {
+        order: 3;
+
+        flex-basis: 100%;
+    }
+
+    .transfers-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media(max-width:500px) {
+
+    .container {
+        padding:
+            18px 10px 45px;
+    }
+
+    .logo {
+        font-size: 21px;
+
+        min-width: 110px;
+    }
+
+    .visitor-time {
+        font-size: 10px;
+    }
+
+    .transfers-hero {
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 22px 15px;
+    }
+
+    .transfers-hero h1 {
+        font-size: 23px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .filters {
+        grid-template-columns: 1fr;
+    }
+
+    .search-box {
+        grid-column: auto;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+<div class="header-inner">
+
+
+<a href="index.html" class="logo">
+
+    Tacti<span>Gol</span>
+
+    <small>
+        NEWS
+    </small>
+
+</a>
+
+
+<nav class="nav">
+
+    <a href="index.html">
+        🏠 الرئيسية
+    </a>
+
+    <a href="matches.html">
+        ⚽ المباريات
+    </a>
+
+    <a href="index.html#latest">
+        📰 الأخبار
+    </a>
+
+    <a href="index.html#competitions">
+        🏆 البطولات
+    </a>
+
+    <a href="transfers.html" class="active">
+        🔄 الانتقالات
+    </a>
+
+</nav>
+
+
+<div class="actions">
+
+<div id="visitorTime"
+     class="visitor-time">
+
+    ☀️
+
+    <span>
+        --:--
+    </span>
+
+</div>
+
+
+<button
+    id="darkBtn"
+    class="icon-btn"
+    type="button">
+
+    🌙
+
+</button>
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="container">
+
+
+<div class="breadcrumb">
+
+    <a href="index.html">
+        الرئيسية
+    </a>
+
+    <span>/</span>
+
+    <span>
+        الانتقالات
+    </span>
+
+</div>
+
+
+<!-- HERO -->
+
+<section class="transfers-hero">
+
+    <div class="hero-icon">
+        🔄
+    </div>
+
+    <div>
+
+        <h1>
+            سوق الانتقالات
+        </h1>
+
+        <p>
+            آخر انتقالات اللاعبين وأخبار سوق كرة القدم
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- STATS -->
+
+<section class="stats">
+
+
+<div class="stat">
+
+    <div class="stat-icon">
+        🔄
+    </div>
+
+    <div id="totalTransfers"
+         class="stat-number">
+        0
+    </div>
+
+    <div class="stat-label">
+        إجمالي الانتقالات
+    </div>
+
+</div>
+
+
+<div class="stat">
+
+    <div class="stat-icon">
+        🇲🇦
+    </div>
+
+    <div id="moroccoTransfers"
+         class="stat-number">
+        0
+    </div>
+
+    <div class="stat-label">
+        انتقالات المغرب
+    </div>
+
+</div>
+
+
+<div class="stat">
+
+    <div class="stat-icon">
+        ✅
+    </div>
+
+    <div id="completedTransfers"
+         class="stat-number">
+        0
+    </div>
+
+    <div class="stat-label">
+        انتقالات مكتملة
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- FILTERS -->
+
+<section class="filters">
+
+
+<input
+    id="searchInput"
+    class="search-box"
+    type="search"
+    placeholder="🔍 ابحث عن لاعب أو نادٍ..."
+>
+
+
+<select
+    id="countryFilter"
+    class="filter-select">
+
+    <option value="">
+        كل البلدان
+    </option>
+
+    <option value="المغرب">
+        🇲🇦 المغرب
+    </option>
+
+    <option value="فرنسا">
+        🇫🇷 فرنسا
+    </option>
+
+    <option value="إسبانيا">
+        🇪🇸 إسبانيا
+    </option>
+
+    <option value="إنجلترا">
+        🏴 إنجلترا
+    </option>
+
+    <option value="إيطاليا">
+        🇮🇹 إيطاليا
+    </option>
+
+    <option value="ألمانيا">
+        🇩🇪 ألمانيا
+    </option>
+
+</select>
+
+
+<select
+    id="statusFilter"
+    class="filter-select">
+
+    <option value="">
+        كل الحالات
+    </option>
+
+    <option value="completed">
+        مكتملة
+    </option>
+
+    <option value="loan">
+        إعارة
+    </option>
+
+    <option value="rumor">
+        إشاعة
+    </option>
+
+</select>
+
+</section>
+
+
+<!-- TRANSFERS -->
+
+<section>
+
+<div class="section-header">
+
+    <h2>
+        🔄 آخر الانتقالات
+    </h2>
+
+</div>
+
+
+<div
+    id="transfersGrid"
+    class="transfers-grid">
+
+    <div class="loading">
+        ⏳ جاري تحميل الانتقالات...
+    </div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+<div class="footer-logo">
+
+    Tacti<span>Gol</span> News
+
+</div>
+
+<div class="footer-text">
+
+    أخبار كرة القدم لحظة بلحظة
+
+</div>
+
+<div class="footer-text">
+
+    © 2026 TactiGol News — جميع الحقوق محفوظة
+
+</div>
+
+</footer>
+
+
+<!-- =========================
+     SUPABASE
+========================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+/* =========================
+   SUPABASE CONFIG
+========================= */
+
+const SUPABASE_URL =
+    "sb_publishable_As8JEhEsIfOta6cyi6e_AA_tp-T9k0W";
+
+
+const SUPABASE_ANON_KEY =
+    "sb_publishable_As8JEhEsIfOta6cyi6e_AA_tp-T9k0W";
+
+
+const client =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
+    );
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const transfersGrid =
+    document.getElementById(
+        "transfersGrid"
+    );
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+const countryFilter =
+    document.getElementById(
+        "countryFilter"
+    );
+
+const statusFilter =
+    document.getElementById(
+        "statusFilter"
+    );
+
+
+let allTransfers = [];
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHtml(value) {
+
+    return String(value ?? "")
+
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
+
+
+/* =========================
+   DATE
+========================= */
+
+function formatDate(date) {
+
+    if (!date) {
+        return "غير محدد";
+    }
+
+    const d = new Date(date);
+
+    if (Number.isNaN(d.getTime())) {
+        return "غير محدد";
+    }
+
+    return d.toLocaleDateString(
+        "ar-MA",
+        {
+            year: "numeric",
+            month: "short",
+            day: "numeric"
+        }
+    );
+}
+
+
+/* =========================
+   VISITOR TIME
+========================= */
+
+function updateVisitorTime() {
+
+    const now = new Date();
+
+    const time =
+        now.toLocaleTimeString(
+            [],
+            {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false
+            }
+        );
+
+    const hour =
+        now.getHours();
+
+    const icon =
+        hour >= 6 && hour < 19
+            ? "☀️"
+            : "🌙";
+
+    const element =
+        document.getElementById(
+            "visitorTime"
+        );
+
+    if (element) {
+
+        element.innerHTML =
+            `${icon} <span>${time}</span>`;
+
+    }
+}
+
+updateVisitorTime();
+
+setInterval(
+    updateVisitorTime,
+    1000
+);
+
+
+/* =========================
+   CLUB LOGO
+========================= */
+
+function clubLogo(logo, name) {
+
+    if (logo) {
+
+        return `
+            <img
+                class="club-logo"
+                src="${escapeHtml(logo)}"
+                alt="${escapeHtml(name)}"
+                loading="lazy"
+            >
+        `;
+
+    }
+
+    return `
+        <div
+            class="club-placeholder"
+            title="${escapeHtml(name)}"
+        >
+            ⚽
+        </div>
+    `;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+function statusText(status) {
+
+    if (status === "completed") {
+        return "مكتملة";
+    }
+
+    if (status === "loan") {
+        return "إعارة";
+    }
+
+    if (status === "rumor") {
+        return "إشاعة";
+    }
+
+    return status || "انتقال";
+}
+
+
+/* =========================
+   RENDER
+========================= */
+
+function renderTransfer(t) {
+
+    const playerName =
+        t.player_name ||
+        "لاعب غير معروف";
+
+    const fromClub =
+        t.from_club ||
+        "غير معروف";
+
+    const toClub =
+        t.to_club ||
+        "غير معروف";
+
+    const photo =
+        t.player_photo ||
+        null;
+
+    const fromLogo =
+        t.from_logo ||
+        null;
+
+    const toLogo =
+        t.to_logo ||
+        null;
+
+    const status =
+        t.status ||
+        "completed";
+
+    const position =
+        t.position ||
+        "لاعب";
+
+    const country =
+        t.country ||
+        "";
+
+    const fee =
+        t.fee ||
+        "غير معلنة";
+
+
+    const playerVisual = photo
+
+        ? `
+            <img
+                class="player-photo"
+                src="${escapeHtml(photo)}"
+                alt="${escapeHtml(playerName)}"
+                loading="lazy"
+            >
+        `
+
+        : `
+            <div class="player-placeholder">
+                👤
+            </div>
+        `;
+
+
+    return `
+
+<article class="transfer-card">
+
+
+<div class="transfer-top">
+
+    <span class="transfer-type">
+        ${escapeHtml(
+            statusText(status)
+        )}
+    </span>
+
+    <span class="transfer-date">
+        📅
+        ${formatDate(
+            t.transfer_date ||
+            t.created_at
+        )}
+    </span>
+
+</div>
+
+
+<div class="player">
+
+    ${playerVisual}
+
+    <div>
+
+        <div class="player-name">
+            ${escapeHtml(
+                playerName
+            )}
+        </div>
+
+        <div class="player-position">
+
+            ${escapeHtml(
+                position
+            )}
+
+            ${
+                country
+                ? " · " +
+                  escapeHtml(country)
+                : ""
+            }
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="clubs">
+
+
+<div class="club">
+
+    ${clubLogo(
+        fromLogo,
+        fromClub
+    )}
+
+    <div class="club-name">
+
+        ${escapeHtml(
+            fromClub
+        )}
+
+    </div>
+
+</div>
+
+
+<div class="arrow">
+    →
+</div>
+
+
+<div class="club">
+
+    ${clubLogo(
+        toLogo,
+        toClub
+    )}
+
+    <div class="club-name">
+
+        ${escapeHtml(
+            toClub
+        )}
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<div class="transfer-info">
+
+    <span>
+        💰 قيمة الصفقة
+    </span>
+
+    <span class="fee">
+        ${escapeHtml(fee)}
+    </span>
+
+</div>
+
+
+</article>
+
+`;
+
+}
+
+
+/* =========================
+   RENDER ALL
+========================= */
+
+function renderTransfers() {
+
+    const search =
+        searchInput.value
+        .trim()
+        .toLowerCase();
+
+    const country =
+        countryFilter.value;
+
+    const status =
+        statusFilter.value;
+
+
+    const filtered =
+        allTransfers.filter(t => {
+
+            const player =
+                String(
+                    t.player_name || ""
+                ).toLowerCase();
+
+            const from =
+                String(
+                    t.from_club || ""
+                ).toLowerCase();
+
+            const to =
+                String(
+                    t.to_club || ""
+                ).toLowerCase();
+
+
+            const matchesSearch =
+                !search ||
+                player.includes(search) ||
+                from.includes(search) ||
+                to.includes(search);
+
+
+            const matchesCountry =
+                !country ||
+                String(
+                    t.country || ""
+                ) === country;
+
+
+            const matchesStatus =
+                !status ||
+                String(
+                    t.status || ""
+                ) === status;
+
+
+            return (
+                matchesSearch &&
+                matchesCountry &&
+                matchesStatus
+            );
+
+        });
+
+
+    if (!filtered.length) {
+
+        transfersGrid.innerHTML = `
+
+            <div class="empty">
+
+                <div style="font-size:35px;">
+                    🔍
+                </div>
+
+                لا توجد انتقالات حتى الآن.
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    transfersGrid.innerHTML =
+        filtered
+        .map(renderTransfer)
+        .join("");
+
+}
+
+
+/* =========================
+   LOAD TRANSFERS
+========================= */
+
+async function loadTransfers() {
+
+    transfersGrid.innerHTML = `
+
+        <div class="loading">
+            ⏳ جاري تحميل الانتقالات...
+        </div>
+
+    `;
+
+
+    const {
+        data,
+        error
+    } = await client
+
+        .from("transfers")
+
+        .select("*")
+
+        .order(
+            "created_at",
+            {
+                ascending: false
+            }
+        );
+
+
+    if (error) {
+
+        console.error(
+            "Supabase:",
+            error
+        );
+
+
+        transfersGrid.innerHTML = `
+
+            <div class="error">
+
+                ❌ تعذر تحميل الانتقالات.
+
+                <br><br>
+
+                تأكد من:
+
+                <br>
+
+                1. إنشاء جدول transfers
+
+                <br>
+
+                2. وضع مفاتيح Supabase الصحيحة
+
+                <br>
+
+                3. إعداد سياسة SELECT
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    allTransfers =
+        data || [];
+
+
+    updateStats(
+        allTransfers
+    );
+
+
+    renderTransfers();
+
+}
+
+
+/* =========================
+   STATISTICS
+========================= */
+
+function updateStats(transfers) {
+
+    document.getElementById(
+        "totalTransfers"
+    ).textContent =
+        transfers.length;
+
+
+    const morocco =
+        transfers.filter(
+            t =>
+                String(
+                    t.country || ""
+                ) === "المغرب"
+        ).length;
+
+
+    document.getElementById(
+        "moroccoTransfers"
+    ).textContent =
+        morocco;
+
+
+    const completed =
+        transfers.filter(
+            t =>
+                String(
+                    t.status || ""
+                ) === "completed"
+        ).length;
+
+
+    document.getElementById(
+        "completedTransfers"
+    ).textContent =
+        completed;
+}
+
+
+/* =========================
+   FILTER EVENTS
+========================= */
+
+searchInput.addEventListener(
+    "input",
+    renderTransfers
+);
+
+countryFilter.addEventListener(
+    "change",
+    renderTransfers
+);
+
+statusFilter.addEventListener(
+    "change",
+    renderTransfers
+);
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+const darkBtn =
+    document.getElementById(
+        "darkBtn"
+    );
+
+
+function updateDarkButton() {
+
+    darkBtn.textContent =
+
+        document.body
+        .classList
+        .contains("dark")
+
+        ? "☀️"
+        : "🌙";
+}
+
+
+darkBtn.addEventListener(
+    "click",
+    () => {
+
+        document.body
+        .classList
+        .toggle("dark");
+
+        localStorage.setItem(
+            "tactigol-dark",
+            document.body
+            .classList
+            .contains("dark")
+        );
+
+        updateDarkButton();
+
+    }
+);
+
+
+if (
+    localStorage.getItem(
+        "tactigol-dark"
+    ) === "true"
+) {
+
+    document.body
+    .classList
+    .add("dark");
+
+}
+
+
+updateDarkButton();
+
+
+/* =========================
+   START
+========================= */
+
+loadTransfers();
+
+</script>
+
+</body>
+</html>
