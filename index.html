@@ -1642,7 +1642,102 @@ body.dark .status.scheduled {
     <a href="index.html#transfers">
         🔄 الانتقالات
     </a>
+/* قسم الانتقالات */
+.transfers-section {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
 
+.transfers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.transfer-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.2rem;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    border-top: 4px solid #ccc;
+}
+
+.transfer-card.done {
+    border-top-color: #10b981; /* أخضر للصفقات الرسمية */
+}
+
+.transfer-card.rumor {
+    border-top-color: #f59e0b; /* أصفر للمفاوضات */
+}
+
+.status-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+.done-badge { background: #d1fae5; color: #065f46; }
+.rumor-badge { background: #fef3c7; color: #92400e; }
+
+.player-info {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.player-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+}
+
+.player-info h4 {
+    font-size: 1.1rem;
+    color: #111827;
+}
+
+.player-info .position {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.transfer-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9fafb;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+}
+
+.club-box {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.85rem;
+}
+
+.club-box span { color: #9ca3af; font-size: 0.75rem; }
+.club-box strong { color: #111827; }
+
+.transfer-arrow {
+    font-size: 1.2rem;
+    color: #e11d48;
+}
+
+.transfer-fee {
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #4b5563;
+}
 </nav>
 
 
@@ -1715,7 +1810,58 @@ body.dark .status.scheduled {
 
 <main class="container">
 
+<!-- قسم آخر الانتقالات -->
+<section class="transfers-section container">
+    <h3 class="section-title">🔄 آخر الانتقالات والصفقات</h3>
+    
+    <div class="transfers-grid">
+        
+        <!-- بطاقة صفقة رسمية -->
+        <div class="transfer-card done">
+            <div class="status-badge done-badge">🟢 رسمي</div>
+            <div class="player-info">
+                <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=300&q=80" alt="اللاعب" class="player-img">
+                <h4>اسم اللاعب</h4>
+                <p class="position">مهاجم</p>
+            </div>
+            <div class="transfer-details">
+                <div class="club-box">
+                    <span>الفريق السابق</span>
+                    <strong>برشلونة</strong>
+                </div>
+                <div class="transfer-arrow">➔</div>
+                <div class="club-box">
+                    <span>الفريق الجديد</span>
+                    <strong>باريس سان جيرمان</strong>
+                </div>
+            </div>
+            <div class="transfer-fee">قيمة الصفقة: 50 مليون يورو</div>
+        </div>
 
+        <!-- بطاقة شائعة / مفاوضات -->
+        <div class="transfer-card rumor">
+            <div class="status-badge rumor-badge">🟡 مفاوضات جارية</div>
+            <div class="player-info">
+                <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=300&q=80" alt="اللاعب" class="player-img">
+                <h4>اسم اللاعب</h4>
+                <p class="position">خط وسط</p>
+            </div>
+            <div class="transfer-details">
+                <div class="club-box">
+                    <span>الفريق الحالي</span>
+                    <strong>مانشستر سيتي</strong>
+                </div>
+                <div class="transfer-arrow">➔</div>
+                <div class="club-box">
+                    <span>الوجهة المحتملة</span>
+                    <strong>بايرن ميونخ</strong>
+                </div>
+            </div>
+            <div class="transfer-fee">العرض المتوقع: 75 مليون يورو</div>
+        </div>
+
+    </div>
+</section>
 
 <!-- =====================================================
      HERO
