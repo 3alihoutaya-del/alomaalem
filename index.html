@@ -2,23 +2,28 @@
 <html lang="ar" dir="rtl">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TactiGol News | أخبار كرة القدم</title>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>المباريات | TactiGol News</title>
 
 <meta name="description"
-      content="TactiGol News - آخر أخبار كرة القدم، المباريات، البطولات والانتقالات">
+      content="جميع مباريات كرة القدم ونتائجها - TactiGol News">
+
 
 <style>
 
 /* =====================================================
-   ROOT
+   VARIABLES
 ===================================================== */
 
 :root {
+
     --primary: #00a86b;
-    --primary-dark: #087f56;
+    --primary-dark: #078153;
 
     --bg: #f4f6f8;
     --card: #ffffff;
@@ -26,20 +31,17 @@
     --text: #111827;
     --muted: #6b7280;
 
-    --dark: #07111f;
-    --dark-2: #0d1b2a;
-
     --border: #e5e7eb;
 
-    --danger: #dc2626;
+    --red: #dc2626;
 
     --shadow:
-        0 6px 22px rgba(0,0,0,.07);
+        0 8px 25px rgba(0,0,0,.07);
 }
 
 
 /* =====================================================
-   DARK
+   DARK MODE
 ===================================================== */
 
 body.dark {
@@ -51,6 +53,9 @@ body.dark {
     --muted: #aab4c0;
 
     --border: #263548;
+
+    --shadow:
+        0 8px 25px rgba(0,0,0,.25);
 }
 
 
@@ -59,14 +64,20 @@ body.dark {
 ===================================================== */
 
 * {
+
     box-sizing: border-box;
+
     margin: 0;
+
     padding: 0;
+
 }
 
 
 html {
+
     scroll-behavior: smooth;
+
 }
 
 
@@ -77,27 +88,35 @@ body {
         Tahoma,
         sans-serif;
 
-    background: var(--bg);
+    background:
+        var(--bg);
 
-    color: var(--text);
+    color:
+        var(--text);
 
-    line-height: 1.7;
+    line-height:
+        1.7;
 
     transition:
         background .25s,
         color .25s;
+
 }
 
 
 a {
-    color: inherit;
+
     text-decoration: none;
+
+    color: inherit;
+
 }
 
 
-button,
-input {
+button {
+
     font-family: inherit;
+
 }
 
 
@@ -114,35 +133,47 @@ input {
             #0d2136
         );
 
-    color: white;
+    color:
+        white;
 
-    position: sticky;
+    position:
+        sticky;
 
-    top: 0;
+    top:
+        0;
 
-    z-index: 1000;
+    z-index:
+        1000;
 
     box-shadow:
         0 4px 20px rgba(0,0,0,.18);
+
 }
 
 
 .header-inner {
 
-    max-width: 1250px;
+    max-width:
+        1200px;
 
-    min-height: 72px;
+    min-height:
+        72px;
 
-    margin: auto;
+    margin:
+        auto;
 
     padding:
         10px 18px;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 20px;
+    gap:
+        20px;
+
 }
 
 
@@ -152,33 +183,46 @@ input {
 
 .logo {
 
-    min-width: 150px;
+    min-width:
+        150px;
 
-    font-size: 27px;
+    font-size:
+        27px;
 
-    font-weight: 900;
+    font-weight:
+        900;
 
-    line-height: 1.1;
+    line-height:
+        1.1;
+
 }
 
 
 .logo span {
 
-    color: var(--primary);
+    color:
+        var(--primary);
+
 }
 
 
 .logo small {
 
-    display: block;
+    display:
+        block;
 
-    color: #9ca9b7;
+    color:
+        #9ca9b7;
 
-    font-size: 8px;
+    font-size:
+        8px;
 
-    letter-spacing: 4px;
+    letter-spacing:
+        4px;
 
-    text-align: center;
+    text-align:
+        center;
+
 }
 
 
@@ -188,179 +232,165 @@ input {
 
 .nav {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 3px;
+    gap:
+        4px;
 
-    flex: 1;
+    flex:
+        1;
 
-    overflow-x: auto;
+    overflow-x:
+        auto;
+
 }
 
 
 .nav::-webkit-scrollbar {
-    display: none;
+
+    display:
+        none;
+
 }
 
 
 .nav a {
 
     padding:
-        8px 11px;
+        8px 12px;
 
-    border-radius: 7px;
+    border-radius:
+        7px;
 
-    color: #d9e1e8;
+    color:
+        #d9e1e8;
 
-    font-size: 14px;
+    font-size:
+        14px;
 
-    white-space: nowrap;
+    white-space:
+        nowrap;
+
 }
 
 
 .nav a:hover,
 .nav a.active {
 
-    background: var(--primary);
+    background:
+        var(--primary);
 
-    color: white;
+    color:
+        white;
+
 }
 
 
 /* =====================================================
-   HEADER ACTIONS
+   ACTIONS
 ===================================================== */
 
 .actions {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 7px;
+    gap:
+        7px;
+
 }
 
 
 .visitor-time {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 5px;
+    gap:
+        5px;
 
     padding:
         8px 9px;
 
-    border-radius: 8px;
+    border-radius:
+        8px;
 
     background:
         rgba(255,255,255,.08);
 
-    color: white;
+    color:
+        white;
 
-    font-size: 13px;
+    font-size:
+        13px;
 
-    font-weight: bold;
+    font-weight:
+        bold;
 
-    direction: ltr;
+    direction:
+        ltr;
 
-    white-space: nowrap;
+    white-space:
+        nowrap;
+
 }
 
 
 .visitor-time span {
 
-    min-width: 40px;
+    min-width:
+        40px;
 
-    text-align: center;
+    text-align:
+        center;
+
 }
 
 
 .icon-btn {
 
-    width: 40px;
+    width:
+        40px;
 
-    height: 40px;
+    height:
+        40px;
 
     border:
         1px solid #294056;
 
-    border-radius: 8px;
+    border-radius:
+        8px;
 
-    background: #102337;
+    background:
+        #102337;
 
-    color: white;
+    color:
+        white;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
-    font-size: 17px;
+    font-size:
+        17px;
+
 }
 
 
-/* =====================================================
-   SEARCH
-===================================================== */
+.icon-btn:hover {
 
-.search-area {
+    background:
+        #18334d;
 
-    max-width: 1250px;
-
-    margin: auto;
-
-    padding:
-        0 18px 15px;
-}
-
-
-.search-box {
-
-    position: relative;
-
-    width: 100%;
-}
-
-
-.search-box input {
-
-    width: 100%;
-
-    height: 46px;
-
-    padding:
-        0 45px 0 15px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 9px;
-
-    outline: none;
-
-    background: var(--card);
-
-    color: var(--text);
-
-    font-size: 14px;
-}
-
-
-.search-icon {
-
-    position: absolute;
-
-    right: 15px;
-
-    top: 50%;
-
-    transform:
-        translateY(-50%);
-
-    color: var(--muted);
-
-    font-size: 18px;
 }
 
 
@@ -370,636 +400,653 @@ input {
 
 .container {
 
-    max-width: 1250px;
+    max-width:
+        1200px;
 
-    margin: auto;
+    margin:
+        auto;
 
     padding:
-        25px 18px 60px;
+        28px 18px 60px;
+
 }
 
 
 /* =====================================================
-   SECTION
+   PAGE TITLE
 ===================================================== */
 
-.section {
+.page-title {
 
-    margin-top: 30px;
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        15px;
+
+    margin-bottom:
+        20px;
+
 }
 
 
-.section-header {
+.page-title h1 {
 
-    display: flex;
+    font-size:
+        27px;
 
-    align-items: center;
+    font-weight:
+        900;
 
-    justify-content: space-between;
-
-    margin-bottom: 15px;
 }
 
 
-.section-title {
+.page-title p {
 
-    display: flex;
+    color:
+        var(--muted);
 
-    align-items: center;
+    font-size:
+        13px;
 
-    gap: 9px;
-
-    font-size: 21px;
-
-    font-weight: 900;
-}
-
-
-.section-title::before {
-
-    content: "";
-
-    width: 5px;
-
-    height: 25px;
-
-    background: var(--primary);
-
-    border-radius: 5px;
-}
-
-
-.view-all {
-
-    color: var(--primary);
-
-    font-size: 13px;
-
-    font-weight: bold;
 }
 
 
 /* =====================================================
-   HERO
+   FILTERS
 ===================================================== */
 
-.hero {
+.filters {
 
-    display: grid;
+    display:
+        flex;
 
-    grid-template-columns:
-        1.7fr 1fr;
+    align-items:
+        center;
 
-    gap: 15px;
+    gap:
+        8px;
 
-    margin-bottom: 30px;
+    margin-bottom:
+        20px;
+
+    overflow-x:
+        auto;
+
 }
 
 
-.hero-main {
+.filters::-webkit-scrollbar {
 
-    min-height: 390px;
+    display:
+        none;
 
-    position: relative;
-
-    overflow: hidden;
-
-    border-radius: 14px;
-
-    background: #111827;
 }
 
 
-.hero-main img {
-
-    width: 100%;
-
-    height: 100%;
-
-    min-height: 390px;
-
-    object-fit: cover;
-}
-
-
-.hero-overlay {
-
-    position: absolute;
-
-    inset: 0;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: flex-end;
-
-    padding: 25px;
-
-    color: white;
-
-    background:
-        linear-gradient(
-            transparent 30%,
-            rgba(0,0,0,.88)
-        );
-}
-
-
-.category {
-
-    display: inline-block;
-
-    color: #65e6b5;
-
-    font-size: 12px;
-
-    font-weight: bold;
-
-    margin-bottom: 5px;
-}
-
-
-.hero-title {
-
-    font-size: 29px;
-
-    line-height: 1.35;
-
-    font-weight: 900;
-}
-
-
-.hero-meta {
-
-    color: #cbd5df;
-
-    font-size: 12px;
-
-    margin-top: 8px;
-}
-
-
-.side-news {
-
-    display: grid;
-
-    grid-template-rows:
-        1fr 1fr;
-
-    gap: 15px;
-}
-
-
-.side-card {
-
-    display: grid;
-
-    grid-template-columns:
-        150px 1fr;
-
-    overflow: hidden;
-
-    background: var(--card);
+.filter-btn {
 
     border:
         1px solid var(--border);
 
-    border-radius: 12px;
+    background:
+        var(--card);
 
-    box-shadow: var(--shadow);
+    color:
+        var(--text);
+
+    border-radius:
+        8px;
+
+    padding:
+        8px 14px;
+
+    cursor:
+        pointer;
+
+    white-space:
+        nowrap;
+
+    font-size:
+        13px;
+
 }
 
 
-.side-card img {
+.filter-btn:hover,
+.filter-btn.active {
 
-    width: 150px;
+    background:
+        var(--primary);
 
-    height: 100%;
+    color:
+        white;
 
-    min-height: 145px;
+    border-color:
+        var(--primary);
 
-    object-fit: cover;
-}
-
-
-.side-content {
-
-    padding: 13px;
-}
-
-
-.side-content h3 {
-
-    font-size: 16px;
-
-    line-height: 1.5;
 }
 
 
 /* =====================================================
-   MATCHES
+   MATCHES GRID
 ===================================================== */
 
 .matches-grid {
 
-    display: grid;
+    display:
+        grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(2, 1fr);
 
-    gap: 12px;
+    gap:
+        14px;
+
 }
 
 
+/* =====================================================
+   MATCH CARD
+===================================================== */
+
 .match-card {
 
-    background: var(--card);
+    background:
+        var(--card);
 
     border:
         1px solid var(--border);
 
-    border-radius: 12px;
+    border-radius:
+        14px;
 
-    padding: 15px;
+    padding:
+        16px;
 
-    box-shadow: var(--shadow);
+    box-shadow:
+        var(--shadow);
 
     transition:
-        transform .2s;
+        transform .2s,
+        box-shadow .2s;
+
 }
 
 
 .match-card:hover {
 
     transform:
-        translateY(-2px);
+        translateY(-3px);
+
+    box-shadow:
+        0 14px 30px rgba(0,0,0,.11);
+
 }
 
 
+/* =====================================================
+   MATCH TOP
+===================================================== */
+
 .match-top {
 
-    display: flex;
+    display:
+        flex;
 
-    justify-content: space-between;
+    align-items:
+        center;
 
-    align-items: center;
+    justify-content:
+        space-between;
 
-    margin-bottom: 12px;
+    gap:
+        10px;
+
+    margin-bottom:
+        16px;
+
 }
 
 
 .competition {
 
-    color: var(--primary);
+    color:
+        var(--primary);
 
-    font-size: 11px;
+    font-weight:
+        bold;
 
-    font-weight: bold;
+    font-size:
+        12px;
+
 }
 
 
-.match-status {
+.status {
 
-    font-size: 10px;
+    font-size:
+        11px;
 
     padding:
-        3px 8px;
+        3px 9px;
 
-    border-radius: 20px;
+    border-radius:
+        20px;
 
-    background: #dcfce7;
-
-    color: #15803d;
 }
 
 
-.match-status.live {
+.status.live {
 
-    background: #fee2e2;
+    background:
+        #fee2e2;
 
-    color: #dc2626;
+    color:
+        #dc2626;
+
 }
 
 
-.match-status.finished {
+.status.finished {
 
-    background: #e5e7eb;
+    background:
+        #e2e8f0;
 
-    color: #475569;
+    color:
+        #475569;
+
 }
 
+
+.status.scheduled {
+
+    background:
+        #dcfce7;
+
+    color:
+        #15803d;
+
+}
+
+
+.status.postponed {
+
+    background:
+        #fef3c7;
+
+    color:
+        #b45309;
+
+}
+
+
+body.dark .status {
+
+    background:
+        #1e293b;
+
+    color:
+        #cbd5e1;
+
+}
+
+
+body.dark .status.live {
+
+    background:
+        #451a1a;
+
+    color:
+        #fca5a5;
+
+}
+
+
+body.dark .status.scheduled {
+
+    background:
+        #12372b;
+
+    color:
+        #86efac;
+
+}
+
+
+/* =====================================================
+   TEAMS
+===================================================== */
 
 .match-teams {
 
-    display: grid;
+    display:
+        grid;
 
     grid-template-columns:
-        1fr 80px 1fr;
+        1fr 90px 1fr;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 5px;
+    gap:
+        8px;
+
 }
 
 
 .team {
 
-    text-align: center;
+    display:
+        flex;
 
-    font-weight: bold;
+    flex-direction:
+        column;
 
-    font-size: 13px;
+    align-items:
+        center;
+
+    text-align:
+        center;
+
+    gap:
+        7px;
+
 }
 
 
 .team-logo {
 
-    width: 48px;
+    width:
+        58px;
 
-    height: 48px;
+    height:
+        58px;
 
-    object-fit: contain;
+    object-fit:
+        contain;
 
-    display: block;
-
-    margin:
-        0 auto 5px;
 }
 
 
 .team-placeholder {
 
-    width: 48px;
+    width:
+        58px;
 
-    height: 48px;
+    height:
+        58px;
 
-    display: flex;
+    border-radius:
+        50%;
 
-    align-items: center;
+    display:
+        flex;
 
-    justify-content: center;
+    align-items:
+        center;
 
-    margin:
-        0 auto 5px;
+    justify-content:
+        center;
 
-    border-radius: 50%;
+    background:
+        var(--bg);
 
-    background: var(--bg);
+    border:
+        1px solid var(--border);
 
-    font-size: 22px;
+    font-size:
+        27px;
+
 }
 
+
+.team-name {
+
+    font-size:
+        14px;
+
+    font-weight:
+        800;
+
+}
+
+
+.team-short {
+
+    color:
+        var(--muted);
+
+    font-size:
+        10px;
+
+}
+
+
+/* =====================================================
+   SCORE
+===================================================== */
 
 .match-score {
 
-    text-align: center;
+    text-align:
+        center;
 
-    font-size: 21px;
-
-    font-weight: 900;
 }
 
 
-.match-time {
+.score {
 
-    color: var(--muted);
+    font-size:
+        26px;
 
-    font-size: 10px;
+    font-weight:
+        900;
 
-    margin-top: 3px;
+    line-height:
+        1.1;
+
+}
+
+
+.vs {
+
+    color:
+        var(--muted);
+
+    font-size:
+        15px;
+
+    font-weight:
+        bold;
+
 }
 
 
 /* =====================================================
-   NEWS GRID
+   DATE
 ===================================================== */
 
-.news-grid {
+.match-date {
 
-    display: grid;
+    text-align:
+        center;
 
-    grid-template-columns:
-        repeat(4,1fr);
+    margin-top:
+        15px;
 
-    gap: 15px;
+    padding-top:
+        11px;
+
+    border-top:
+        1px solid var(--border);
+
+    color:
+        var(--muted);
+
+    font-size:
+        11px;
+
 }
 
 
-.news-card {
+/* =====================================================
+   DETAILS BUTTON
+===================================================== */
 
-    background: var(--card);
+.details-button {
+
+    display:
+        block;
+
+    text-align:
+        center;
+
+    margin-top:
+        12px;
+
+    padding:
+        8px;
+
+    border-radius:
+        8px;
+
+    background:
+        rgba(0,168,107,.08);
+
+    color:
+        var(--primary);
+
+    font-size:
+        12px;
+
+    font-weight:
+        bold;
+
+}
+
+
+.details-button:hover {
+
+    background:
+        var(--primary);
+
+    color:
+        white;
+
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading {
+
+    grid-column:
+        1 / -1;
+
+    background:
+        var(--card);
 
     border:
         1px solid var(--border);
 
-    border-radius: 12px;
+    border-radius:
+        14px;
 
-    overflow: hidden;
+    padding:
+        60px 20px;
 
-    box-shadow: var(--shadow);
+    text-align:
+        center;
 
-    transition:
-        transform .2s,
-        box-shadow .2s;
-}
-
-
-.news-card:hover {
-
-    transform:
-        translateY(-3px);
+    color:
+        var(--muted);
 
     box-shadow:
-        0 12px 30px rgba(0,0,0,.11);
-}
+        var(--shadow);
 
-
-.news-image {
-
-    width: 100%;
-
-    height: 175px;
-
-    object-fit: cover;
-
-    display: block;
-}
-
-
-.news-content {
-
-    padding: 13px;
-}
-
-
-.news-content h3 {
-
-    font-size: 16px;
-
-    line-height: 1.5;
-
-    margin:
-        4px 0 6px;
-}
-
-
-.excerpt {
-
-    color: var(--muted);
-
-    font-size: 12px;
-
-    display: -webkit-box;
-
-    -webkit-line-clamp: 2;
-
-    -webkit-box-orient: vertical;
-
-    overflow: hidden;
-}
-
-
-.date {
-
-    color: var(--muted);
-
-    font-size: 10px;
-
-    margin-top: 8px;
 }
 
 
 /* =====================================================
-   COMPETITIONS
+   EMPTY
 ===================================================== */
 
-.competitions-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(5,1fr);
-
-    gap: 12px;
-}
-
-
-.competition-card {
-
-    background: var(--card);
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 12px;
-
-    padding: 18px 10px;
-
-    text-align: center;
-
-    box-shadow: var(--shadow);
-
-    font-weight: bold;
-}
-
-
-.competition-icon {
-
-    font-size: 30px;
-
-    margin-bottom: 5px;
-}
-
-
-/* =====================================================
-   TRANSFERS
-===================================================== */
-
-.transfers-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 12px;
-}
-
-
-.transfer-card {
-
-    background: var(--card);
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 12px;
-
-    padding: 15px;
-
-    box-shadow: var(--shadow);
-}
-
-
-.transfer-title {
-
-    font-weight: bold;
-
-    margin-bottom: 5px;
-}
-
-
-.transfer-info {
-
-    color: var(--muted);
-
-    font-size: 12px;
-}
-
-
-/* =====================================================
-   EMPTY / LOADING
-===================================================== */
-
-.loading,
 .empty {
 
     grid-column:
         1 / -1;
 
-    background: var(--card);
+    background:
+        var(--card);
 
     border:
         1px solid var(--border);
 
-    border-radius: 12px;
+    border-radius:
+        14px;
 
-    padding: 35px;
+    padding:
+        60px 20px;
 
-    text-align: center;
+    text-align:
+        center;
 
-    color: var(--muted);
+    color:
+        var(--muted);
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+
+.empty-icon {
+
+    font-size:
+        45px;
+
+    margin-bottom:
+        10px;
+
 }
 
 
 /* =====================================================
-   SEARCH RESULTS
+   ERROR
 ===================================================== */
 
-#searchSection {
+.error {
 
-    display: none;
-}
+    grid-column:
+        1 / -1;
 
+    background:
+        var(--card);
 
-.search-result-count {
+    border:
+        1px solid #fecaca;
 
-    color: var(--muted);
+    border-radius:
+        14px;
 
-    font-size: 13px;
+    padding:
+        40px 20px;
 
-    margin-bottom: 12px;
+    text-align:
+        center;
+
+    color:
+        #dc2626;
+
 }
 
 
@@ -1012,44 +1059,59 @@ input {
     background:
         #050c15;
 
-    color: #aab5c1;
+    color:
+        #aab5c1;
 
     padding:
         35px 18px;
+
 }
 
 
 .footer-inner {
 
-    max-width: 1250px;
+    max-width:
+        1200px;
 
-    margin: auto;
+    margin:
+        auto;
 
-    text-align: center;
+    text-align:
+        center;
+
 }
 
 
 .footer-logo {
 
-    color: white;
+    color:
+        white;
 
-    font-size: 24px;
+    font-size:
+        24px;
 
-    font-weight: 900;
+    font-weight:
+        900;
+
 }
 
 
 .footer-logo span {
 
-    color: var(--primary);
+    color:
+        var(--primary);
+
 }
 
 
 .footer-text {
 
-    margin-top: 7px;
+    margin-top:
+        7px;
 
-    font-size: 12px;
+    font-size:
+        12px;
+
 }
 
 
@@ -1057,223 +1119,130 @@ input {
    MOBILE
 ===================================================== */
 
-@media(max-width:1000px) {
-
-    .news-grid {
-
-        grid-template-columns:
-            repeat(3,1fr);
-    }
-
-    .competitions-grid {
-
-        grid-template-columns:
-            repeat(3,1fr);
-    }
-
-}
-
-
-@media(max-width:800px) {
+@media(max-width:750px) {
 
     .header-inner {
 
-        flex-wrap: wrap;
+        flex-wrap:
+            wrap;
+
+        gap:
+            10px;
+
     }
 
 
     .nav {
 
-        order: 3;
+        order:
+            3;
 
-        flex-basis: 100%;
-    }
+        flex-basis:
+            100%;
 
-
-    .hero {
-
-        grid-template-columns: 1fr;
-    }
-
-
-    .hero-main {
-
-        min-height: 330px;
-    }
-
-
-    .side-news {
-
-        grid-template-rows:
-            none;
-
-        grid-template-columns:
-            1fr 1fr;
-    }
-
-
-    .side-card {
-
-        display: block;
-    }
-
-
-    .side-card img {
-
-        width: 100%;
-
-        height: 150px;
     }
 
 
     .matches-grid {
 
         grid-template-columns:
-            repeat(2,1fr);
+            1fr;
+
     }
 
 
-    .news-grid {
+    .page-title {
 
-        grid-template-columns:
-            repeat(2,1fr);
-    }
+        align-items:
+            flex-start;
 
+        flex-direction:
+            column;
 
-    .transfers-grid {
-
-        grid-template-columns:
-            repeat(2,1fr);
     }
 
 }
 
 
-@media(max-width:550px) {
-
-    .header-inner {
-
-        padding:
-            10px;
-    }
-
+@media(max-width:500px) {
 
     .logo {
 
-        min-width: 120px;
+        min-width:
+            120px;
 
-        font-size: 22px;
+        font-size:
+            22px;
+
     }
 
 
     .actions {
 
-        margin-right: auto;
+        margin-right:
+            auto;
+
     }
 
 
     .visitor-time {
 
-        font-size: 11px;
+        font-size:
+            11px;
 
         padding:
             7px;
+
     }
 
 
     .container {
 
         padding:
-            15px 10px 45px;
+            20px 10px 45px;
+
     }
 
 
-    .hero-main,
-    .hero-main img {
-
-        min-height: 280px;
-    }
-
-
-    .hero-title {
-
-        font-size: 22px;
-    }
-
-
-    .side-news {
-
-        grid-template-columns: 1fr;
-    }
-
-
-    .side-card {
-
-        display: grid;
+    .match-teams {
 
         grid-template-columns:
-            115px 1fr;
+            1fr 70px 1fr;
+
     }
 
 
-    .side-card img {
+    .team-logo,
+    .team-placeholder {
 
-        width: 115px;
+        width:
+            50px;
 
-        height: 115px;
+        height:
+            50px;
 
-        min-height: 115px;
     }
 
 
-    .matches-grid {
+    .team-name {
 
-        grid-template-columns: 1fr;
+        font-size:
+            12px;
+
     }
 
 
-    .news-grid {
+    .score {
 
-        grid-template-columns:
-            repeat(2,1fr);
+        font-size:
+            23px;
 
-        gap: 9px;
-    }
-
-
-    .news-image {
-
-        height: 130px;
-    }
-
-
-    .news-content {
-
-        padding: 9px;
-    }
-
-
-    .news-content h3 {
-
-        font-size: 13px;
-    }
-
-
-    .competitions-grid {
-
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-
-    .transfers-grid {
-
-        grid-template-columns: 1fr;
     }
 
 }
 
 </style>
+
 </head>
 
 
@@ -1286,100 +1255,84 @@ input {
 
 <header class="header">
 
-    <div class="header-inner">
+<div class="header-inner">
 
 
-        <a
-            href="index.html"
-            class="logo"
-        >
+<a
+    href="index.html"
+    class="logo"
+>
 
-            Tacti<span>Gol</span>
+    Tacti<span>Gol</span>
 
-            <small>
-                NEWS
-            </small>
+    <small>
+        NEWS
+    </small>
 
-        </a>
-
-
-        <nav class="nav">
-
-            <a
-                href="index.html"
-                class="active"
-            >
-                الرئيسية
-            </a>
-
-            <a href="matches.html">
-                ⚽ المباريات
-            </a>
-
-            <a href="#latest">
-                📰 الأخبار
-            </a>
-
-            <a href="#competitions">
-                🏆 البطولات
-            </a>
-
-            <a href="#transfers">
-                🔄 الانتقالات
-            </a>
-
-        </nav>
+</a>
 
 
-        <div class="actions">
+<nav class="nav">
+
+    <a href="index.html">
+        الرئيسية
+    </a>
+
+    <a
+        href="matches.html"
+        class="active"
+    >
+        ⚽ المباريات
+    </a>
+
+    <a href="index.html#latest">
+        📰 الأخبار
+    </a>
+
+    <a href="index.html#competitions">
+        🏆 البطولات
+    </a>
+
+    <a href="index.html#transfers">
+        🔄 الانتقالات
+    </a>
+
+</nav>
 
 
-            <div
-                id="visitorTime"
-                class="visitor-time"
-            >
-
-                ☀️
-                <span>--:--</span>
-
-            </div>
+<div class="actions">
 
 
-            <button
-                id="darkBtn"
-                class="icon-btn"
-                type="button"
-                title="الوضع الليلي"
-            >
-                🌙
-            </button>
+<div
+    id="visitorTime"
+    class="visitor-time"
+>
+
+    ☀️
+
+    <span>
+        --:--
+    </span>
+
+</div>
 
 
-        </div>
+<button
+    id="darkBtn"
+    class="icon-btn"
+    type="button"
+    title="الوضع الليلي"
+>
+    🌙
+</button>
 
-    </div>
 
+</div>
 
-    <div class="search-area">
-
-        <div class="search-box">
-
-            <span class="search-icon">
-                🔍
-            </span>
-
-            <input
-                id="searchInput"
-                type="search"
-                placeholder="ابحث عن خبر، فريق، مباراة أو بطولة..."
-                autocomplete="off"
-            >
-
-        </div>
-
-    </div>
+</div>
 
 </header>
+
 
 
 <!-- =====================================================
@@ -1389,261 +1342,77 @@ input {
 <main class="container">
 
 
-    <!-- SEARCH RESULTS -->
+<div class="page-title">
 
-    <section
-        id="searchSection"
-        class="section"
-    >
+<div>
 
-        <div class="section-header">
+<h1>
+⚽ المباريات
+</h1>
 
-            <h2 class="section-title">
-                🔍 نتائج البحث
-            </h2>
+<p>
+جميع مباريات كرة القدم ونتائجها
+</p>
 
-        </div>
+</div>
 
-        <div
-            id="searchCount"
-            class="search-result-count"
-        ></div>
+</div>
 
-        <div
-            id="searchGrid"
-            class="news-grid"
-        ></div>
 
-    </section>
 
+<div class="filters">
 
-    <!-- HERO -->
+<button
+    class="filter-btn active"
+    data-filter="all"
+>
+    جميع المباريات
+</button>
 
-    <section class="hero">
 
-        <div
-            id="heroMain"
-            class="hero-main"
-        >
+<button
+    class="filter-btn"
+    data-filter="scheduled"
+>
+    القادمة
+</button>
 
-            <div class="loading">
-                ⏳ جاري تحميل الأخبار...
-            </div>
 
-        </div>
+<button
+    class="filter-btn"
+    data-filter="live"
+>
+    🔴 مباشرة
+</button>
 
 
-        <div
-            id="sideNews"
-            class="side-news"
-        >
+<button
+    class="filter-btn"
+    data-filter="finished"
+>
+    المنتهية
+</button>
 
-        </div>
+</div>
 
-    </section>
 
 
-    <!-- TODAY MATCHES -->
+<div
+    id="matchesGrid"
+    class="matches-grid"
+>
 
-    <section
-        id="todayMatches"
-        class="section"
-    >
+<div class="loading">
 
-        <div class="section-header">
+    ⏳ جاري تحميل المباريات...
 
-            <h2 class="section-title">
-                ⚽ مباريات اليوم
-            </h2>
+</div>
 
-            <a
-                href="matches.html"
-                class="view-all"
-            >
-                جميع المباريات ←
-            </a>
-
-        </div>
-
-
-        <div
-            id="matchesGrid"
-            class="matches-grid"
-        >
-
-            <div class="loading">
-                ⏳ جاري تحميل المباريات...
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- LATEST NEWS -->
-
-    <section
-        id="latest"
-        class="section"
-    >
-
-        <div class="section-header">
-
-            <h2 class="section-title">
-                📰 آخر الأخبار
-            </h2>
-
-            <a
-                href="#latest"
-                class="view-all"
-            >
-                عرض الكل
-            </a>
-
-        </div>
-
-
-        <div
-            id="latestGrid"
-            class="news-grid"
-        >
-
-            <div class="loading">
-                ⏳ جاري تحميل الأخبار...
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- COMPETITIONS -->
-
-    <section
-        id="competitions"
-        class="section"
-    >
-
-        <div class="section-header">
-
-            <h2 class="section-title">
-                🏆 أهم البطولات
-            </h2>
-
-        </div>
-
-
-        <div
-            class="competitions-grid"
-        >
-
-            <a
-                class="competition-card"
-                href="matches.html"
-            >
-
-                <div class="competition-icon">
-                    🇲🇦
-                </div>
-
-                الدوري المغربي
-
-            </a>
-
-
-            <a
-                class="competition-card"
-                href="matches.html"
-            >
-
-                <div class="competition-icon">
-                    🌍
-                </div>
-
-                دوري أبطال أوروبا
-
-            </a>
-
-
-            <a
-                class="competition-card"
-                href="matches.html"
-            >
-
-                <div class="competition-icon">
-                    🏆
-                </div>
-
-                كأس العالم
-
-            </a>
-
-
-            <a
-                class="competition-card"
-                href="matches.html"
-            >
-
-                <div class="competition-icon">
-                    🇪🇺
-                </div>
-
-                الدوري الأوروبي
-
-            </a>
-
-
-            <a
-                class="competition-card"
-                href="matches.html"
-            >
-
-                <div class="competition-icon">
-                    🌎
-                </div>
-
-                كأس العالم للأندية
-
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- TRANSFERS -->
-
-    <section
-        id="transfers"
-        class="section"
-    >
-
-        <div class="section-header">
-
-            <h2 class="section-title">
-                🔄 آخر الانتقالات
-            </h2>
-
-        </div>
-
-
-        <div
-            id="transfersGrid"
-            class="transfers-grid"
-        >
-
-            <div class="empty">
-
-                لا توجد أخبار انتقالات حاليًا.
-
-            </div>
-
-        </div>
-
-    </section>
+</div>
 
 
 </main>
+
 
 
 <!-- =====================================================
@@ -1652,29 +1421,32 @@ input {
 
 <footer class="footer">
 
-    <div class="footer-inner">
+<div class="footer-inner">
 
-        <div class="footer-logo">
+<div class="footer-logo">
 
-            Tacti<span>Gol</span> News
+    Tacti<span>Gol</span> News
 
-        </div>
+</div>
 
-        <div class="footer-text">
 
-            أخبار كرة القدم لحظة بلحظة
+<div class="footer-text">
 
-        </div>
+    أخبار كرة القدم لحظة بلحظة
 
-        <div class="footer-text">
+</div>
 
-            © 2026 TactiGol News — جميع الحقوق محفوظة
 
-        </div>
+<div class="footer-text">
 
-    </div>
+    © 2026 TactiGol News — جميع الحقوق محفوظة
+
+</div>
+
+</div>
 
 </footer>
+
 
 
 <!-- =====================================================
@@ -1687,7 +1459,7 @@ input {
 <script>
 
 /* =====================================================
-   SUPABASE
+   SUPABASE CONFIG
 ===================================================== */
 
 const SUPABASE_URL =
@@ -1706,20 +1478,12 @@ const client =
 
 
 /* =====================================================
-   DATA
+   VARIABLES
 ===================================================== */
-
-let articles = [];
 
 let matches = [];
 
-
-/* =====================================================
-   DEFAULT IMAGE
-===================================================== */
-
-const DEFAULT_IMAGE =
-    "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80";
+let currentFilter = "all";
 
 
 /* =====================================================
@@ -1741,30 +1505,41 @@ function escapeHtml(value) {
 
 
 /* =====================================================
-   DATE
+   FORMAT DATE
 ===================================================== */
 
 function formatDate(date) {
 
     if (!date)
-        return "";
+        return "غير محدد";
+
 
     const d =
         new Date(date);
+
 
     if (
         Number.isNaN(
             d.getTime()
         )
     )
-        return "";
+        return "غير محدد";
+
 
     return d.toLocaleDateString(
         "ar-MA",
         {
-            day:"numeric",
-            month:"long",
-            year:"numeric"
+            weekday:
+                "long",
+
+            year:
+                "numeric",
+
+            month:
+                "long",
+
+            day:
+                "numeric"
         }
     );
 
@@ -1772,30 +1547,38 @@ function formatDate(date) {
 
 
 /* =====================================================
-   TIME
+   FORMAT TIME
 ===================================================== */
 
 function formatTime(date) {
 
     if (!date)
-        return "";
+        return "--:--";
+
 
     const d =
         new Date(date);
+
 
     if (
         Number.isNaN(
             d.getTime()
         )
     )
-        return "";
+        return "--:--";
+
 
     return d.toLocaleTimeString(
         [],
         {
-            hour:"2-digit",
-            minute:"2-digit",
-            hour12:false
+            hour:
+                "2-digit",
+
+            minute:
+                "2-digit",
+
+            hour12:
+                false
         }
     );
 
@@ -1803,94 +1586,94 @@ function formatTime(date) {
 
 
 /* =====================================================
-   ARTICLE URL
+   STATUS
 ===================================================== */
 
-function articleUrl(article) {
+function statusInfo(status) {
 
-    if (
-        article.id &&
-        !String(article.id)
-            .startsWith("demo")
-    ) {
+    switch(status) {
 
-        return `article.html?id=${encodeURIComponent(
-            article.id
-        )}`;
+        case "live":
+
+            return {
+                text:
+                    "🔴 مباشر",
+
+                className:
+                    "live"
+            };
+
+
+        case "finished":
+
+            return {
+                text:
+                    "انتهت",
+
+                className:
+                    "finished"
+            };
+
+
+        case "postponed":
+
+            return {
+                text:
+                    "مؤجلة",
+
+                className:
+                    "postponed"
+            };
+
+
+        default:
+
+            return {
+                text:
+                    "مجدولة",
+
+                className:
+                    "scheduled"
+            };
 
     }
-
-    return "#";
 
 }
 
 
 /* =====================================================
-   ARTICLE CARD
+   TEAM LOGO
 ===================================================== */
 
-function articleCard(article) {
+function renderTeamLogo(
+    logo,
+    name
+) {
 
-    const image =
-        article.image_url ||
-        article.image ||
-        DEFAULT_IMAGE;
+    if (logo) {
+
+        return `
+
+            <img
+                class="team-logo"
+                src="${escapeHtml(logo)}"
+                alt="${escapeHtml(name)}"
+                loading="lazy"
+            >
+
+        `;
+
+    }
 
 
     return `
 
-        <article class="news-card">
-
-            <a href="${articleUrl(article)}">
-
-                <img
-                    class="news-image"
-                    src="${escapeHtml(image)}"
-                    alt="${escapeHtml(article.title)}"
-                    loading="lazy"
-                >
-
-                <div class="news-content">
-
-                    <span class="category">
-
-                        ${escapeHtml(
-                            article.category ||
-                            "أخبار"
-                        )}
-
-                    </span>
-
-                    <h3>
-
-                        ${escapeHtml(
-                            article.title
-                        )}
-
-                    </h3>
-
-                    <p class="excerpt">
-
-                        ${escapeHtml(
-                            article.excerpt ||
-                            ""
-                        )}
-
-                    </p>
-
-                    <div class="date">
-
-                        ${formatDate(
-                            article.created_at
-                        )}
-
-                    </div>
-
-                </div>
-
-            </a>
-
-        </article>
+        <div
+            class="team-placeholder"
+            title="${escapeHtml(name)}"
+        >
+            ⚽
+        </div>
 
     `;
 
@@ -1898,245 +1681,300 @@ function articleCard(article) {
 
 
 /* =====================================================
-   RENDER HERO
+   SCORE
 ===================================================== */
 
-function renderHero() {
+function renderScore(match) {
 
-    if (!articles.length)
-        return;
+    if (
+        match.home_score !== null &&
+        match.home_score !== undefined &&
+        match.away_score !== null &&
+        match.away_score !== undefined
+    ) {
 
+        return `
 
-    const main =
-        articles[0];
+            <div class="score">
 
+                ${escapeHtml(
+                    match.home_score
+                )}
 
-    const side =
-        articles.slice(1,3);
+                -
 
-
-    const hero =
-        document.getElementById(
-            "heroMain"
-        );
-
-
-    const sideElement =
-        document.getElementById(
-            "sideNews"
-        );
-
-
-    hero.innerHTML = `
-
-        <a href="${articleUrl(main)}">
-
-            <img
-                src="${escapeHtml(
-                    main.image_url ||
-                    main.image ||
-                    DEFAULT_IMAGE
-                )}"
-                alt="${escapeHtml(
-                    main.title
-                )}"
-            >
-
-            <div class="hero-overlay">
-
-                <span class="category">
-
-                    ${escapeHtml(
-                        main.category ||
-                        "أخبار"
-                    )}
-
-                </span>
-
-                <h1 class="hero-title">
-
-                    ${escapeHtml(
-                        main.title
-                    )}
-
-                </h1>
-
-                <div class="hero-meta">
-
-                    ${formatDate(
-                        main.created_at
-                    )}
-
-                </div>
+                ${escapeHtml(
+                    match.away_score
+                )}
 
             </div>
 
-        </a>
-
-    `;
-
-
-    sideElement.innerHTML =
-        side.map(
-            function(article) {
-
-                return `
-
-                    <article class="side-card">
-
-                        <a href="${articleUrl(article)}">
-
-                            <img
-                                src="${escapeHtml(
-                                    article.image_url ||
-                                    article.image ||
-                                    DEFAULT_IMAGE
-                                )}"
-                                alt="${escapeHtml(
-                                    article.title
-                                )}"
-                            >
-
-                        </a>
-
-                        <div class="side-content">
-
-                            <span class="category">
-
-                                ${escapeHtml(
-                                    article.category ||
-                                    "أخبار"
-                                )}
-
-                            </span>
-
-                            <h3>
-
-                                <a
-                                    href="${articleUrl(article)}"
-                                >
-
-                                    ${escapeHtml(
-                                        article.title
-                                    )}
-
-                                </a>
-
-                            </h3>
-
-                            <div class="date">
-
-                                ${formatDate(
-                                    article.created_at
-                                )}
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-                `;
-
-            }
-        ).join("");
-
-}
-
-
-/* =====================================================
-   LOAD ARTICLES
-===================================================== */
-
-async function loadArticles() {
-
-    const grid =
-        document.getElementById(
-            "latestGrid"
-        );
-
-
-    try {
-
-        const result =
-            await client
-            .from("articles")
-            .select("*")
-            .eq(
-                "status",
-                "published"
-            )
-            .order(
-                "created_at",
-                {
-                    ascending:false
-                }
-            )
-            .limit(50);
-
-
-        if (result.error) {
-
-            console.error(
-                "Supabase articles:",
-                result.error
-            );
-
-            grid.innerHTML = `
-                <div class="empty">
-                    تعذر تحميل الأخبار حاليًا.
-                </div>
-            `;
-
-            return;
-
-        }
-
-
-        articles =
-            result.data || [];
-
-
-        if (!articles.length) {
-
-            grid.innerHTML = `
-                <div class="empty">
-                    لا توجد أخبار منشورة حاليًا.
-                </div>
-            `;
-
-            return;
-
-        }
-
-
-        renderHero();
-
-
-        grid.innerHTML =
-            articles
-                .slice(0,8)
-                .map(articleCard)
-                .join("");
-
-
-        renderTransfers();
-
-    }
-    catch(error) {
-
-        console.error(
-            "Articles error:",
-            error
-        );
-
-        grid.innerHTML = `
-            <div class="empty">
-                حدث خطأ أثناء تحميل الأخبار.
-            </div>
         `;
 
     }
+
+
+    return `
+
+        <div class="vs">
+            VS
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   RENDER CARD
+===================================================== */
+
+function matchCard(match) {
+
+    const home =
+        match.home || {};
+
+
+    const away =
+        match.away || {};
+
+
+    const homeName =
+        home.name ||
+        match.home_team ||
+        "الفريق المضيف";
+
+
+    const awayName =
+        away.name ||
+        match.away_team ||
+        "الفريق الضيف";
+
+
+    const status =
+        statusInfo(
+            match.status
+        );
+
+
+    return `
+
+<article
+    class="match-card"
+    data-status="${escapeHtml(
+        match.status || "scheduled"
+    )}"
+>
+
+
+<div class="match-top">
+
+
+<span class="competition">
+
+    🏆
+
+    ${escapeHtml(
+        match.competition ||
+        "مباراة"
+    )}
+
+</span>
+
+
+<span
+    class="
+        status
+        ${status.className}
+    "
+>
+
+    ${status.text}
+
+</span>
+
+
+</div>
+
+
+
+<div class="match-teams">
+
+
+<div class="team">
+
+
+    ${renderTeamLogo(
+        home.logo,
+        homeName
+    )}
+
+
+    <div class="team-name">
+
+        ${escapeHtml(
+            homeName
+        )}
+
+    </div>
+
+
+    <div class="team-short">
+
+        ${escapeHtml(
+            home.short_name ||
+            ""
+        )}
+
+    </div>
+
+
+</div>
+
+
+
+<div class="match-score">
+
+    ${renderScore(match)}
+
+</div>
+
+
+
+<div class="team">
+
+
+    ${renderTeamLogo(
+        away.logo,
+        awayName
+    )}
+
+
+    <div class="team-name">
+
+        ${escapeHtml(
+            awayName
+        )}
+
+    </div>
+
+
+    <div class="team-short">
+
+        ${escapeHtml(
+            away.short_name ||
+            ""
+        )}
+
+    </div>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="match-date">
+
+    📅
+
+    ${formatDate(
+        match.match_date
+    )}
+
+    <br>
+
+    🕐
+
+    ${formatTime(
+        match.match_date
+    )}
+
+</div>
+
+
+
+<a
+    href="match.html?id=${encodeURIComponent(
+        match.id
+    )}"
+    class="details-button"
+>
+
+    عرض تفاصيل المباراة ←
+
+</a>
+
+
+</article>
+
+`;
+
+}
+
+
+/* =====================================================
+   RENDER MATCHES
+===================================================== */
+
+function renderMatches() {
+
+    const grid =
+        document.getElementById(
+            "matchesGrid"
+        );
+
+
+    const filtered =
+        currentFilter === "all"
+
+        ? matches
+
+        : matches.filter(
+            function(match) {
+
+                return (
+                    match.status ===
+                    currentFilter
+                );
+
+            }
+        );
+
+
+    if (!filtered.length) {
+
+        grid.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    ⚽
+                </div>
+
+                <h2>
+                    لا توجد مباريات
+                </h2>
+
+                <p>
+                    لا توجد مباريات ضمن هذا التصنيف حاليًا.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    grid.innerHTML =
+        filtered
+        .map(matchCard)
+        .join("");
 
 }
 
@@ -2153,32 +1991,74 @@ async function loadMatches() {
         );
 
 
+    grid.innerHTML = `
+
+        <div class="loading">
+
+            ⏳ جاري تحميل المباريات...
+
+        </div>
+
+    `;
+
+
     try {
 
-        const result =
-            await client
+        const {
+            data,
+            error
+        } = await client
+
             .from("matches")
-            .select("*")
+
+            .select(`
+
+                *,
+
+                home:teams!matches_home_team_id_fkey (
+                    id,
+                    name,
+                    short_name,
+                    logo
+                ),
+
+                away:teams!matches_away_team_id_fkey (
+                    id,
+                    name,
+                    short_name,
+                    logo
+                )
+
+            `)
+
             .order(
                 "match_date",
                 {
-                    ascending:true
+                    ascending: true
                 }
-            )
-            .limit(30);
-
-
-        if (result.error) {
-
-            console.error(
-                "Supabase matches:",
-                result.error
             );
 
+
+        if (error) {
+
+            console.error(
+                "Supabase error:",
+                error
+            );
+
+
             grid.innerHTML = `
-                <div class="empty">
-                    تعذر تحميل المباريات حاليًا.
+
+                <div class="error">
+
+                    ❌ تعذر تحميل المباريات.
+
+                    <br><br>
+
+                    تأكد من إعدادات Supabase.
+
                 </div>
+
             `;
 
             return;
@@ -2187,72 +2067,27 @@ async function loadMatches() {
 
 
         matches =
-            result.data || [];
+            data || [];
 
 
-        const today =
-            new Date();
-
-
-        const todayString =
-            today.toLocaleDateString(
-                "en-CA"
-            );
-
-
-        const todayMatches =
-            matches.filter(
-                function(match) {
-
-                    if (!match.match_date)
-                        return false;
-
-                    const date =
-                        new Date(
-                            match.match_date
-                        );
-
-                    return (
-                        date.toLocaleDateString(
-                            "en-CA"
-                        ) === todayString
-                    );
-
-                }
-            );
-
-
-        if (!todayMatches.length) {
-
-            grid.innerHTML = `
-                <div class="empty">
-                    لا توجد مباريات اليوم.
-                </div>
-            `;
-
-            return;
-
-        }
-
-
-        grid.innerHTML =
-            todayMatches
-                .slice(0,6)
-                .map(matchCard)
-                .join("");
+        renderMatches();
 
     }
     catch(error) {
 
         console.error(
-            "Matches error:",
             error
         );
 
+
         grid.innerHTML = `
-            <div class="empty">
-                حدث خطأ أثناء تحميل المباريات.
+
+            <div class="error">
+
+                ❌ حدث خطأ أثناء تحميل المباريات.
+
             </div>
+
         `;
 
     }
@@ -2261,354 +2096,47 @@ async function loadMatches() {
 
 
 /* =====================================================
-   MATCH CARD
+   FILTERS
 ===================================================== */
 
-function matchCard(match) {
+document
+.querySelectorAll(".filter-btn")
+.forEach(
+    function(button) {
 
-    const homeLogo =
-        match.home_logo;
-
-
-    const awayLogo =
-        match.away_logo;
-
-
-    const home =
-        match.home_team ||
-        "الفريق المضيف";
+        button.addEventListener(
+            "click",
+            function() {
 
 
-    const away =
-        match.away_team ||
-        "الفريق الضيف";
+                document
+                .querySelectorAll(
+                    ".filter-btn"
+                )
+                .forEach(
+                    function(btn) {
 
+                        btn.classList.remove(
+                            "active"
+                        );
 
-    const status =
-        match.status ||
-        "scheduled";
-
-
-    let statusText =
-        "⏰ مبرمجة";
-
-
-    if(status === "live")
-        statusText = "🔴 مباشرة";
-
-
-    if(status === "finished")
-        statusText = "✅ انتهت";
-
-
-    if(status === "postponed")
-        statusText = "⏸️ مؤجلة";
-
-
-    return `
-
-        <a
-            class="match-card"
-            href="match.html?id=${encodeURIComponent(match.id)}"
-        >
-
-            <div class="match-top">
-
-                <span class="competition">
-
-                    ${escapeHtml(
-                        match.competition ||
-                        "كرة القدم"
-                    )}
-
-                </span>
-
-                <span class="match-status ${escapeHtml(status)}">
-
-                    ${statusText}
-
-                </span>
-
-            </div>
-
-
-            <div class="match-teams">
-
-
-                <div class="team">
-
-                    ${
-                        homeLogo
-
-                        ?
-
-                        `<img
-                            class="team-logo"
-                            src="${escapeHtml(homeLogo)}"
-                            alt="${escapeHtml(home)}"
-                        >`
-
-                        :
-
-                        `<div class="team-placeholder">
-                            ⚽
-                        </div>`
                     }
-
-                    ${escapeHtml(home)}
-
-                </div>
-
-
-                <div>
-
-                    <div class="match-score">
-
-                        ${
-                            match.home_score ??
-                            "-"
-                        }
-
-                        -
-
-                        ${
-                            match.away_score ??
-                            "-"
-                        }
-
-                    </div>
-
-                    <div class="match-time">
-
-                        ${formatTime(
-                            match.match_date
-                        )}
-
-                    </div>
-
-                </div>
-
-
-                <div class="team">
-
-                    ${
-                        awayLogo
-
-                        ?
-
-                        `<img
-                            class="team-logo"
-                            src="${escapeHtml(awayLogo)}"
-                            alt="${escapeHtml(away)}"
-                        >`
-
-                        :
-
-                        `<div class="team-placeholder">
-                            ⚽
-                        </div>`
-                    }
-
-                    ${escapeHtml(away)}
-
-                </div>
-
-
-            </div>
-
-        </a>
-
-    `;
-
-}
-
-
-/* =====================================================
-   TRANSFERS
-===================================================== */
-
-function renderTransfers() {
-
-    const grid =
-        document.getElementById(
-            "transfersGrid"
-        );
-
-
-    const transfers =
-        articles.filter(
-            function(article) {
-
-                return (
-                    article.category ===
-                    "انتقالات"
                 );
+
+
+                this.classList.add(
+                    "active"
+                );
+
+
+                currentFilter =
+                    this.dataset.filter;
+
+
+                renderMatches();
 
             }
         );
-
-
-    if (!transfers.length) {
-
-        grid.innerHTML = `
-
-            <div class="empty">
-
-                لا توجد أخبار انتقالات حاليًا.
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    grid.innerHTML =
-        transfers
-            .slice(0,6)
-            .map(
-                function(article) {
-
-                    return `
-
-                        <a
-                            href="${articleUrl(article)}"
-                            class="transfer-card"
-                        >
-
-                            <div class="transfer-title">
-
-                                ${escapeHtml(
-                                    article.title
-                                )}
-
-                            </div>
-
-                            <div class="transfer-info">
-
-                                ${escapeHtml(
-                                    article.excerpt ||
-                                    "آخر أخبار الانتقالات"
-                                )}
-
-                            </div>
-
-                        </a>
-
-                    `;
-
-                }
-            )
-            .join("");
-
-}
-
-
-/* =====================================================
-   SEARCH
-===================================================== */
-
-const searchInput =
-    document.getElementById(
-        "searchInput"
-    );
-
-
-const searchSection =
-    document.getElementById(
-        "searchSection"
-    );
-
-
-const searchGrid =
-    document.getElementById(
-        "searchGrid"
-    );
-
-
-const searchCount =
-    document.getElementById(
-        "searchCount"
-    );
-
-
-searchInput.addEventListener(
-    "input",
-    function() {
-
-        const query =
-            this.value
-                .trim()
-                .toLowerCase();
-
-
-        if (!query) {
-
-            searchSection.style.display =
-                "none";
-
-            return;
-
-        }
-
-
-        searchSection.style.display =
-            "block";
-
-
-        const results =
-            articles.filter(
-                function(article) {
-
-                    const text = `
-
-                        ${article.title || ""}
-
-                        ${article.excerpt || ""}
-
-                        ${article.content || ""}
-
-                        ${article.category || ""}
-
-                    `.toLowerCase();
-
-
-                    return text.includes(
-                        query
-                    );
-
-                }
-            );
-
-
-        searchCount.textContent =
-            `${results.length} نتيجة بحث`;
-
-
-        if (!results.length) {
-
-            searchGrid.innerHTML = `
-
-                <div class="empty">
-
-                    لا توجد نتائج مطابقة.
-
-                </div>
-
-            `;
-
-            return;
-
-        }
-
-
-        searchGrid.innerHTML =
-            results
-                .slice(0,20)
-                .map(articleCard)
-                .join("");
 
     }
 );
@@ -2627,10 +2155,13 @@ const darkBtn =
 function updateDarkButton() {
 
     darkBtn.textContent =
-        document.body.classList.contains(
-            "dark"
-        )
+
+        document.body
+        .classList
+        .contains("dark")
+
         ? "☀️"
+
         : "🌙";
 
 }
@@ -2640,20 +2171,17 @@ darkBtn.addEventListener(
     "click",
     function() {
 
-        document.body.classList.toggle(
-            "dark"
-        );
-
-
-        const isDark =
-            document.body.classList.contains(
-                "dark"
-            );
+        document.body
+        .classList
+        .toggle("dark");
 
 
         localStorage.setItem(
             "tactigol-dark",
-            isDark
+
+            document.body
+            .classList
+            .contains("dark")
         );
 
 
@@ -2669,9 +2197,9 @@ if (
     ) === "true"
 ) {
 
-    document.body.classList.add(
-        "dark"
-    );
+    document.body
+    .classList
+    .add("dark");
 
 }
 
@@ -2693,9 +2221,14 @@ function updateVisitorTime() {
         now.toLocaleTimeString(
             [],
             {
-                hour:"2-digit",
-                minute:"2-digit",
-                hour12:false
+                hour:
+                    "2-digit",
+
+                minute:
+                    "2-digit",
+
+                hour12:
+                    false
             }
         );
 
@@ -2742,11 +2275,10 @@ setInterval(
    START
 ===================================================== */
 
-loadArticles();
-
 loadMatches();
 
 </script>
 
 </body>
+
 </html>
