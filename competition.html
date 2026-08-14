@@ -1,0 +1,2746 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>الدوري المغربي | TactiGol News</title>
+
+<meta name="description"
+      content="الدوري المغربي - مباريات، أخبار ونتائج البطولة على TactiGol News">
+
+<style>
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root {
+
+    --primary: #00a86b;
+    --primary-dark: #078153;
+
+    --bg: #f4f6f8;
+    --card: #ffffff;
+
+    --text: #111827;
+    --muted: #6b7280;
+
+    --border: #e5e7eb;
+
+    --red: #dc2626;
+
+    --header: #07111f;
+
+    --shadow:
+        0 8px 25px rgba(0,0,0,.07);
+}
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+body.dark {
+
+    --bg: #07111f;
+    --card: #0f1b2b;
+
+    --text: #f3f4f6;
+    --muted: #aab4c0;
+
+    --border: #263548;
+
+    --header: #050c15;
+
+    --shadow:
+        0 8px 25px rgba(0,0,0,.28);
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    font-family:
+        Arial,
+        Tahoma,
+        sans-serif;
+
+    background:
+        var(--bg);
+
+    color:
+        var(--text);
+
+    line-height:
+        1.7;
+
+    transition:
+        background .25s,
+        color .25s;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+
+    background:
+        linear-gradient(
+            135deg,
+            #07111f,
+            #0d2136
+        );
+
+    color:
+        white;
+
+    position:
+        sticky;
+
+    top:
+        0;
+
+    z-index:
+        1000;
+
+    box-shadow:
+        0 4px 20px rgba(0,0,0,.18);
+}
+
+.header-inner {
+
+    max-width:
+        1200px;
+
+    min-height:
+        72px;
+
+    margin:
+        auto;
+
+    padding:
+        10px 18px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        18px;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+
+    min-width:
+        145px;
+
+    font-size:
+        27px;
+
+    font-weight:
+        900;
+
+    line-height:
+        1.1;
+}
+
+.logo span {
+    color:
+        var(--primary);
+}
+
+.logo small {
+
+    display:
+        block;
+
+    color:
+        #9ca9b7;
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        4px;
+
+    text-align:
+        center;
+}
+
+
+/* =====================================================
+   NAV
+===================================================== */
+
+.nav {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        4px;
+
+    flex:
+        1;
+
+    overflow-x:
+        auto;
+}
+
+.nav::-webkit-scrollbar {
+    display: none;
+}
+
+.nav a {
+
+    padding:
+        8px 11px;
+
+    border-radius:
+        7px;
+
+    color:
+        #d9e1e8;
+
+    font-size:
+        13px;
+
+    white-space:
+        nowrap;
+}
+
+.nav a:hover {
+
+    background:
+        var(--primary);
+
+    color:
+        white;
+}
+
+
+/* =====================================================
+   ACTIONS
+===================================================== */
+
+.actions {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+}
+
+.visitor-time {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        5px;
+
+    padding:
+        8px 9px;
+
+    border-radius:
+        8px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    color:
+        white;
+
+    font-size:
+        12px;
+
+    font-weight:
+        bold;
+
+    direction:
+        ltr;
+
+    white-space:
+        nowrap;
+}
+
+.visitor-time span {
+
+    min-width:
+        40px;
+
+    text-align:
+        center;
+}
+
+.icon-btn {
+
+    width:
+        39px;
+
+    height:
+        39px;
+
+    border:
+        1px solid #294056;
+
+    border-radius:
+        8px;
+
+    background:
+        #102337;
+
+    color:
+        white;
+
+    cursor:
+        pointer;
+
+    font-size:
+        16px;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container {
+
+    max-width:
+        1200px;
+
+    margin:
+        auto;
+
+    padding:
+        25px 18px 60px;
+}
+
+
+/* =====================================================
+   BREADCRUMB
+===================================================== */
+
+.breadcrumb {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        12px;
+
+    margin-bottom:
+        15px;
+}
+
+.breadcrumb a {
+
+    color:
+        var(--primary);
+
+    font-weight:
+        bold;
+}
+
+
+/* =====================================================
+   COMPETITION HERO
+===================================================== */
+
+.competition-hero {
+
+    background:
+        linear-gradient(
+            135deg,
+            #07111f,
+            #0d3b2c
+        );
+
+    color:
+        white;
+
+    border-radius:
+        18px;
+
+    padding:
+        28px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        20px;
+
+    box-shadow:
+        var(--shadow);
+
+    margin-bottom:
+        25px;
+}
+
+.competition-big-icon {
+
+    width:
+        85px;
+
+    height:
+        85px;
+
+    border-radius:
+        18px;
+
+    background:
+        rgba(255,255,255,.12);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-size:
+        48px;
+
+    flex-shrink:
+        0;
+}
+
+.competition-hero h1 {
+
+    font-size:
+        29px;
+
+    font-weight:
+        900;
+}
+
+.competition-hero p {
+
+    margin-top:
+        5px;
+
+    color:
+        #cbd5e1;
+
+    font-size:
+        13px;
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.stats-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:
+        12px;
+
+    margin-bottom:
+        30px;
+}
+
+.stat-card {
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        12px;
+
+    padding:
+        18px;
+
+    text-align:
+        center;
+
+    box-shadow:
+        var(--shadow);
+}
+
+.stat-icon {
+
+    font-size:
+        25px;
+
+    margin-bottom:
+        5px;
+}
+
+.stat-number {
+
+    font-size:
+        22px;
+
+    font-weight:
+        900;
+}
+
+.stat-label {
+
+    color:
+        var(--muted);
+
+    font-size:
+        11px;
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.section {
+
+    margin-top:
+        35px;
+}
+
+.section-header {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    margin-bottom:
+        15px;
+}
+
+.section-header h2 {
+
+    font-size:
+        22px;
+
+    font-weight:
+        900;
+}
+
+
+/* =====================================================
+   MATCHES
+===================================================== */
+
+.matches-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:
+        13px;
+}
+
+.match-card {
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        13px;
+
+    padding:
+        15px;
+
+    box-shadow:
+        var(--shadow);
+
+    transition:
+        transform .2s;
+}
+
+.match-card:hover {
+    transform:
+        translateY(-3px);
+}
+
+.match-top {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    margin-bottom:
+        13px;
+}
+
+.competition {
+
+    color:
+        var(--primary);
+
+    font-weight:
+        bold;
+
+    font-size:
+        11px;
+}
+
+.status {
+
+    font-size:
+        10px;
+
+    padding:
+        3px 8px;
+
+    border-radius:
+        20px;
+}
+
+.status.live {
+
+    background:
+        #fee2e2;
+
+    color:
+        #dc2626;
+}
+
+.status.finished {
+
+    background:
+        #e2e8f0;
+
+    color:
+        #475569;
+}
+
+.status.scheduled {
+
+    background:
+        #dcfce7;
+
+    color:
+        #15803d;
+}
+
+.status.postponed {
+
+    background:
+        #fef3c7;
+
+    color:
+        #b45309;
+}
+
+body.dark .status {
+
+    background:
+        #1e293b;
+
+    color:
+        #cbd5e1;
+}
+
+body.dark .status.live {
+
+    background:
+        #451a1a;
+
+    color:
+        #fca5a5;
+}
+
+body.dark .status.scheduled {
+
+    background:
+        #12372b;
+
+    color:
+        #86efac;
+}
+
+.match-teams {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 80px 1fr;
+
+    align-items:
+        center;
+}
+
+.team {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    text-align:
+        center;
+
+    gap:
+        6px;
+}
+
+.team-logo,
+.team-placeholder {
+
+    width:
+        55px;
+
+    height:
+        55px;
+
+    object-fit:
+        contain;
+}
+
+.team-placeholder {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        var(--bg);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        50%;
+
+    font-size:
+        25px;
+}
+
+.team-name {
+
+    font-size:
+        12px;
+
+    font-weight:
+        800;
+}
+
+.match-score {
+    text-align:
+        center;
+}
+
+.score {
+
+    font-size:
+        23px;
+
+    font-weight:
+        900;
+}
+
+.vs {
+
+    color:
+        var(--muted);
+
+    font-weight:
+        bold;
+}
+
+.match-date {
+
+    border-top:
+        1px solid var(--border);
+
+    text-align:
+        center;
+
+    margin-top:
+        12px;
+
+    padding-top:
+        8px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        10px;
+}
+
+.details-button {
+
+    display:
+        block;
+
+    text-align:
+        center;
+
+    margin-top:
+        9px;
+
+    padding:
+        7px;
+
+    border-radius:
+        8px;
+
+    background:
+        rgba(0,168,107,.08);
+
+    color:
+        var(--primary);
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+}
+
+
+/* =====================================================
+   NEWS
+===================================================== */
+
+.news-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:
+        14px;
+}
+
+.news-card {
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        12px;
+
+    overflow:
+        hidden;
+
+    box-shadow:
+        var(--shadow);
+}
+
+.news-card img {
+
+    width:
+        100%;
+
+    height:
+        175px;
+
+    object-fit:
+        cover;
+}
+
+.news-content {
+    padding:
+        13px;
+}
+
+.news-category {
+
+    color:
+        var(--primary);
+
+    font-size:
+        10px;
+
+    font-weight:
+        bold;
+}
+
+.news-title {
+
+    font-size:
+        15px;
+
+    line-height:
+        1.6;
+
+    margin-top:
+        5px;
+}
+
+.news-date {
+
+    color:
+        var(--muted);
+
+    font-size:
+        10px;
+
+    margin-top:
+        8px;
+}
+
+
+/* =====================================================
+   LOADING / EMPTY / ERROR
+===================================================== */
+
+.loading,
+.empty,
+.error {
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        12px;
+
+    padding:
+        35px 20px;
+
+    text-align:
+        center;
+
+    color:
+        var(--muted);
+
+    grid-column:
+        1 / -1;
+}
+
+.error {
+    color:
+        #dc2626;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer {
+
+    background:
+        #050c15;
+
+    color:
+        #aab5c1;
+
+    padding:
+        35px 18px;
+
+    text-align:
+        center;
+}
+
+.footer-logo {
+
+    color:
+        white;
+
+    font-size:
+        24px;
+
+    font-weight:
+        900;
+}
+
+.footer-logo span {
+    color:
+        var(--primary);
+}
+
+.footer-text {
+
+    margin-top:
+        7px;
+
+    font-size:
+        11px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:900px) {
+
+    .stats-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+    .news-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+}
+
+
+@media(max-width:700px) {
+
+    .header-inner {
+
+        flex-wrap:
+            wrap;
+
+    }
+
+    .nav {
+
+        order:
+            3;
+
+        flex-basis:
+            100%;
+
+    }
+
+    .matches-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .competition-hero {
+
+        padding:
+            20px;
+
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .container {
+
+        padding:
+            18px 10px 45px;
+
+    }
+
+    .logo {
+
+        font-size:
+            21px;
+
+        min-width:
+            110px;
+
+    }
+
+    .visitor-time {
+
+        font-size:
+            10px;
+
+    }
+
+    .competition-hero {
+
+        flex-direction:
+            column;
+
+        text-align:
+            center;
+
+    }
+
+    .competition-hero h1 {
+
+        font-size:
+            23px;
+
+    }
+
+    .stats-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+    .news-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .match-teams {
+
+        grid-template-columns:
+            1fr 65px 1fr;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+<div class="header-inner">
+
+
+<a
+    href="index.html"
+    class="logo"
+>
+
+    Tacti<span>Gol</span>
+
+    <small>
+        NEWS
+    </small>
+
+</a>
+
+
+<nav class="nav">
+
+    <a href="index.html">
+        🏠 الرئيسية
+    </a>
+
+    <a href="matches.html">
+        ⚽ المباريات
+    </a>
+
+    <a href="index.html#latest">
+        📰 الأخبار
+    </a>
+
+    <a href="index.html#competitions">
+        🏆 البطولات
+    </a>
+
+    <a href="transfers.html">
+        🔄 الانتقالات
+    </a>
+
+</nav>
+
+
+<div class="actions">
+
+
+<div
+    id="visitorTime"
+    class="visitor-time"
+>
+
+    ☀️
+
+    <span>
+        --:--
+    </span>
+
+</div>
+
+
+<button
+    id="darkBtn"
+    class="icon-btn"
+    type="button"
+>
+
+    🌙
+
+</button>
+
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="container">
+
+
+<!-- BREADCRUMB -->
+
+<div class="breadcrumb">
+
+    <a href="index.html">
+        الرئيسية
+    </a>
+
+    <span>
+        /
+    </span>
+
+    <span id="breadcrumbCompetition">
+        الدوري المغربي
+    </span>
+
+</div>
+
+
+
+<!-- =====================================================
+     COMPETITION HERO
+===================================================== -->
+
+<section class="competition-hero">
+
+    <div class="competition-big-icon"
+         id="competitionIcon">
+
+        🇲🇦
+
+    </div>
+
+
+    <div>
+
+        <h1 id="competitionTitle">
+            الدوري المغربي
+        </h1>
+
+
+        <p id="competitionDescription">
+
+            أخبار ومباريات ونتائج الدوري المغربي
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<section class="stats-grid">
+
+
+<div class="stat-card">
+
+    <div class="stat-icon">
+        ⚽
+    </div>
+
+    <div
+        id="matchesCount"
+        class="stat-number"
+    >
+        0
+    </div>
+
+    <div class="stat-label">
+        المباريات
+    </div>
+
+</div>
+
+
+<div class="stat-card">
+
+    <div class="stat-icon">
+        📰
+    </div>
+
+    <div
+        id="newsCount"
+        class="stat-number"
+    >
+        0
+    </div>
+
+    <div class="stat-label">
+        الأخبار
+    </div>
+
+</div>
+
+
+<div class="stat-card">
+
+    <div class="stat-icon">
+        🏟️
+    </div>
+
+    <div
+        id="teamsCount"
+        class="stat-number"
+    >
+        0
+    </div>
+
+    <div class="stat-label">
+        الفرق
+    </div>
+
+</div>
+
+
+<div class="stat-card">
+
+    <div class="stat-icon">
+        🇲🇦
+    </div>
+
+    <div class="stat-number">
+        المغرب
+    </div>
+
+    <div class="stat-label">
+        البلد
+    </div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     MATCHES
+===================================================== -->
+
+<section class="section">
+
+<div class="section-header">
+
+    <h2>
+        ⚽ مباريات البطولة
+    </h2>
+
+</div>
+
+
+<div
+    id="matchesGrid"
+    class="matches-grid"
+>
+
+    <div class="loading">
+        ⏳ جاري تحميل المباريات...
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     NEWS
+===================================================== -->
+
+<section class="section">
+
+<div class="section-header">
+
+    <h2>
+        📰 أخبار البطولة
+    </h2>
+
+</div>
+
+
+<div
+    id="newsGrid"
+    class="news-grid"
+>
+
+    <div class="loading">
+        ⏳ جاري تحميل الأخبار...
+    </div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="footer-logo">
+
+        Tacti<span>Gol</span> News
+
+    </div>
+
+
+    <div class="footer-text">
+
+        كل أخبار كرة القدم... في مكان واحد ⚽
+
+    </div>
+
+
+    <div class="footer-text">
+
+        © 2026 TactiGol News — جميع الحقوق محفوظة
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+/* =====================================================
+   SUPABASE
+===================================================== */
+
+const SUPABASE_URL =
+    "https://kjmvewppokrzcbegxmwg.supabase.co";
+
+
+const SUPABASE_KEY =
+    "sb_publishable_As8JEhEsIfOta6cyi6e_AA_tp-T9k0W";
+
+
+const client =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* =====================================================
+   GET COMPETITION
+===================================================== */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+const competitionId =
+    params.get("id") ||
+    "morocco";
+
+
+/* =====================================================
+   COMPETITION DATA
+===================================================== */
+
+const competitions = {
+
+    morocco: {
+
+        name:
+            "الدوري المغربي",
+
+        country:
+            "المغرب",
+
+        icon:
+            "🇲🇦",
+
+        description:
+            "أخبار ومباريات ونتائج الدوري المغربي",
+
+        databaseName:
+            "الدوري المغربي"
+
+    },
+
+    england: {
+
+        name:
+            "الدوري الإنجليزي",
+
+        country:
+            "إنجلترا",
+
+        icon:
+            "🏴",
+
+        description:
+            "أخبار ومباريات ونتائج الدوري الإنجليزي",
+
+        databaseName:
+            "الدوري الإنجليزي"
+
+    },
+
+    spain: {
+
+        name:
+            "الدوري الإسباني",
+
+        country:
+            "إسبانيا",
+
+        icon:
+            "🇪🇸",
+
+        description:
+            "أخبار ومباريات ونتائج الدوري الإسباني",
+
+        databaseName:
+            "الدوري الإسباني"
+
+    },
+
+    italy: {
+
+        name:
+            "الدوري الإيطالي",
+
+        country:
+            "إيطاليا",
+
+        icon:
+            "🇮🇹",
+
+        description:
+            "أخبار ومباريات ونتائج الدوري الإيطالي",
+
+        databaseName:
+            "الدوري الإيطالي"
+
+    },
+
+    germany: {
+
+        name:
+            "الدوري الألماني",
+
+        country:
+            "ألمانيا",
+
+        icon:
+            "🇩🇪",
+
+        description:
+            "أخبار ومباريات ونتائج الدوري الألماني",
+
+        databaseName:
+            "الدوري الألماني"
+
+    },
+
+    france: {
+
+        name:
+            "الدوري الفرنسي",
+
+        country:
+            "فرنسا",
+
+        icon:
+            "🇫🇷",
+
+        description:
+            "أخبار ومباريات ونتائج الدوري الفرنسي",
+
+        databaseName:
+            "الدوري الفرنسي"
+
+    },
+
+    champions: {
+
+        name:
+            "دوري أبطال أوروبا",
+
+        country:
+            "أوروبا",
+
+        icon:
+            "🏆",
+
+        description:
+            "أخبار ومباريات دوري أبطال أوروبا",
+
+        databaseName:
+            "دوري أبطال أوروبا"
+
+    },
+
+    worldcup: {
+
+        name:
+            "كأس العالم",
+
+        country:
+            "العالم",
+
+        icon:
+            "🌍",
+
+        description:
+            "أخبار ومباريات كأس العالم",
+
+        databaseName:
+            "كأس العالم"
+
+    }
+
+};
+
+
+const competition =
+    competitions[
+        competitionId
+    ] ||
+    competitions.morocco;
+
+
+/* =====================================================
+   APPLY COMPETITION
+===================================================== */
+
+document.title =
+    `${competition.name} | TactiGol News`;
+
+
+document.getElementById(
+    "competitionTitle"
+).textContent =
+    competition.name;
+
+
+document.getElementById(
+    "breadcrumbCompetition"
+).textContent =
+    competition.name;
+
+
+document.getElementById(
+    "competitionIcon"
+).textContent =
+    competition.icon;
+
+
+document.getElementById(
+    "competitionDescription"
+).textContent =
+    competition.description;
+
+
+/* =====================================================
+   ESCAPE
+===================================================== */
+
+function escapeHtml(value) {
+
+    return String(
+        value ?? ""
+    )
+
+    .replaceAll(
+        "&",
+        "&amp;"
+    )
+
+    .replaceAll(
+        "<",
+        "&lt;"
+    )
+
+    .replaceAll(
+        ">",
+        "&gt;"
+    )
+
+    .replaceAll(
+        '"',
+        "&quot;"
+    )
+
+    .replaceAll(
+        "'",
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+function formatDate(date) {
+
+    if (!date)
+        return "غير محدد";
+
+
+    const d =
+        new Date(date);
+
+
+    if (
+        Number.isNaN(
+            d.getTime()
+        )
+    )
+        return "غير محدد";
+
+
+    return d.toLocaleDateString(
+        "ar-MA",
+        {
+            year:
+                "numeric",
+
+            month:
+                "short",
+
+            day:
+                "numeric"
+        }
+    );
+
+}
+
+
+/* =====================================================
+   TIME
+===================================================== */
+
+function formatTime(date) {
+
+    if (!date)
+        return "--:--";
+
+
+    const d =
+        new Date(date);
+
+
+    if (
+        Number.isNaN(
+            d.getTime()
+        )
+    )
+        return "--:--";
+
+
+    return d.toLocaleTimeString(
+        [],
+        {
+            hour:
+                "2-digit",
+
+            minute:
+                "2-digit",
+
+            hour12:
+                false
+        }
+    );
+
+}
+
+
+/* =====================================================
+   VISITOR TIME
+===================================================== */
+
+function updateVisitorTime() {
+
+    const now =
+        new Date();
+
+
+    const time =
+        now.toLocaleTimeString(
+            [],
+            {
+                hour:
+                    "2-digit",
+
+                minute:
+                    "2-digit",
+
+                hour12:
+                    false
+            }
+        );
+
+
+    const hour =
+        now.getHours();
+
+
+    const icon =
+        hour >= 6 &&
+        hour < 19
+
+        ? "☀️"
+
+        : "🌙";
+
+
+    const element =
+        document.getElementById(
+            "visitorTime"
+        );
+
+
+    if (element) {
+
+        element.innerHTML =
+            `${icon} <span>${time}</span>`;
+
+    }
+
+}
+
+
+updateVisitorTime();
+
+
+setInterval(
+    updateVisitorTime,
+    1000
+);
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+function getStatus(status) {
+
+    if (
+        status === "live"
+    ) {
+
+        return {
+            text:
+                "🔴 مباشر",
+
+            className:
+                "live"
+        };
+
+    }
+
+
+    if (
+        status === "finished"
+    ) {
+
+        return {
+            text:
+                "انتهت",
+
+            className:
+                "finished"
+        };
+
+    }
+
+
+    if (
+        status === "postponed"
+    ) {
+
+        return {
+            text:
+                "مؤجلة",
+
+            className:
+                "postponed"
+        };
+
+    }
+
+
+    return {
+
+        text:
+            "مجدولة",
+
+        className:
+            "scheduled"
+
+    };
+
+}
+
+
+/* =====================================================
+   TEAM LOGO
+===================================================== */
+
+function teamLogo(
+    logo,
+    name
+) {
+
+    if (logo) {
+
+        return `
+
+            <img
+                class="team-logo"
+                src="${escapeHtml(logo)}"
+                alt="${escapeHtml(name)}"
+            >
+
+        `;
+
+    }
+
+
+    return `
+
+        <div
+            class="team-placeholder"
+            title="${escapeHtml(name)}"
+        >
+            ⚽
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   MATCH CARD
+===================================================== */
+
+function renderMatch(match) {
+
+    const home =
+        match.home || {};
+
+
+    const away =
+        match.away || {};
+
+
+    const homeName =
+        home.name ||
+        match.home_team ||
+        "المضيف";
+
+
+    const awayName =
+        away.name ||
+        match.away_team ||
+        "الضيف";
+
+
+    const status =
+        getStatus(
+            match.status
+        );
+
+
+    let score =
+        `<div class="vs">VS</div>`;
+
+
+    if (
+        match.home_score !== null &&
+        match.home_score !== undefined &&
+        match.away_score !== null &&
+        match.away_score !== undefined
+    ) {
+
+        score = `
+
+            <div class="score">
+
+                ${escapeHtml(
+                    match.home_score
+                )}
+
+                -
+
+                ${escapeHtml(
+                    match.away_score
+                )}
+
+            </div>
+
+        `;
+
+    }
+
+
+    return `
+
+        <article class="match-card">
+
+
+            <div class="match-top">
+
+                <span class="competition">
+
+                    🏆
+
+                    ${escapeHtml(
+                        competition.name
+                    )}
+
+                </span>
+
+
+                <span
+                    class="status ${status.className}"
+                >
+
+                    ${status.text}
+
+                </span>
+
+            </div>
+
+
+
+            <div class="match-teams">
+
+
+                <div class="team">
+
+                    ${teamLogo(
+                        home.logo,
+                        homeName
+                    )}
+
+                    <div class="team-name">
+
+                        ${escapeHtml(
+                            homeName
+                        )}
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="match-score">
+
+                    ${score}
+
+                </div>
+
+
+
+                <div class="team">
+
+                    ${teamLogo(
+                        away.logo,
+                        awayName
+                    )}
+
+                    <div class="team-name">
+
+                        ${escapeHtml(
+                            awayName
+                        )}
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="match-date">
+
+                📅
+
+                ${formatDate(
+                    match.match_date
+                )}
+
+                <br>
+
+                🕐
+
+                ${formatTime(
+                    match.match_date
+                )}
+
+            </div>
+
+
+
+            <a
+                class="details-button"
+                href="match.html?id=${encodeURIComponent(
+                    match.id
+                )}"
+            >
+
+                تفاصيل المباراة ←
+
+            </a>
+
+
+        </article>
+
+    `;
+
+}
+
+
+/* =====================================================
+   LOAD MATCHES
+===================================================== */
+
+async function loadMatches() {
+
+    const grid =
+        document.getElementById(
+            "matchesGrid"
+        );
+
+
+    try {
+
+        const {
+            data,
+            error
+        } = await client
+
+        .from("matches")
+
+        .select(`
+
+            *,
+
+            home:teams!matches_home_team_id_fkey (
+
+                id,
+                name,
+                short_name,
+                logo
+
+            ),
+
+            away:teams!matches_away_team_id_fkey (
+
+                id,
+                name,
+                short_name,
+                logo
+
+            )
+
+        `)
+
+        .eq(
+            "competition",
+            competition.databaseName
+        )
+
+        .order(
+            "match_date",
+            {
+                ascending:
+                    true
+            }
+        );
+
+
+        if (error) {
+
+            console.error(
+                error
+            );
+
+
+            grid.innerHTML = `
+
+                <div class="error">
+
+                    ❌ تعذر تحميل مباريات البطولة
+
+                    <br>
+
+                    <small>
+                        ${escapeHtml(
+                            error.message
+                        )}
+                    </small>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        const matches =
+            data || [];
+
+
+        document.getElementById(
+            "matchesCount"
+        ).textContent =
+            matches.length;
+
+
+        if (!matches.length) {
+
+            grid.innerHTML = `
+
+                <div class="empty">
+
+                    <div>
+                        ⚽
+                    </div>
+
+                    لا توجد مباريات مسجلة
+                    لهذه البطولة حاليًا.
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        grid.innerHTML =
+            matches
+            .map(
+                renderMatch
+            )
+            .join("");
+
+
+        const uniqueTeams =
+            new Set();
+
+
+        matches.forEach(
+            match => {
+
+                if (
+                    match.home_team_id
+                )
+                    uniqueTeams.add(
+                        match.home_team_id
+                    );
+
+
+                if (
+                    match.away_team_id
+                )
+                    uniqueTeams.add(
+                        match.away_team_id
+                    );
+
+            }
+        );
+
+
+        document.getElementById(
+            "teamsCount"
+        ).textContent =
+            uniqueTeams.size;
+
+    }
+    catch(error) {
+
+        console.error(
+            error
+        );
+
+
+        grid.innerHTML = `
+
+            <div class="error">
+
+                ❌ حدث خطأ أثناء تحميل المباريات
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   LOAD NEWS
+===================================================== */
+
+async function loadNews() {
+
+    const grid =
+        document.getElementById(
+            "newsGrid"
+        );
+
+
+    try {
+
+        const {
+            data,
+            error
+        } = await client
+
+        .from("articles")
+
+        .select("*")
+
+        .order(
+            "created_at",
+            {
+                ascending:
+                    false
+            }
+        )
+
+        .limit(30);
+
+
+        if (error) {
+
+            console.error(
+                error
+            );
+
+
+            grid.innerHTML = `
+
+                <div class="error">
+
+                    ❌ تعذر تحميل الأخبار
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        let news =
+            data || [];
+
+
+        /*
+         * نحاول تحديد أخبار البطولة
+         * من category أو competition.
+         */
+
+        news =
+            news.filter(
+                article => {
+
+                    const text = (
+
+                        (article.category || "") +
+                        " " +
+                        (article.competition || "") +
+                        " " +
+                        (article.title || "")
+
+                    ).toLowerCase();
+
+
+                    if (
+                        competitionId ===
+                        "morocco"
+                    ) {
+
+                        return (
+
+                            text.includes(
+                                "مغربي"
+                            ) ||
+
+                            text.includes(
+                                "المغرب"
+                            ) ||
+
+                            text.includes(
+                                "الوداد"
+                            ) ||
+
+                            text.includes(
+                                "الرجاء"
+                            )
+
+                        );
+
+                    }
+
+
+                    return text.includes(
+                        competition.name
+                            .toLowerCase()
+                    );
+
+                }
+            );
+
+
+        document.getElementById(
+            "newsCount"
+        ).textContent =
+            news.length;
+
+
+        if (!news.length) {
+
+            grid.innerHTML = `
+
+                <div class="empty">
+
+                    <div>
+                        📰
+                    </div>
+
+                    لا توجد أخبار مسجلة
+                    لهذه البطولة حاليًا.
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        grid.innerHTML =
+            news
+            .slice(0,9)
+            .map(
+                article => {
+
+                    const image =
+                        article.image ||
+                        article.image_url ||
+                        "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=80";
+
+
+                    return `
+
+                        <article
+                            class="news-card"
+                        >
+
+                            <a
+                                href="article.html?id=${encodeURIComponent(
+                                    article.id
+                                )}"
+                            >
+
+                                <img
+                                    src="${escapeHtml(
+                                        image
+                                    )}"
+                                    alt="${escapeHtml(
+                                        article.title
+                                    )}"
+                                    loading="lazy"
+                                >
+
+
+                                <div
+                                    class="news-content"
+                                >
+
+                                    <div
+                                        class="news-category"
+                                    >
+
+                                        ${escapeHtml(
+                                            article.category ||
+                                            competition.name
+                                        )}
+
+                                    </div>
+
+
+                                    <h3
+                                        class="news-title"
+                                    >
+
+                                        ${escapeHtml(
+                                            article.title
+                                        )}
+
+                                    </h3>
+
+
+                                    <div
+                                        class="news-date"
+                                    >
+
+                                        📅
+
+                                        ${formatDate(
+                                            article.created_at
+                                        )}
+
+                                    </div>
+
+                                </div>
+
+                            </a>
+
+                        </article>
+
+                    `;
+
+                }
+            )
+            .join("");
+
+    }
+    catch(error) {
+
+        console.error(
+            error
+        );
+
+
+        grid.innerHTML = `
+
+            <div class="error">
+
+                ❌ حدث خطأ أثناء تحميل الأخبار
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+const darkBtn =
+    document.getElementById(
+        "darkBtn"
+    );
+
+
+function updateDarkButton() {
+
+    darkBtn.textContent =
+
+        document.body
+        .classList
+        .contains("dark")
+
+        ? "☀️"
+
+        : "🌙";
+
+}
+
+
+darkBtn.addEventListener(
+    "click",
+    function() {
+
+        document.body
+        .classList
+        .toggle("dark");
+
+
+        localStorage.setItem(
+
+            "tactigol-dark",
+
+            document.body
+            .classList
+            .contains("dark")
+
+        );
+
+
+        updateDarkButton();
+
+    }
+);
+
+
+if (
+    localStorage.getItem(
+        "tactigol-dark"
+    ) === "true"
+) {
+
+    document.body
+    .classList
+    .add("dark");
+
+}
+
+
+updateDarkButton();
+
+
+/* =====================================================
+   START
+===================================================== */
+
+loadMatches();
+
+loadNews();
+
+</script>
+
+
+</body>
+
+</html>
