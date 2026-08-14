@@ -2056,101 +2056,31 @@ body.dark .status.scheduled {
     class="transfers-section"
 >
 
-<div class="section-header">
+    <div class="section-header">
 
-    <h2>
-        🔄 آخر الانتقالات
-    </h2>
+        <h2>
+            🔄 آخر الانتقالات
+        </h2>
 
-    <a href="transfers.html">
-        جميع الانتقالات ←
-    </a>
-
-</div>
-
-
-<div class="transfers-grid">
-
-
-<a
-    href="transfers.html"
-    class="transfer-card"
->
-
-    <div class="transfer-icon">
-        🔄
-    </div>
-
-    <div>
-
-        <strong>
-            سوق الانتقالات
-        </strong>
-
-        <span>
-            تابع آخر أخبار الانتقالات
-        </span>
+        <a href="transfers.html">
+            جميع الانتقالات ←
+        </a>
 
     </div>
 
-</a>
 
+    <div
+        id="transfersGrid"
+        class="transfers-grid"
+    >
 
-<a
-    href="transfers.html"
-    class="transfer-card"
->
-
-    <div class="transfer-icon">
-        ⚽
-    </div>
-
-    <div>
-
-        <strong>
-            صفقات جديدة
-        </strong>
-
-        <span>
-            أهم الصفقات حول العالم
-        </span>
+        <div class="loading">
+            ⏳ جاري تحميل الانتقالات...
+        </div>
 
     </div>
-
-</a>
-
-
-<a
-    href="transfers.html"
-    class="transfer-card"
->
-
-    <div class="transfer-icon">
-        📝
-    </div>
-
-    <div>
-
-        <strong>
-            أخبار اللاعبين
-        </strong>
-
-        <span>
-            آخر أخبار اللاعبين والأندية
-        </span>
-
-    </div>
-
-</a>
-
-
-</div>
 
 </section>
-
-
-</main>
-
 
 
 <!-- =====================================================
@@ -3379,6 +3309,210 @@ searchInput.addEventListener(
 loadArticles();
 
 loadMatches();
+      /* =====================================================
+   LOAD LATEST TRANSFERS
+===================================================== */
+
+async function loadTransfers() {
+
+    const grid =
+        document.getElementById(
+            "transfersGrid"
+        );
+
+    if (!grid) return;
+
+
+    const {
+        data,
+        error
+    } = await client
+
+        .from("transfers")
+
+        .select(`
+            id,
+            player_name,
+            player_photo,
+            position,
+            country,
+            from_club,
+            from_logo,
+            to_club,
+            to_logo,
+            fee,
+            status,
+            transfer_date,
+            created_at
+        `)
+
+        .order(
+            "created_at",
+            {
+                ascending: false
+            }
+        )
+
+        .limit(3);
+
+
+    if (error) {
+
+        console.error(
+            "Transfers error:",
+            error
+        );
+
+        grid.innerHTML = `
+            <div class="loading">
+                ❌ تعذر تحميل الانتقالات
+            </div>
+        `;
+
+        return;
+    }
+
+
+    if (!data || data.length === 0) {
+
+        grid.innerHTML = `
+            <div class="loading">
+                🔄 لا توجد انتقالات حتى الآن
+            </div>
+        `;
+
+        return;
+    }
+
+
+    grid.innerHTML =
+        data.map(
+            transfer => {
+
+                const player =
+                    transfer.player_name ||
+                    "لاعب غير معروف";
+
+
+                const from =
+                    transfer.from_club ||
+                    "غير معروف";
+
+
+                const to =
+                    transfer.to_club ||
+                    "غير معروف";
+
+
+                const fee =
+                    transfer.fee ||
+                    "غير معلنة";
+
+
+                return `
+
+                <a
+                    href="transfers.html"
+                    class="transfer-card"
+                >
+
+                    <div class="transfer-icon">
+
+                        🔄
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+
+                            ${escapeHtml(
+                                player
+                            )}
+
+                        </strong>
+
+
+                        <span>
+
+                            ${escapeHtml(
+                                from
+                            )}
+
+                            →
+
+                            ${escapeHtml(
+                                to
+                            )}
+
+                        </span>
+
+
+                        <span>
+
+                            💰
+                            ${escapeHtml(
+                                fee
+                            )}
+
+                        </span>
+
+                    </div>
+
+                </a>
+
+                `;
+
+            }
+        )
+        .join("");
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHtml(value) {
+
+    return String(
+        value ?? ""
+    )
+
+    .replaceAll(
+        "&",
+        "&amp;"
+    )
+
+    .replaceAll(
+        "<",
+        "&lt;"
+    )
+
+    .replaceAll(
+        ">",
+        "&gt;"
+    )
+
+    .replaceAll(
+        '"',
+        "&quot;"
+    )
+
+    .replaceAll(
+        "'",
+        "&#039;"
+    );
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+loadTransfers();
 /* =====================================================
    LOAD TRANSFERS
 ===================================================== */
