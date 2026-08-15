@@ -2,26 +2,27 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
 
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
 
-<title>المباريات | TactiGol News</title>
+<title>مباريات اليوم | TactiGol News</title>
 
 <meta name="description"
-      content="جميع مباريات كرة القدم - TactiGol News">
+      content="مباريات اليوم ونتائج المباريات مباشرة على TactiGol News">
 
 <style>
 
 /* =====================================================
-   ROOT
+   VARIABLES
 ===================================================== */
 
 :root {
 
-    --primary: #00a86b;
-    --primary-dark: #087f56;
+    --green: #00a86b;
+    --green-dark: #078153;
 
     --bg: #f4f6f8;
     --card: #ffffff;
@@ -31,13 +32,15 @@
 
     --border: #e5e7eb;
 
+    --header: #07111f;
+
     --shadow:
-        0 6px 22px rgba(0,0,0,.07);
+        0 7px 22px rgba(0,0,0,.07);
 }
 
 
 /* =====================================================
-   DARK
+   DARK MODE
 ===================================================== */
 
 body.dark {
@@ -49,6 +52,11 @@ body.dark {
     --muted: #aab4c0;
 
     --border: #263548;
+
+    --header: #050c15;
+
+    --shadow:
+        0 8px 25px rgba(0,0,0,.30);
 }
 
 
@@ -63,12 +71,6 @@ body.dark {
     margin: 0;
 
     padding: 0;
-}
-
-
-html {
-
-    scroll-behavior: smooth;
 }
 
 
@@ -100,7 +102,8 @@ a {
 
 
 button,
-input {
+input,
+select {
 
     font-family: inherit;
 }
@@ -134,20 +137,19 @@ input {
 
 .header-inner {
 
-    max-width: 1250px;
+    max-width: 1200px;
 
     min-height: 72px;
 
     margin: auto;
 
-    padding:
-        10px 18px;
+    padding: 10px 18px;
 
     display: flex;
 
     align-items: center;
 
-    gap: 20px;
+    gap: 18px;
 }
 
 
@@ -157,7 +159,7 @@ input {
 
 .logo {
 
-    min-width: 150px;
+    min-width: 145px;
 
     font-size: 27px;
 
@@ -169,7 +171,7 @@ input {
 
 .logo span {
 
-    color: var(--primary);
+    color: var(--green);
 }
 
 
@@ -197,7 +199,7 @@ input {
 
     align-items: center;
 
-    gap: 3px;
+    gap: 4px;
 
     flex: 1;
 
@@ -213,14 +215,13 @@ input {
 
 .nav a {
 
-    padding:
-        8px 11px;
+    padding: 8px 11px;
 
     border-radius: 7px;
 
     color: #d9e1e8;
 
-    font-size: 14px;
+    font-size: 13px;
 
     white-space: nowrap;
 }
@@ -229,8 +230,7 @@ input {
 .nav a:hover,
 .nav a.active {
 
-    background:
-        var(--primary);
+    background: var(--green);
 
     color: white;
 }
@@ -258,8 +258,7 @@ input {
 
     gap: 5px;
 
-    padding:
-        8px 9px;
+    padding: 8px 9px;
 
     border-radius: 8px;
 
@@ -268,7 +267,7 @@ input {
 
     color: white;
 
-    font-size: 13px;
+    font-size: 12px;
 
     font-weight: bold;
 
@@ -288,9 +287,9 @@ input {
 
 .icon-btn {
 
-    width: 40px;
+    width: 39px;
 
-    height: 40px;
+    height: 39px;
 
     border:
         1px solid #294056;
@@ -303,17 +302,17 @@ input {
 
     cursor: pointer;
 
-    font-size: 17px;
+    font-size: 16px;
 }
 
 
 /* =====================================================
-   CONTAINER
+   MAIN
 ===================================================== */
 
 .container {
 
-    max-width: 1250px;
+    max-width: 1150px;
 
     margin: auto;
 
@@ -323,7 +322,7 @@ input {
 
 
 /* =====================================================
-   PAGE HEADER
+   PAGE TITLE
 ===================================================== */
 
 .page-header {
@@ -332,21 +331,115 @@ input {
 }
 
 
-.page-title {
+.page-header h1 {
 
-    font-size: 29px;
+    font-size: 28px;
 
     font-weight: 900;
 }
 
 
-.page-description {
+.page-header p {
 
     color: var(--muted);
 
     font-size: 13px;
 
-    margin-top: 3px;
+    margin-top: 4px;
+}
+
+
+/* =====================================================
+   BREADCRUMB
+===================================================== */
+
+.breadcrumb {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-bottom: 15px;
+}
+
+
+.breadcrumb a {
+
+    color: var(--green);
+
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   TODAY BAR
+===================================================== */
+
+.today-bar {
+
+    background:
+        linear-gradient(
+            135deg,
+            #07111f,
+            #0d3b2c
+        );
+
+    color: white;
+
+    border-radius: 15px;
+
+    padding: 18px;
+
+    margin-bottom: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    box-shadow: var(--shadow);
+}
+
+
+.today-title {
+
+    font-size: 18px;
+
+    font-weight: 900;
+}
+
+
+.today-date {
+
+    color: #c9d4df;
+
+    font-size: 11px;
+
+    margin-top: 2px;
+}
+
+
+.today-count {
+
+    background:
+        rgba(255,255,255,.10);
+
+    padding: 8px 13px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    white-space: nowrap;
 }
 
 
@@ -356,120 +449,60 @@ input {
 
 .filters {
 
-    display: flex;
+    display: grid;
 
-    gap: 8px;
+    grid-template-columns:
+        1fr
+        180px
+        160px;
 
-    margin-bottom: 25px;
+    gap: 10px;
 
-    overflow-x: auto;
+    margin-bottom: 22px;
 }
 
 
-.filters::-webkit-scrollbar {
+.search-box,
+.filter-select {
 
-    display: none;
-}
+    width: 100%;
 
+    height: 43px;
 
-.filter-btn {
+    padding:
+        0 13px;
 
     border:
         1px solid var(--border);
+
+    border-radius: 9px;
 
     background: var(--card);
 
     color: var(--text);
 
-    padding:
-        9px 18px;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    white-space: nowrap;
-
-    font-size: 13px;
+    outline: none;
 }
 
 
-.filter-btn:hover,
-.filter-btn.active {
+.search-box:focus,
+.filter-select:focus {
 
-    background:
-        var(--primary);
-
-    border-color:
-        var(--primary);
-
-    color: white;
+    border-color: var(--green);
 }
 
 
 /* =====================================================
-   DAY TITLE
+   COMPETITION SECTION
 ===================================================== */
 
-.day-section {
+.competition-section {
 
-    margin-bottom: 30px;
+    margin-bottom: 22px;
 }
 
 
-.day-title {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 9px;
-
-    font-size: 20px;
-
-    font-weight: 900;
-
-    margin-bottom: 13px;
-}
-
-
-.day-title::before {
-
-    content: "";
-
-    width: 5px;
-
-    height: 23px;
-
-    background:
-        var(--primary);
-
-    border-radius: 5px;
-}
-
-
-/* =====================================================
-   COMPETITION
-===================================================== */
-
-.competition-block {
-
-    margin-bottom: 15px;
-
-    background: var(--card);
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 12px;
-
-    overflow: hidden;
-
-    box-shadow: var(--shadow);
-}
-
-
-.competition-header {
+.competition-title {
 
     display: flex;
 
@@ -477,71 +510,96 @@ input {
 
     justify-content: space-between;
 
-    padding:
-        11px 15px;
+    gap: 10px;
 
-    background:
-        rgba(0,168,107,.06);
+    background: var(--card);
 
-    border-bottom:
+    border:
         1px solid var(--border);
+
+    border-radius: 11px 11px 0 0;
+
+    padding: 13px 15px;
+
+    box-shadow:
+        0 3px 12px rgba(0,0,0,.04);
 }
 
 
 .competition-name {
 
-    color:
-        var(--primary);
+    display: flex;
 
-    font-weight: bold;
+    align-items: center;
+
+    gap: 8px;
 
     font-size: 14px;
+
+    font-weight: 900;
 }
 
 
-.match-count {
+.competition-count {
 
     color: var(--muted);
 
-    font-size: 11px;
+    font-size: 10px;
 }
 
 
 /* =====================================================
-   MATCH
+   MATCH LIST
 ===================================================== */
 
-.match-row {
+.matches-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1px;
+
+    background: var(--border);
+
+    border:
+        1px solid var(--border);
+
+    border-top: 0;
+
+    border-radius: 0 0 11px 11px;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   MATCH CARD
+===================================================== */
+
+.match-card {
+
+    background: var(--card);
+
+    padding: 15px;
 
     display: grid;
 
     grid-template-columns:
-        95px 1fr 90px 1fr 70px;
+        80px
+        1fr
+        80px;
 
     align-items: center;
 
-    min-height: 95px;
-
-    padding:
-        10px 15px;
-
-    gap: 10px;
-
-    border-bottom:
-        1px solid var(--border);
+    gap: 12px;
 
     transition:
         background .2s;
 }
 
 
-.match-row:last-child {
-
-    border-bottom: 0;
-}
-
-
-.match-row:hover {
+.match-card:hover {
 
     background:
         rgba(0,168,107,.04);
@@ -552,31 +610,87 @@ input {
    TIME
 ===================================================== */
 
-.match-time-box {
+.match-time {
 
     text-align: center;
 }
 
 
-.match-time {
+.time {
 
-    font-size: 18px;
+    font-size: 15px;
 
     font-weight: 900;
 }
 
 
-.match-date-small {
+.status {
 
-    color: var(--muted);
+    display: inline-block;
 
-    font-size: 10px;
+    margin-top: 3px;
+
+    padding:
+        2px 7px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+
+    font-weight: bold;
+}
+
+
+.status.scheduled {
+
+    background: #dcfce7;
+
+    color: #15803d;
+}
+
+
+.status.live {
+
+    background: #fee2e2;
+
+    color: #dc2626;
+}
+
+
+.status.finished {
+
+    background: #e2e8f0;
+
+    color: #475569;
+}
+
+
+.status.postponed {
+
+    background: #fef3c7;
+
+    color: #b45309;
 }
 
 
 /* =====================================================
-   TEAM
+   TEAMS
 ===================================================== */
+
+.teams {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        45px
+        1fr;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
 
 .team {
 
@@ -586,9 +700,9 @@ input {
 
     gap: 9px;
 
-    font-weight: bold;
+    font-size: 13px;
 
-    font-size: 14px;
+    font-weight: bold;
 }
 
 
@@ -600,17 +714,15 @@ input {
 
 .team.away {
 
-    justify-content: flex-end;
-
-    text-align: left;
+    justify-content: flex-start;
 }
 
 
 .team-logo {
 
-    width: 42px;
+    width: 35px;
 
-    height: 42px;
+    height: 35px;
 
     object-fit: contain;
 
@@ -618,11 +730,11 @@ input {
 }
 
 
-.team-placeholder {
+.team-logo-placeholder {
 
-    width: 42px;
+    width: 35px;
 
-    height: 42px;
+    height: 35px;
 
     display: flex;
 
@@ -630,11 +742,11 @@ input {
 
     justify-content: center;
 
-    background: var(--bg);
-
     border-radius: 50%;
 
-    font-size: 19px;
+    background: var(--bg);
+
+    font-size: 18px;
 
     flex-shrink: 0;
 }
@@ -647,87 +759,65 @@ input {
 .score-box {
 
     text-align: center;
-}
 
-
-.score {
-
-    font-size: 21px;
+    font-size: 15px;
 
     font-weight: 900;
 }
 
 
-.vs {
+.score-dash {
 
     color: var(--muted);
 
     font-size: 12px;
+}
+
+
+/* =====================================================
+   DETAILS
+===================================================== */
+
+.match-details {
+
+    text-align: center;
+}
+
+
+.details-button {
+
+    display: inline-block;
+
+    padding:
+        6px 9px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 7px;
+
+    color: var(--green);
+
+    font-size: 10px;
 
     font-weight: bold;
 }
 
 
-/* =====================================================
-   STATUS
-===================================================== */
+.details-button:hover {
 
-.status {
+    background: var(--green);
 
-    justify-self: end;
+    border-color: var(--green);
 
-    font-size: 10px;
-
-    padding:
-        4px 8px;
-
-    border-radius: 20px;
-
-    background:
-        #dcfce7;
-
-    color:
-        #15803d;
-
-    white-space: nowrap;
-}
-
-
-.status.live {
-
-    background:
-        #fee2e2;
-
-    color:
-        #dc2626;
-}
-
-
-.status.finished {
-
-    background:
-        #e5e7eb;
-
-    color:
-        #475569;
-}
-
-
-.status.postponed {
-
-    background:
-        #fef3c7;
-
-    color:
-        #b45309;
+    color: white;
 }
 
 
 /* =====================================================
-   EMPTY / LOADING
+   EMPTY
 ===================================================== */
 
-.loading,
 .empty {
 
     background: var(--card);
@@ -735,13 +825,65 @@ input {
     border:
         1px solid var(--border);
 
-    border-radius: 12px;
+    border-radius: 13px;
 
-    padding: 40px 20px;
+    padding: 50px 20px;
 
     text-align: center;
 
     color: var(--muted);
+
+    box-shadow: var(--shadow);
+}
+
+
+.empty-icon {
+
+    font-size: 40px;
+
+    margin-bottom: 10px;
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading {
+
+    background: var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 13px;
+
+    padding: 50px 20px;
+
+    text-align: center;
+
+    color: var(--muted);
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.error {
+
+    background: var(--card);
+
+    border:
+        1px solid #fecaca;
+
+    border-radius: 13px;
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    color: #dc2626;
 }
 
 
@@ -751,22 +893,11 @@ input {
 
 .footer {
 
-    background:
-        #050c15;
+    background: #050c15;
 
-    color:
-        #aab5c1;
+    color: #aab5c1;
 
-    padding:
-        35px 18px;
-}
-
-
-.footer-inner {
-
-    max-width: 1250px;
-
-    margin: auto;
+    padding: 35px 18px;
 
     text-align: center;
 }
@@ -784,8 +915,7 @@ input {
 
 .footer-logo span {
 
-    color:
-        var(--primary);
+    color: var(--green);
 }
 
 
@@ -793,7 +923,7 @@ input {
 
     margin-top: 7px;
 
-    font-size: 12px;
+    font-size: 11px;
 }
 
 
@@ -801,7 +931,7 @@ input {
    MOBILE
 ===================================================== */
 
-@media(max-width:800px) {
+@media(max-width: 750px) {
 
     .header-inner {
 
@@ -817,152 +947,127 @@ input {
     }
 
 
-    .match-row {
+    .filters {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .match-card {
 
         grid-template-columns:
-            65px 1fr 55px 1fr 60px;
+            65px
+            1fr
+            65px;
 
-        gap: 5px;
+        gap: 6px;
 
-        padding:
-            9px;
+        padding: 12px 8px;
     }
 
 
     .team {
 
-        font-size: 12px;
+        font-size: 11px;
 
         gap: 5px;
     }
 
 
     .team-logo,
-    .team-placeholder {
+    .team-logo-placeholder {
 
-        width: 35px;
+        width: 29px;
 
-        height: 35px;
+        height: 29px;
+    }
+
+
+    .details-button {
+
+        font-size: 9px;
+
+        padding:
+            5px 6px;
     }
 
 }
 
 
-@media(max-width:550px) {
+@media(max-width: 500px) {
 
-    .header-inner {
+    .container {
 
         padding:
-            10px;
+            18px 9px 45px;
     }
 
 
-    .logo {
-
-        min-width: 120px;
+    .page-header h1 {
 
         font-size: 22px;
     }
 
 
-    .actions {
+    .today-bar {
 
-        margin-right: auto;
+        padding: 14px;
+
+        align-items: flex-start;
+
+        flex-direction: column;
     }
 
 
-    .visitor-time {
-
-        font-size: 11px;
-
-        padding:
-            7px;
-    }
-
-
-    .container {
-
-        padding:
-            18px 10px 45px;
-    }
-
-
-    .page-title {
-
-        font-size: 24px;
-    }
-
-
-    .match-row {
+    .match-card {
 
         grid-template-columns:
-            55px 1fr 45px 1fr;
-
-        position: relative;
-
-        padding:
-            13px 8px 35px;
+            50px
+            1fr
+            55px;
     }
 
 
-    .status {
+    .teams {
 
-        position: absolute;
-
-        bottom: 8px;
-
-        left: 50%;
-
-        transform:
-            translateX(-50%);
+        grid-template-columns:
+            1fr
+            35px
+            1fr;
     }
 
 
-    .match-time {
-
-        font-size: 15px;
-    }
-
-
-    .score {
-
-        font-size: 18px;
-    }
-
-
-    .team {
-
-        font-size: 11px;
+    .team.home,
+    .team.away {
 
         flex-direction: column;
 
-        gap: 3px;
-    }
-
-
-    .team.home {
-
-        justify-content: center;
-    }
-
-
-    .team.away {
-
-        justify-content: center;
-
         text-align: center;
+
+        justify-content: center;
     }
 
 
-    .competition-header {
+    .team-logo,
+    .team-logo-placeholder {
 
-        padding:
-            10px;
+        width: 30px;
+
+        height: 30px;
+    }
+
+
+    .team-name {
+
+        max-width: 90px;
+
+        line-height: 1.4;
     }
 
 }
 
 </style>
+
 </head>
 
 
@@ -975,78 +1080,82 @@ input {
 
 <header class="header">
 
-    <div class="header-inner">
+<div class="header-inner">
 
 
-        <a
-            href="index.html"
-            class="logo"
-        >
+<a
+    href="index.html"
+    class="logo"
+>
 
-            Tacti<span>Gol</span>
+    Tacti<span>Gol</span>
 
-            <small>
-                NEWS
-            </small>
+    <small>
+        NEWS
+    </small>
 
-        </a>
-
-
-        <nav class="nav">
-
-            <a href="index.html">
-                الرئيسية
-            </a>
-
-            <a
-                href="matches.html"
-                class="active"
-            >
-                ⚽ المباريات
-            </a>
-
-            <a href="index.html#latest">
-                📰 الأخبار
-            </a>
-
-            <a href="index.html#competitions">
-                🏆 البطولات
-            </a>
-
-            <a href="index.html#transfers">
-                🔄 الانتقالات
-            </a>
-
-        </nav>
+</a>
 
 
-        <div class="actions">
+<nav class="nav">
+
+    <a href="index.html">
+        🏠 الرئيسية
+    </a>
+
+    <a
+        href="matches.html"
+        class="active"
+    >
+        ⚽ المباريات
+    </a>
+
+    <a href="index.html#latest">
+        📰 الأخبار
+    </a>
+
+    <a href="index.html#competitions">
+        🏆 البطولات
+    </a>
+
+    <a href="transfers.html">
+        🔄 الانتقالات
+    </a>
+
+</nav>
 
 
-            <div
-                id="visitorTime"
-                class="visitor-time"
-            >
-
-                ☀️
-                <span>--:--</span>
-
-            </div>
+<div class="actions">
 
 
-            <button
-                id="darkBtn"
-                class="icon-btn"
-                type="button"
-                title="الوضع الليلي"
-            >
-                🌙
-            </button>
+<div
+    id="visitorTime"
+    class="visitor-time"
+>
+
+    🌙
+
+    <span>
+        --:--
+    </span>
+
+</div>
 
 
-        </div>
+<button
+    id="darkBtn"
+    class="icon-btn"
+    type="button"
+>
 
-    </div>
+    🌙
+
+</button>
+
+
+</div>
+
+</div>
 
 </header>
 
@@ -1058,71 +1167,149 @@ input {
 <main class="container">
 
 
-    <section class="page-header">
+<div class="breadcrumb">
 
-        <h1 class="page-title">
-            ⚽ جميع المباريات
-        </h1>
+    <a href="index.html">
+        الرئيسية
+    </a>
 
-        <p class="page-description">
+    <span>
+        /
+    </span>
 
-            تابع مباريات كرة القدم ونتائجها
-            لحظة بلحظة
+    <span>
+        المباريات
+    </span>
 
-        </p>
-
-    </section>
+</div>
 
 
-    <!-- FILTERS -->
+<div class="page-header">
 
-    <div class="filters">
+    <h1>
+        ⚽ مباريات كرة القدم
+    </h1>
 
-        <button
-            class="filter-btn active"
-            data-filter="today"
+    <p>
+        مباريات اليوم والنتائج القادمة والمباريات المنتهية
+    </p>
+
+</div>
+
+
+<!-- =====================================================
+     TODAY
+===================================================== -->
+
+<div class="today-bar">
+
+    <div>
+
+        <div class="today-title">
+
+            📅 مباريات اليوم
+
+        </div>
+
+        <div
+            id="todayDate"
+            class="today-date"
         >
-            اليوم
-        </button>
 
-
-        <button
-            class="filter-btn"
-            data-filter="tomorrow"
-        >
-            غدًا
-        </button>
-
-
-        <button
-            class="filter-btn"
-            data-filter="upcoming"
-        >
-            القادمة
-        </button>
-
-
-        <button
-            class="filter-btn"
-            data-filter="all"
-        >
-            كل المباريات
-        </button>
-
-    </div>
-
-
-    <!-- MATCHES -->
-
-    <div id="matchesContainer">
-
-        <div class="loading">
-
-            ⏳ جاري تحميل المباريات...
+            جاري تحميل التاريخ...
 
         </div>
 
     </div>
+
+
+    <div
+        id="todayCount"
+        class="today-count"
+    >
+
+        0 مباراة
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     FILTERS
+===================================================== -->
+
+<div class="filters">
+
+
+<input
+    type="search"
+    id="searchInput"
+    class="search-box"
+    placeholder="🔎 ابحث عن فريق أو بطولة..."
+>
+
+
+<select
+    id="statusFilter"
+    class="filter-select"
+>
+
+    <option value="all">
+        جميع الحالات
+    </option>
+
+    <option value="scheduled">
+        المباريات القادمة
+    </option>
+
+    <option value="live">
+        مباشر
+    </option>
+
+    <option value="finished">
+        انتهت
+    </option>
+
+    <option value="postponed">
+        مؤجلة
+    </option>
+
+</select>
+
+
+<select
+    id="dateFilter"
+    class="filter-select"
+>
+
+    <option value="today">
+        مباريات اليوم
+    </option>
+
+    <option value="all">
+        جميع المباريات
+    </option>
+
+</select>
+
+
+</div>
+
+
+<!-- =====================================================
+     MATCHES
+===================================================== -->
+
+<div id="matchesContainer">
+
+    <div class="loading">
+
+        ⏳ جاري تحميل المباريات...
+
+    </div>
+
+</div>
 
 
 </main>
@@ -1134,27 +1321,25 @@ input {
 
 <footer class="footer">
 
-    <div class="footer-inner">
+<div class="footer-logo">
 
-        <div class="footer-logo">
+    Tacti<span>Gol</span> News
 
-            Tacti<span>Gol</span> News
+</div>
 
-        </div>
 
-        <div class="footer-text">
+<div class="footer-text">
 
-            أخبار كرة القدم لحظة بلحظة
+    أخبار كرة القدم لحظة بلحظة
 
-        </div>
+</div>
 
-        <div class="footer-text">
 
-            © 2026 TactiGol News — جميع الحقوق محفوظة
+<div class="footer-text">
 
-        </div>
+    © 2026 TactiGol News — جميع الحقوق محفوظة
 
-    </div>
+</div>
 
 </footer>
 
@@ -1176,14 +1361,54 @@ const SUPABASE_URL =
     "https://kjmvewppokrzcbegxmwg.supabase.co";
 
 
-const SUPABASE_KEY =
+const SUPABASE_PUBLISHABLE_KEY =
     "sb_publishable_As8JEhEsIfOta6cyi6e_AA_tp-T9k0W";
 
 
 const client =
     window.supabase.createClient(
         SUPABASE_URL,
-        SUPABASE_KEY
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const matchesContainer =
+    document.getElementById(
+        "matchesContainer"
+    );
+
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+
+const statusFilter =
+    document.getElementById(
+        "statusFilter"
+    );
+
+
+const dateFilter =
+    document.getElementById(
+        "dateFilter"
+    );
+
+
+const todayCount =
+    document.getElementById(
+        "todayCount"
+    );
+
+
+const todayDate =
+    document.getElementById(
+        "todayDate"
     );
 
 
@@ -1191,13 +1416,11 @@ const client =
    DATA
 ===================================================== */
 
-let matches = [];
-
-let currentFilter = "today";
+let allMatches = [];
 
 
 /* =====================================================
-   ESCAPE
+   ESCAPE HTML
 ===================================================== */
 
 function escapeHtml(value) {
@@ -1205,44 +1428,115 @@ function escapeHtml(value) {
     return String(
         value ?? ""
     )
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+
+    .replaceAll(
+        "&",
+        "&amp;"
+    )
+
+    .replaceAll(
+        "<",
+        "&lt;"
+    )
+
+    .replaceAll(
+        ">",
+        "&gt;"
+    )
+
+    .replaceAll(
+        '"',
+        "&quot;"
+    )
+
+    .replaceAll(
+        "'",
+        "&#039;"
+    );
 
 }
 
 
 /* =====================================================
-   FORMAT TIME
+   TODAY RANGE
 ===================================================== */
 
-function formatTime(date) {
+function getTodayRange() {
 
-    if (!date)
-        return "--:--";
+    const now =
+        new Date();
 
 
-    const d =
+    const start =
+        new Date(now);
+
+    start.setHours(
+        0,0,0,0
+    );
+
+
+    const end =
+        new Date(now);
+
+    end.setHours(
+        23,59,59,999
+    );
+
+
+    return {
+        start,
+        end
+    };
+
+}
+
+
+/* =====================================================
+   IS TODAY
+===================================================== */
+
+function isToday(date) {
+
+    if (!date) return false;
+
+
+    const matchDate =
         new Date(date);
 
 
     if (
         Number.isNaN(
-            d.getTime()
+            matchDate.getTime()
         )
-    )
-        return "--:--";
+    ) {
+
+        return false;
+
+    }
 
 
-    return d.toLocaleTimeString(
-        [],
-        {
-            hour:"2-digit",
-            minute:"2-digit",
-            hour12:false
-        }
+    const now =
+        new Date();
+
+
+    return (
+
+        matchDate.getFullYear()
+        ===
+        now.getFullYear()
+
+        &&
+
+        matchDate.getMonth()
+        ===
+        now.getMonth()
+
+        &&
+
+        matchDate.getDate()
+        ===
+        now.getDate()
+
     );
 
 }
@@ -1254,8 +1548,11 @@ function formatTime(date) {
 
 function formatDate(date) {
 
-    if (!date)
+    if (!date) {
+
         return "";
+
+    }
 
 
     const d =
@@ -1266,15 +1563,20 @@ function formatDate(date) {
         Number.isNaN(
             d.getTime()
         )
-    )
+    ) {
+
         return "";
+
+    }
 
 
     return d.toLocaleDateString(
         "ar-MA",
         {
-            day:"numeric",
-            month:"short"
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric"
         }
     );
 
@@ -1282,50 +1584,41 @@ function formatDate(date) {
 
 
 /* =====================================================
-   DATE KEY
+   FORMAT TIME
 ===================================================== */
 
-function dateKey(date) {
+function formatTime(date) {
+
+    if (!date) {
+
+        return "--:--";
+
+    }
+
 
     const d =
         new Date(date);
 
 
-    const year =
-        d.getFullYear();
+    if (
+        Number.isNaN(
+            d.getTime()
+        )
+    ) {
+
+        return "--:--";
+
+    }
 
 
-    const month =
-        String(
-            d.getMonth() + 1
-        ).padStart(2,"0");
-
-
-    const day =
-        String(
-            d.getDate()
-        ).padStart(2,"0");
-
-
-    return `${year}-${month}-${day}`;
-
-}
-
-
-/* =====================================================
-   ADD DAYS
-===================================================== */
-
-function addDays(date, days) {
-
-    const d =
-        new Date(date);
-
-    d.setDate(
-        d.getDate() + days
+    return d.toLocaleTimeString(
+        [],
+        {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false
+        }
     );
-
-    return d;
 
 }
 
@@ -1334,40 +1627,33 @@ function addDays(date, days) {
    STATUS
 ===================================================== */
 
-function statusInfo(status) {
+function statusText(status) {
 
-    switch(status) {
+    switch (status) {
 
         case "live":
 
-            return {
-                text:"🔴 مباشرة",
-                className:"live"
-            };
+            return "🔴 مباشر";
 
 
         case "finished":
 
-            return {
-                text:"✅ انتهت",
-                className:"finished"
-            };
+            return "انتهت";
 
 
         case "postponed":
 
-            return {
-                text:"⏸️ مؤجلة",
-                className:"postponed"
-            };
+            return "مؤجلة";
+
+
+        case "scheduled":
+
+            return "قادمة";
 
 
         default:
 
-            return {
-                text:"⏰ مبرمجة",
-                className:"scheduled"
-            };
+            return status || "غير محدد";
 
     }
 
@@ -1375,95 +1661,81 @@ function statusInfo(status) {
 
 
 /* =====================================================
-   FILTER MATCHES
+   LOGO
 ===================================================== */
 
-function filterMatches() {
+function getLogo(logo, team) {
 
-    const today =
-        new Date();
+    if (logo) {
 
+        return `
 
-    const tomorrow =
-        addDays(
-            today,
-            1
-        );
+            <img
+                class="team-logo"
+                src="${escapeHtml(logo)}"
+                alt="${escapeHtml(team)}"
+                loading="lazy"
+            >
 
-
-    const todayKey =
-        dateKey(today);
-
-
-    const tomorrowKey =
-        dateKey(tomorrow);
-
-
-    if (
-        currentFilter ===
-        "today"
-    ) {
-
-        return matches.filter(
-            function(match) {
-
-                return (
-                    dateKey(
-                        match.match_date
-                    ) === todayKey
-                );
-
-            }
-        );
+        `;
 
     }
 
 
+    return `
+
+        <div
+            class="team-logo-placeholder"
+        >
+
+            ⚽
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   SCORE
+===================================================== */
+
+function score(match) {
+
+    const home =
+        match.home_score;
+
+
+    const away =
+        match.away_score;
+
+
     if (
-        currentFilter ===
-        "tomorrow"
+        home !== null &&
+        home !== undefined &&
+        away !== null &&
+        away !== undefined
     ) {
 
-        return matches.filter(
-            function(match) {
+        return `
 
-                return (
-                    dateKey(
-                        match.match_date
-                    ) === tomorrowKey
-                );
+            ${escapeHtml(home)}
+            -
+            ${escapeHtml(away)}
 
-            }
-        );
+        `;
 
     }
 
 
-    if (
-        currentFilter ===
-        "upcoming"
-    ) {
+    return `
 
-        const now =
-            new Date();
+        <span class="score-dash">
+            -
+        </span>
 
-
-        return matches.filter(
-            function(match) {
-
-                return (
-                    new Date(
-                        match.match_date
-                    ) >= now
-                );
-
-            }
-        );
-
-    }
-
-
-    return matches;
+    `;
 
 }
 
@@ -1472,13 +1744,7 @@ function filterMatches() {
    MATCH CARD
 ===================================================== */
 
-function matchRow(match) {
-
-    const status =
-        statusInfo(
-            match.status
-        );
-
+function createMatchCard(match) {
 
     const home =
         match.home_team ||
@@ -1490,145 +1756,145 @@ function matchRow(match) {
         "الفريق الضيف";
 
 
-    const homeLogo =
-        match.home_logo;
-
-
-    const awayLogo =
-        match.away_logo;
+    const status =
+        match.status ||
+        "scheduled";
 
 
     return `
 
-        <a
-            class="match-row"
-            href="match.html?id=${encodeURIComponent(match.id)}"
+<a
+    href="match.html?id=${encodeURIComponent(match.id)}"
+    class="match-card"
+>
+
+
+    <!-- TIME -->
+
+    <div class="match-time">
+
+        <div class="time">
+
+            ${formatTime(
+                match.match_date
+            )}
+
+        </div>
+
+
+        <span
+            class="status ${escapeHtml(status)}"
         >
 
+            ${escapeHtml(
+                statusText(status)
+            )}
 
-            <div class="match-time-box">
+        </span>
 
-                <div class="match-time">
-
-                    ${formatTime(
-                        match.match_date
-                    )}
-
-                </div>
-
-                <div class="match-date-small">
-
-                    ${formatDate(
-                        match.match_date
-                    )}
-
-                </div>
-
-            </div>
+    </div>
 
 
-            <div class="team home">
+    <!-- TEAMS -->
 
-                ${
-                    homeLogo
-
-                    ?
-
-                    `<img
-                        class="team-logo"
-                        src="${escapeHtml(homeLogo)}"
-                        alt="${escapeHtml(home)}"
-                    >`
-
-                    :
-
-                    `<div class="team-placeholder">
-                        ⚽
-                    </div>`
-                }
-
-                <span>
-
-                    ${escapeHtml(home)}
-
-                </span>
-
-            </div>
+    <div class="teams">
 
 
-            <div class="score-box">
+        <div class="team home">
 
-                ${
-                    match.home_score !== null &&
-                    match.home_score !== undefined
+            ${getLogo(
+                match.home_logo,
+                home
+            )}
 
-                    ?
+            <span class="team-name">
 
-                    `<div class="score">
+                ${escapeHtml(home)}
 
-                        ${escapeHtml(
-                            match.home_score
-                        )}
+            </span>
 
-                        -
-
-                        ${escapeHtml(
-                            match.away_score
-                        )}
-
-                    </div>`
-
-                    :
-
-                    `<div class="vs">
-                        VS
-                    </div>`
-                }
-
-            </div>
+        </div>
 
 
-            <div class="team away">
+        <div class="score-box">
 
-                <span>
+            ${score(match)}
 
-                    ${escapeHtml(away)}
-
-                </span>
-
-                ${
-                    awayLogo
-
-                    ?
-
-                    `<img
-                        class="team-logo"
-                        src="${escapeHtml(awayLogo)}"
-                        alt="${escapeHtml(away)}"
-                    >`
-
-                    :
-
-                    `<div class="team-placeholder">
-                        ⚽
-                    </div>`
-                }
-
-            </div>
+        </div>
 
 
-            <div
-                class="status ${status.className}"
-            >
+        <div class="team away">
 
-                ${status.text}
+            ${getLogo(
+                match.away_logo,
+                away
+            )}
 
-            </div>
+            <span class="team-name">
+
+                ${escapeHtml(away)}
+
+            </span>
+
+        </div>
 
 
-        </a>
+    </div>
 
-    `;
+
+    <!-- DETAILS -->
+
+    <div class="match-details">
+
+        <span class="details-button">
+
+            التفاصيل
+
+        </span>
+
+    </div>
+
+
+</a>
+
+`;
+
+}
+
+
+/* =====================================================
+   GROUP BY COMPETITION
+===================================================== */
+
+function groupMatches(matches) {
+
+    const groups = {};
+
+
+    matches.forEach(
+        match => {
+
+            const name =
+                match.competition ||
+                "مباريات أخرى";
+
+
+            if (!groups[name]) {
+
+                groups[name] = [];
+
+            }
+
+
+            groups[name].push(
+                match
+            );
+
+        }
+    );
+
+
+    return groups;
 
 }
 
@@ -1639,23 +1905,120 @@ function matchRow(match) {
 
 function renderMatches() {
 
-    const container =
-        document.getElementById(
-            "matchesContainer"
+    const search =
+        searchInput
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    const status =
+        statusFilter.value;
+
+
+    const date =
+        dateFilter.value;
+
+
+    let filtered =
+        [...allMatches];
+
+
+    /* DATE */
+
+    if (date === "today") {
+
+        filtered =
+            filtered.filter(
+                match =>
+                    isToday(
+                        match.match_date
+                    )
+            );
+
+    }
+
+
+    /* STATUS */
+
+    if (status !== "all") {
+
+        filtered =
+            filtered.filter(
+                match =>
+                    match.status === status
+            );
+
+    }
+
+
+    /* SEARCH */
+
+    if (search) {
+
+        filtered =
+            filtered.filter(
+                match => {
+
+                    const text = (
+
+                        (match.competition || "")
+                        + " " +
+
+                        (match.home_team || "")
+                        + " " +
+
+                        (match.away_team || "")
+
+                    ).toLowerCase();
+
+
+                    return text.includes(
+                        search
+                    );
+
+                }
+            );
+
+    }
+
+
+    /* TODAY COUNT */
+
+    const todayMatches =
+        allMatches.filter(
+            match =>
+                isToday(
+                    match.match_date
+                )
         );
 
 
-    const filtered =
-        filterMatches();
+    todayCount.textContent =
+        `${todayMatches.length} مباراة`;
 
+
+    /* EMPTY */
 
     if (!filtered.length) {
 
-        container.innerHTML = `
+        matchesContainer.innerHTML = `
 
             <div class="empty">
 
-                لا توجد مباريات في هذا القسم حاليًا.
+                <div class="empty-icon">
+                    ⚽
+                </div>
+
+                <strong>
+                    لا توجد مباريات
+                </strong>
+
+                <br>
+
+                <span>
+                    لم نجد مباريات مطابقة للبحث أو الفلاتر الحالية.
+                </span>
 
             </div>
 
@@ -1666,99 +2029,73 @@ function renderMatches() {
     }
 
 
-    /*
-       تجميع المباريات حسب البطولة
-    */
-
-    const competitions = {};
+    const groups =
+        groupMatches(filtered);
 
 
-    filtered.forEach(
-        function(match) {
+    matchesContainer.innerHTML =
 
-            const name =
-                match.competition ||
-                "مباريات أخرى";
+        Object.entries(groups)
 
+        .map(
+            ([competition, matches]) => `
 
-            if (
-                !competitions[name]
-            ) {
-
-                competitions[name] = [];
-
-            }
+<section
+    class="competition-section"
+>
 
 
-            competitions[name].push(
-                match
-            );
+    <div class="competition-title">
 
+        <div class="competition-name">
+
+            🏆
+
+            ${escapeHtml(
+                competition
+            )}
+
+        </div>
+
+
+        <div class="competition-count">
+
+            ${matches.length}
+            مباراة
+
+        </div>
+
+    </div>
+
+
+    <div class="matches-list">
+
+        ${matches
+            .sort(
+                (a,b) =>
+                    new Date(
+                        a.match_date
+                    )
+                    -
+                    new Date(
+                        b.match_date
+                    )
+            )
+            .map(
+                createMatchCard
+            )
+            .join("")
         }
-    );
+
+    </div>
 
 
-    let html = "";
+</section>
 
+`
+        )
 
-    Object.keys(
-        competitions
-    ).forEach(
-        function(competition) {
-
-            const list =
-                competitions[
-                    competition
-                ];
-
-
-            html += `
-
-                <section
-                    class="competition-block"
-                >
-
-                    <div
-                        class="competition-header"
-                    >
-
-                        <div
-                            class="competition-name"
-                        >
-
-                            🏆
-
-                            ${escapeHtml(
-                                competition
-                            )}
-
-                        </div>
-
-                        <div
-                            class="match-count"
-                        >
-
-                            ${list.length}
-                            مباراة
-
-                        </div>
-
-                    </div>
-
-                    ${list
-                        .map(matchRow)
-                        .join("")}
-
-                </section>
-
-            `;
-
-        }
-    );
-
-
-    container.innerHTML =
-        html;
+        .join("");
 
 }
 
@@ -1769,58 +2106,35 @@ function renderMatches() {
 
 async function loadMatches() {
 
-    const container =
-        document.getElementById(
-            "matchesContainer"
+    matchesContainer.innerHTML = `
+
+        <div class="loading">
+
+            ⏳ جاري تحميل المباريات...
+
+        </div>
+
+    `;
+
+
+    const {
+        data,
+        error
+    } = await client
+
+        .from("matches")
+
+        .select("*")
+
+        .order(
+            "match_date",
+            {
+                ascending: true
+            }
         );
 
 
-    try {
-
-        const result =
-            await client
-            .from("matches")
-            .select("*")
-            .order(
-                "match_date",
-                {
-                    ascending:true
-                }
-            )
-            .limit(300);
-
-
-        if (result.error) {
-
-            console.error(
-                "Supabase matches:",
-                result.error
-            );
-
-
-            container.innerHTML = `
-
-                <div class="empty">
-
-                    ❌ تعذر تحميل المباريات.
-
-                </div>
-
-            `;
-
-            return;
-
-        }
-
-
-        matches =
-            result.data || [];
-
-
-        renderMatches();
-
-    }
-    catch(error) {
+    if (error) {
 
         console.error(
             "Matches error:",
@@ -1828,132 +2142,56 @@ async function loadMatches() {
         );
 
 
-        container.innerHTML = `
+        matchesContainer.innerHTML = `
 
-            <div class="empty">
+            <div class="error">
 
-                ❌ حدث خطأ أثناء تحميل المباريات.
+                ❌ تعذر تحميل المباريات.
+
+                <br><br>
+
+                ${escapeHtml(
+                    error.message
+                )}
 
             </div>
 
         `;
 
+        return;
+
     }
+
+
+    allMatches =
+        data || [];
+
+
+    renderMatches();
 
 }
 
 
 /* =====================================================
-   FILTER BUTTONS
+   FILTER EVENTS
 ===================================================== */
 
-document
-.querySelectorAll(
-    ".filter-btn"
-)
-.forEach(
-    function(button) {
-
-        button.addEventListener(
-            "click",
-            function() {
-
-                document
-                .querySelectorAll(
-                    ".filter-btn"
-                )
-                .forEach(
-                    function(btn) {
-
-                        btn.classList.remove(
-                            "active"
-                        );
-
-                    }
-                );
-
-
-                this.classList.add(
-                    "active"
-                );
-
-
-                currentFilter =
-                    this.dataset.filter;
-
-
-                renderMatches();
-
-            }
-        );
-
-    }
+searchInput.addEventListener(
+    "input",
+    renderMatches
 );
 
 
-/* =====================================================
-   DARK MODE
-===================================================== */
-
-const darkBtn =
-    document.getElementById(
-        "darkBtn"
-    );
-
-
-function updateDarkButton() {
-
-    darkBtn.textContent =
-        document.body.classList.contains(
-            "dark"
-        )
-        ? "☀️"
-        : "🌙";
-
-}
-
-
-darkBtn.addEventListener(
-    "click",
-    function() {
-
-        document.body.classList.toggle(
-            "dark"
-        );
-
-
-        const isDark =
-            document.body.classList.contains(
-                "dark"
-            );
-
-
-        localStorage.setItem(
-            "tactigol-dark",
-            isDark
-        );
-
-
-        updateDarkButton();
-
-    }
+statusFilter.addEventListener(
+    "change",
+    renderMatches
 );
 
 
-if (
-    localStorage.getItem(
-        "tactigol-dark"
-    ) === "true"
-) {
-
-    document.body.classList.add(
-        "dark"
-    );
-
-}
-
-
-updateDarkButton();
+dateFilter.addEventListener(
+    "change",
+    renderMatches
+);
 
 
 /* =====================================================
@@ -1970,9 +2208,9 @@ function updateVisitorTime() {
         now.toLocaleTimeString(
             [],
             {
-                hour:"2-digit",
-                minute:"2-digit",
-                hour12:false
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false
             }
         );
 
@@ -1985,9 +2223,9 @@ function updateVisitorTime() {
         hour >= 6 &&
         hour < 19
 
-        ? "☀️"
+            ? "☀️"
 
-        : "🌙";
+            : "🌙";
 
 
     const element =
@@ -2016,6 +2254,97 @@ setInterval(
 
 
 /* =====================================================
+   TODAY DATE
+===================================================== */
+
+function updateTodayDate() {
+
+    const now =
+        new Date();
+
+
+    todayDate.textContent =
+        now.toLocaleDateString(
+            "ar-MA",
+            {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            }
+        );
+
+}
+
+
+updateTodayDate();
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+const darkBtn =
+    document.getElementById(
+        "darkBtn"
+    );
+
+
+function updateDarkButton() {
+
+    darkBtn.textContent =
+
+        document.body
+        .classList
+        .contains("dark")
+
+            ? "☀️"
+
+            : "🌙";
+
+}
+
+
+darkBtn.addEventListener(
+    "click",
+    function() {
+
+        document.body
+        .classList
+        .toggle("dark");
+
+
+        localStorage.setItem(
+            "tactigol-dark",
+            document.body
+            .classList
+            .contains("dark")
+        );
+
+
+        updateDarkButton();
+
+    }
+);
+
+
+if (
+    localStorage.getItem(
+        "tactigol-dark"
+    ) === "true"
+) {
+
+    document.body
+    .classList
+    .add("dark");
+
+}
+
+
+updateDarkButton();
+
+
+/* =====================================================
    START
 ===================================================== */
 
@@ -2023,5 +2352,7 @@ loadMatches();
 
 </script>
 
+
 </body>
+
 </html>
